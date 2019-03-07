@@ -1,13 +1,15 @@
 import app from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/database'
+require('dotenv').config()
 
 const config = {
-  apiKey: "AIzaSyB6z9283x5gTOE3yg9VJnK-Z4CsFTSHnDQ",
-  authDomain: "belgradeseniorcenter-70af2.firebaseapp.com",
-  databaseURL: "https://belgradeseniorcenter-70af2.firebaseio.com",
-  projectId: "belgradeseniorcenter-70af2",
-  storageBucket: "belgradeseniorcenter-70af2.appspot.com",
-  messagingSenderId: "280497410696"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 }
 
 class Firebase {
@@ -15,6 +17,7 @@ class Firebase {
     app.initializeApp(config);
   
     this.auth = app.auth();
+    this.db = app.database();
   }
   // *** Auth API ***
 
@@ -30,6 +33,12 @@ class Firebase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
+
+  // *** User API ***
+
+  user = uid => this.db.ref(`users/${uid}`);
+
+  users = () => this.db.ref('users');
 }
 
 
