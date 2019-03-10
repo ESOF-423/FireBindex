@@ -82,11 +82,13 @@ const UserList = ({ users }) => (
       <input type="text" id="state" placeholder="State" />
       <input type="text" id="zip" placeholder="Zip" />
       <input type="text" id="apartmentnumber" placeholder="Apartment No" />
-      <br />
-      <input type="radio" id="mealsincenter" />
+      <h3>Meals</h3>
+      <input type="radio" name="meals" id="mealsincenter" />
       Meals In Center
-      <input type="radio" id="mealsonwheels" />
+      <input type="radio" name="meals" id="mealsonwheels" />
       Meals On Wheels
+      <input type="radio" name="meals" id="nomeals" />
+      None
       <h3>Emergency Contact</h3>
       <input
         type="text"
@@ -108,7 +110,10 @@ const UserList = ({ users }) => (
         id="emergencycontactrelationship"
         placeholder="Relationship"
       />
+      <input type="submit" id="creatememberbutton" />
     </form>
+    <br />
+    <br />
   </div>
 );
 
