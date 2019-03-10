@@ -39,6 +39,10 @@ class Firebase {
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
+
+  // members
+
+  members = () => this.db.ref(`members`);
 }
 
 
