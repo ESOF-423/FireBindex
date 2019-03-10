@@ -70,6 +70,6 @@ const UserList = ({ users }) => (
       ))}
     </ul>
   </div>  
-);
+);  
 
 export default withFirebase(AdminPage);
