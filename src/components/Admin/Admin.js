@@ -50,21 +50,26 @@ class AdminPage extends Component {
 }
 
 const UserList = ({ users }) => (
-  <ul>
-    {users.map(user => (
-      <li key={user.uid}>
-        <span>
-          <strong>ID:</strong> {user.uid}
-        </span>
-        <span>
-          <strong>E-Mail:</strong> {user.email}
-        </span>
-        <span>
+  <div>
+    <h2>
+      Users
+    </h2>  
+    <ul>
+      {users.map(user => (
+        <li key={user.uid}>
           <strong>Username:</strong> {user.username}
-        </span>
-      </li>
-    ))}
-  </ul>
+          <ul>         
+            <li>
+              <strong>ID:</strong> {user.uid}
+            </li>
+            <li>
+              <strong>E-Mail:</strong> {user.email}
+            </li>            
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>  
 );
 
 export default withFirebase(AdminPage);
