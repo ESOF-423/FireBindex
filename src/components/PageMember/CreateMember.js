@@ -1,75 +1,6 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
-class AdminPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: false,
-      users: []
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ loading: true });
-
-    this.props.firebase.users().on("value", snapshot => {
-      const usersObject = snapshot.val();
-
-      const usersList = Object.keys(usersObject).map(key => ({
-        ...usersObject[key],
-        uid: key
-      }));
-
-      this.setState({
-        users: usersList,
-        loading: false
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    this.props.firebase.users().off();
-  }
-
-  render() {
-    const { users, loading } = this.state;
-
-    return (
-      <div>
-        <h1>Admin</h1>
-
-        {loading && <div>Loading ...</div>}
-
-        <UserList users={users} />
-        <CreateMember />
-      </div>
-    );
-  }
-}
-
-const UserList = ({ users }) => (
-  <div>
-    <h2>Users</h2>
-    <ul>
-      {users.map(user => (
-        <li key={user.uid}>
-          <strong>Username:</strong> {user.username}
-          <ul>
-            <li>
-              <strong>ID:</strong> {user.uid}
-            </li>
-            <li>
-              <strong>E-Mail:</strong> {user.email}
-            </li>
-          </ul>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
 const INITIAL_STATE = {
   firstName: "",
   middleName: "",
@@ -164,7 +95,7 @@ class CreateMember extends Component {
       emergencyRelationship
     } = this.state;
 
-    const isValid = true;
+    // const isValid = true;
 
     return (
       <div>
@@ -221,6 +152,13 @@ class CreateMember extends Component {
             onChange={this.onChange}
             placeholder="Street Address"
           />
+          <input
+            name="apartmentNumber"
+            value={apartmentNumber}
+            type="text"
+            onChange={this.onChange}
+            placeholder="Apartment No"
+          />
           <br />
           <input
             name="city"
@@ -243,13 +181,7 @@ class CreateMember extends Component {
             onChange={this.onChange}
             placeholder="Zip"
           />
-          <input
-            name="apartmentNumber"
-            value={apartmentNumber}
-            type="text"
-            onChange={this.onChange}
-            placeholder="Apartment No"
-          />
+          
           <h3>Meals</h3>
           <input
             value={meals}
@@ -274,6 +206,7 @@ class CreateMember extends Component {
             onChange={this.onChange}
             placeholder="Last Name"
           />
+          <br />
           <input
             name="emergencyPhoneNumber"
             value={emergencyPhoneNumber}
@@ -288,10 +221,11 @@ class CreateMember extends Component {
             onChange={this.onChange}
             placeholder="Relationship"
           />
+          <br />
           <input type="submit" />
         </form>
       </div>
     );
   }
 }
-export default withFirebase(AdminPage);
+export default withFirebase(CreateMember);
