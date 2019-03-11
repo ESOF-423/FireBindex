@@ -11,6 +11,7 @@ import HomePage from '../PageHome/PageHome'
 import AccountPage from '../PageAccount/PageAccount'
 import AdminPage from '../PageAdmin/PageAdmin'
 import MemberPage from '../PageMember/PageMember'
+import EventPage from '../PageEvent/PageEvent'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -32,6 +33,8 @@ const App = () => (
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.MEMBER} component={MemberPage} />
+      <Route path={ROUTES.EVENT} component={EventPage} />
+
     </div>
   </Router>
 );
