@@ -21,6 +21,8 @@ class Firebase {
   }
   // *** Auth API ***
 
+  doLogAThing = () => console.log("THIS IS A TEST");
+
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
@@ -41,6 +43,8 @@ class Firebase {
   users = () => this.db.ref('users');
 
   // members
+
+  member = uid => this.db.ref(`members/${uid}`);
 
   members = () => this.db.ref(`members`);
 }

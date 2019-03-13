@@ -9,14 +9,13 @@ class ViewEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //defauilt value of the date time
       date: "",
     };
   }
   componentDidMount() {
-    var date = new Date().getDate(); //Current Date
-    var month = new Date().getMonth() + 1; //Current Month
-    var year = new Date().getFullYear(); //Current Year
+    var date = new Date().getDate(); 
+    var month = new Date().getMonth() + 1; 
+    var year = new Date().getFullYear(); 
     this.setState({
       date: month + "/" + date + "/" + year
     });

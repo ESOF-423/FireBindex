@@ -20,59 +20,74 @@ const INITIAL_STATE = {
   emergencyRelationship: ""
 };
 
-class CreateMember extends Component {
+class CreateMemberBase extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    this.state = { 
+      loading: false,
+      ...INITIAL_STATE };
+  }
+
+  componentDidMount() {
+    this.setState({ loading: true });
+
+    this.props.firebase.member().on('value', snapshot => {
+      // convert messages list from snapshot
+
+      this.setState({ loading: false });
+    });
+  }
+
+  componentWillUnmount() {
+    this.props.firebase.member().off();
   }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  writeUserData = event => {
-    const {
-      firstName,
-      middleName,
-      lastName,
-      birthday,
-      phoneNumber,
-      email,
-      streetAddress,
-      city,
-      state,
-      zip,
-      apartmentNumber,
-      meals,
-      emergencyFirstName,
-      emergencyLastName,
-      emergencyPhoneNumber,
-      emergencyRelationship
-    } = this.state;
+  onSubmit = event => {
+    console.log(this.props.firebase.users());
+    console.log(this.props.firebase.members());
 
-    this.props.firebase
-      .doSignInWithEmailAndPassword("yeet@mail.com", "123456")
-      .then(authUser => {
-        return this.props.firebase.members.set({
-          firstName,
-          middleName,
-          lastName,
-          birthday,
-          phoneNumber,
-          email,
-          streetAddress,
-          city,
-          state,
-          zip,
-          apartmentNumber,
-          meals,
-          emergencyFirstName,
-          emergencyLastName,
-          emergencyPhoneNumber,
-          emergencyRelationship
-        });
-      });
+    // A post entry.
+    var memberData = {
+      firstName: this.state.firstName,
+      middleName: this.state.middleName,
+      lastName: this.state.lastName,
+      birthday: this.state.birthday,
+      phoneNumber: this.state.phoneNumber,
+      email: this.state.email,
+      streetAddress: this.state.streetAddress,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
+      apartmentNumber: this.state.apartmentNumber,
+      meals: this.state.meals,
+      emergencyFirstName: this.state.emergencyFirstName,
+      emergencyLastName: this.state.emergencyLastName,
+      emergencyPhoneNumber: this.state.emergencyPhoneNumber,
+      emergencyRelationship: this.state.emergencyRelationship
+    };
+
+    this.props.firebase.member().push(memberData);
+
+    // Get a key for a new Post.
+    var newMemberKey = this.props.firebase
+      .database()
+      .ref()
+      .child("member")
+      .push().key;
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates["/member/" + newMemberKey] = memberData;
+
+    return this.props.firebase
+      .database()
+      .ref()
+      .update(updates);
   };
 
   render() {
@@ -100,7 +115,7 @@ class CreateMember extends Component {
     return (
       <div>
         <h2>Create Member</h2>
-        <form onSubmit={this.writeUserData}>
+        <form onSubmit={this.onSubmit}>
           <input
             name="firstName"
             value={firstName}
@@ -181,7 +196,7 @@ class CreateMember extends Component {
             onChange={this.onChange}
             placeholder="Zip"
           />
-          
+
           <h3>Meals</h3>
           <input
             value={meals}
@@ -222,10 +237,13 @@ class CreateMember extends Component {
             placeholder="Relationship"
           />
           <br />
-          <input type="submit" />
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
   }
 }
-export default withFirebase(CreateMember);
+
+const CreateMember = withFirebase(CreateMemberBase);
+
+export default CreateMember;

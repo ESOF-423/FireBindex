@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
 const tableStyle = {
-  textAlign: 'left'
+  textAlign: "left"
 };
 
 class ViewMember extends Component {
@@ -10,7 +10,7 @@ class ViewMember extends Component {
     super(props);
     this.state = {
       //defauilt value of the date time
-      date: "",
+      date: ""
     };
   }
   componentDidMount() {
@@ -20,7 +20,6 @@ class ViewMember extends Component {
     this.setState({
       date: month + "/" + date + "/" + year
     });
-
   }
 
   render() {
@@ -28,24 +27,33 @@ class ViewMember extends Component {
       <div>
         <h2>All Members</h2>
         <table>
-          <tr style={tableStyle}>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Emergency Contact</th>
-            <th>Meals</th>
-          </tr>
-          <tr>
-            <td>firstName + ' ' + middleName + ' ' + lastName</td>
-            <td>{this.state.date} - birthday</td>
-            <td>phoneNumber</td>
-            <td>streetAddress + ' ' + apartmentNumber + '\n' + city + ' ' + state + ' ' + zip</td>
-            <td>email</td>
-            <td>emergencyContactFirstName + ' ' + emergencyContactlastName + ' ' + emergencyContactPhoneNumber + ' ' + emergencyContactRelationship</td>
-            <td>0, 1 or 2</td>
-          </tr>
+          <tbody>
+            <tr style={tableStyle}>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Email</th>
+              <th>Emergency Contact</th>
+              <th>Meals</th>
+            </tr>
+            <tr>
+              <td>firstName + ' ' + middleName + ' ' + lastName</td>
+              <td>{this.state.date} - birthday</td>
+              <td>phoneNumber</td>
+              <td>
+                streetAddress + ' ' + apartmentNumber + '\n' + city + ' ' +
+                state + ' ' + zip
+              </td>
+              <td>email</td>
+              <td>
+                emergencyContactFirstName + ' ' + emergencyContactlastName + ' '
+                + emergencyContactPhoneNumber + ' ' +
+                emergencyContactRelationship
+              </td>
+              <td>0, 1 or 2</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
