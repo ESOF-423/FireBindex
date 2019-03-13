@@ -46,21 +46,14 @@ class ViewMember extends Component {
     this.state = {
       loading: false,
       members: [],
-      todaysDate: ""
     };
   }
   componentDidMount() {
-    var date = new Date().getDate(); //Current Date
-    var month = new Date().getMonth() + 1; //Current Month
-    var year = new Date().getFullYear(); //Current Year
-    this.setState({
-      todaysDate: month + "/" + date + "/" + year
-    });
 
     this.setState({ loading: true });
 
     this.props.firebase.members().on("value", snapshot => {
-      const membersObject = snapshot.val().undefined;
+      const membersObject = snapshot.val();
 
       const membersList = Object.keys(membersObject).map(key => ({
         ...membersObject[key],
@@ -78,7 +71,7 @@ class ViewMember extends Component {
   }
 
   render() {
-    const { members, loading, todaysDate } = this.state;
+    const { members, loading } = this.state;
     return (
       <div>
         <h2>All Members</h2>
