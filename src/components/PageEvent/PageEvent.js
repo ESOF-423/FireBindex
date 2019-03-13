@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+import ViewEvent from "./ViewEvent";
 import CreateEvent from "./CreateEvent";
-import ViewEvents from "./ViewEvent";
+
 
 class PageEvent extends Component {
   render() {
     return (
       <div>
         <CreateEvent />
-        <ViewEvents />
+        <ViewEvent />
       </div>
     );
   }

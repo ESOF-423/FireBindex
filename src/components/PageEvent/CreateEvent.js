@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   eventDescription: ""
 };
 
-class CreateMember extends Component {
+class CreateEvent extends Component {
   constructor(props) {
     super(props);
 
@@ -21,28 +21,8 @@ class CreateMember extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  writeUserData = event => {
-    const {
-      eventName,
-      eventStartDate,
-      eventEndDate,
-      eventStartTime,
-      eventEndTime,
-      eventDescription
-    } = this.state;
-
-    this.props.firebase
-      .doSignInWithEmailAndPassword("yeet@mail.com", "123456")
-      .then(authUser => {
-        return this.props.firebase.members.set({
-          eventName,
-          eventStartDate,
-          eventEndDate,
-          eventStartTime,
-          eventEndTime,
-          eventDescription
-        });
-      });
+  onSubmit = event => {
+    this.props.firebase.events().push(this.state);
   };
 
   render() {
@@ -55,12 +35,18 @@ class CreateMember extends Component {
       eventDescription
     } = this.state;
 
-    // const isValid = true;
+    const isInvalid =
+      eventDescription === "" ||
+      eventEndDate === "" ||
+      eventEndTime === "" ||
+      eventName === "" ||
+      eventStartDate === "" ||
+      eventStartTime === "";
 
     return (
       <div>
         <h2>Create Event</h2>
-        <form onSubmit={this.writeUserData}>
+        <form onSubmit={this.onSubmit}>
           <input
             name="eventName"
             value={eventName}
@@ -72,14 +58,14 @@ class CreateMember extends Component {
           <input
             name="eventStartDate"
             value={eventStartDate}
-            type="text"
+            type="date"
             onChange={this.onChange}
             placeholder="Start Date"
           />
           <input
             name="eventEndDate"
             value={eventEndDate}
-            type="text"
+            type="date"
             onChange={this.onChange}
             placeholder="End Date"
           />
@@ -87,15 +73,15 @@ class CreateMember extends Component {
           <input
             name="eventStartTime"
             value={eventStartTime}
-            type="text"
+            type="time"
             onChange={this.onChange}
             placeholder="Start Time"
           />
-          <br/>
+          <br />
           <input
             name="eventEndTime"
             value={eventEndTime}
-            type="text"
+            type="time"
             onChange={this.onChange}
             placeholder="End Time"
           />
@@ -107,10 +93,10 @@ class CreateMember extends Component {
             placeholder="Description"
           />
           <br />
-          <input type="submit" />
+          <button disabled={isInvalid} type="submit">Submit</button>
         </form>
       </div>
     );
   }
 }
-export default withFirebase(CreateMember);
+export default withFirebase(CreateEvent);
