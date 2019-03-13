@@ -1,33 +1,48 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+import PropTypes from 'prop-types';
 
-const tableStyle = {
-  textAlign: "left",
-  width: "100%"
-};
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+const styles = theme => ({
+  root: {
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 700
+  }
+});
 
 const MemberRows = ({ members }) =>
   members.map(member => (
-    <tr style={tableStyle}>
-      <td>
+    <TableRow>
+      <TableCell>
         {member.firstName} {member.middleName} {member.lastName}
-      </td>
-      <td>{getAge(member.birthday)}</td>
-      <td>{member.phoneNumber}</td>
-      <td>
+      </TableCell>
+      <TableCell>{getAge(member.birthday)}</TableCell>
+      <TableCell>{member.phoneNumber}</TableCell>
+      <TableCell>
         {member.streetAddress} {member.apartmentNumber}
         <br />
         {member.city}, {member.state} {member.zip}
-      </td>
-      <td>{member.email}</td>
-      <td>
+      </TableCell>
+      <TableCell>{member.email}</TableCell>
+      <TableCell>
         {member.emergencyFirstName} {member.emergencyLastName}{" "}
         {member.emergencyRelationship}
         <br />
         {member.emergencyPhoneNumber}
-      </td>
-      <td>{member.meals}</td>
-    </tr>
+      </TableCell>
+      <TableCell>{member.meals}</TableCell>
+    </TableRow>
   ));
 
 function getAge(dateString) {
@@ -46,11 +61,10 @@ class ViewMember extends Component {
     super(props);
     this.state = {
       loading: false,
-      members: [],
+      members: []
     };
   }
   componentDidMount() {
-
     this.setState({ loading: true });
 
     this.props.firebase.members().on("value", snapshot => {
@@ -73,26 +87,34 @@ class ViewMember extends Component {
 
   render() {
     const { members, loading } = this.state;
+    const { classes } = this.props;
     return (
-      <div>
+      <Paper className={classes.root}>
         <h2>All Members</h2>
         {loading && <div>Loading ...</div>}
-        <table style={tableStyle}>
-          <tbody>
-            <tr style={tableStyle}>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>Email</th>
-              <th>Emergency Contact</th>
-              <th>Meals</th>
-            </tr>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Age</TableCell>
+              <TableCell>Phone</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Emergency Contact</TableCell>
+              <TableCell>Meals</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             <MemberRows members={members} />
-          </tbody>
-        </table>
-      </div>
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }
-export default withFirebase(ViewMember);
+
+ViewMember.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(withFirebase(ViewMember));
