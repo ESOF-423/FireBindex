@@ -15,7 +15,7 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config);
-  
+
     this.auth = app.auth();
     this.db = app.database();
   }
@@ -39,14 +39,14 @@ class Firebase {
   // *** User API ***
 
   user = uid => this.db.ref(`users/${uid}`);
-
   users = () => this.db.ref('users');
 
-  // members
-
   member = uid => this.db.ref(`members/${uid}`);
+  members = () => this.db.ref('members');
 
-  members = () => this.db.ref(`members`);
+  event = uid => this.db.ref(`events/${uid}`);
+  events = () => this.db.ref('events');
+
 }
 
 
