@@ -20,27 +20,13 @@ const INITIAL_STATE = {
   emergencyRelationship: ""
 };
 
-class CreateMemberBase extends Component {
+class CreateMember extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
-      loading: false,
-      ...INITIAL_STATE };
-  }
-
-  componentDidMount() {
-    this.setState({ loading: true });
-
-    this.props.firebase.member().on('value', snapshot => {
-      // convert messages list from snapshot
-
-      this.setState({ loading: false });
-    });
-  }
-
-  componentWillUnmount() {
-    this.props.firebase.member().off();
+    this.state = {
+      ...INITIAL_STATE
+    };
   }
 
   onChange = event => {
@@ -48,46 +34,7 @@ class CreateMemberBase extends Component {
   };
 
   onSubmit = event => {
-    console.log(this.props.firebase.users());
-    console.log(this.props.firebase.members());
-
-    // A post entry.
-    var memberData = {
-      firstName: this.state.firstName,
-      middleName: this.state.middleName,
-      lastName: this.state.lastName,
-      birthday: this.state.birthday,
-      phoneNumber: this.state.phoneNumber,
-      email: this.state.email,
-      streetAddress: this.state.streetAddress,
-      city: this.state.city,
-      state: this.state.state,
-      zip: this.state.zip,
-      apartmentNumber: this.state.apartmentNumber,
-      meals: this.state.meals,
-      emergencyFirstName: this.state.emergencyFirstName,
-      emergencyLastName: this.state.emergencyLastName,
-      emergencyPhoneNumber: this.state.emergencyPhoneNumber,
-      emergencyRelationship: this.state.emergencyRelationship
-    };
-
-    this.props.firebase.member().push(memberData);
-
-    // Get a key for a new Post.
-    var newMemberKey = this.props.firebase
-      .database()
-      .ref()
-      .child("member")
-      .push().key;
-
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
-    updates["/member/" + newMemberKey] = memberData;
-
-    return this.props.firebase
-      .database()
-      .ref()
-      .update(updates);
+    this.props.firebase.member().push(this.state);
   };
 
   render() {
@@ -110,7 +57,21 @@ class CreateMemberBase extends Component {
       emergencyRelationship
     } = this.state;
 
-    // const isValid = true;
+    const isInvalid =
+      firstName === "" ||
+      lastName === "" ||
+      birthday === "" ||
+      phoneNumber === "" ||
+      !email.match(/.*@.*\..*/g) ||
+      streetAddress === "" ||
+      city === "" ||
+      state === "" ||
+      zip === "" ||
+      meals === "" ||
+      emergencyFirstName === "" ||
+      emergencyLastName === "" ||
+      emergencyPhoneNumber === "" ||
+      emergencyRelationship === "";
 
     return (
       <div>
@@ -141,7 +102,7 @@ class CreateMemberBase extends Component {
           <input
             name="birthday"
             value={birthday}
-            type="text"
+            type="date"
             onChange={this.onChange}
             placeholder="Birthday"
           />
@@ -237,13 +198,13 @@ class CreateMemberBase extends Component {
             placeholder="Relationship"
           />
           <br />
-          <button type="submit">Submit</button>
+          <button disabled={isInvalid} type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
 
-const CreateMember = withFirebase(CreateMemberBase);
-
-export default CreateMember;
+export default withFirebase(CreateMember);
