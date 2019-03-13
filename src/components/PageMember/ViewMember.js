@@ -5,12 +5,48 @@ const tableStyle = {
   textAlign: "left"
 };
 
+const MemberRows = ({ members }) =>
+  members.map(member => (
+    <tr style={tableStyle}>
+      <td>
+        {member.firstName} {member.middleName} {member.lastName}
+      </td>
+      <td>{getAge(member.birthday)}</td>
+      <td>{member.phoneNumber}</td>
+      <td>
+        {member.streetAddress} {member.apartmentNumber}
+        <br />
+        {member.city}, {member.state} {member.zip}
+      </td>
+      <td>{member.email}</td>
+      <td>
+        {member.emergencyFirstName} {member.emergencyLastName}{" "}
+        {member.emergencyRelationship}
+        <br />
+        {member.emergencyPhoneNumber}
+      </td>
+      <td>{member.meals}</td>
+    </tr>
+  ));
+
+function getAge(dateString) {
+  var today = new Date();
+  var birthDate = new Date(dateString);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 class ViewMember extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //defauilt value of the date time
-      date: ""
+      loading: false,
+      members: [],
+      todaysDate: ""
     };
   }
   componentDidMount() {
@@ -18,14 +54,35 @@ class ViewMember extends Component {
     var month = new Date().getMonth() + 1; //Current Month
     var year = new Date().getFullYear(); //Current Year
     this.setState({
-      date: month + "/" + date + "/" + year
+      todaysDate: month + "/" + date + "/" + year
+    });
+
+    this.setState({ loading: true });
+
+    this.props.firebase.members().on("value", snapshot => {
+      const membersObject = snapshot.val().undefined;
+
+      const membersList = Object.keys(membersObject).map(key => ({
+        ...membersObject[key],
+        uid: key
+      }));
+
+      this.setState({
+        members: membersList,
+        loading: false
+      });
+
+      console.log("here");
+      console.log(membersList);
     });
   }
 
   render() {
+    const { members, loading, todaysDate } = this.state;
     return (
       <div>
         <h2>All Members</h2>
+        {loading && <div>Loading ...</div>}
         <table>
           <tbody>
             <tr style={tableStyle}>
@@ -37,22 +94,7 @@ class ViewMember extends Component {
               <th>Emergency Contact</th>
               <th>Meals</th>
             </tr>
-            <tr>
-              <td>firstName + ' ' + middleName + ' ' + lastName</td>
-              <td>{this.state.date} - birthday</td>
-              <td>phoneNumber</td>
-              <td>
-                streetAddress + ' ' + apartmentNumber + '\n' + city + ' ' +
-                state + ' ' + zip
-              </td>
-              <td>email</td>
-              <td>
-                emergencyContactFirstName + ' ' + emergencyContactlastName + ' '
-                + emergencyContactPhoneNumber + ' ' +
-                emergencyContactRelationship
-              </td>
-              <td>0, 1 or 2</td>
-            </tr>
+            <MemberRows members={members} />
           </tbody>
         </table>
       </div>
