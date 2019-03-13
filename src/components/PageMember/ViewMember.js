@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
 const tableStyle = {
-  textAlign: "left"
+  textAlign: "left",
+  width: "100%"
 };
 
 const MemberRows = ({ members }) =>
@@ -76,7 +77,7 @@ class ViewMember extends Component {
       <div>
         <h2>All Members</h2>
         {loading && <div>Loading ...</div>}
-        <table>
+        <table style={tableStyle}>
           <tbody>
             <tr style={tableStyle}>
               <th>Name</th>

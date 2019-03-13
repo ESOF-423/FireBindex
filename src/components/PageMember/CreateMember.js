@@ -34,7 +34,7 @@ class CreateMember extends Component {
   };
 
   onSubmit = event => {
-    this.props.firebase.member().push(this.state);
+    this.props.firebase.members().push(this.state);
   };
 
   render() {
