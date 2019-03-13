@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PasswordForgetForm } from '../PasswordForget/PasswordForget'
+import { PasswordForgetForm } from '../PagePasswordForget/PagePasswordForget'
 import PasswordChangeForm from '../PasswordChange/PasswordChange'
 import { AuthUserContext, withAuthorization } from '../Session'
 

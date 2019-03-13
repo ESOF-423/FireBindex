@@ -15,11 +15,13 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config);
-  
+
     this.auth = app.auth();
     this.db = app.database();
   }
   // *** Auth API ***
+
+  doLogAThing = () => console.log("THIS IS A TEST");
 
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
@@ -37,8 +39,14 @@ class Firebase {
   // *** User API ***
 
   user = uid => this.db.ref(`users/${uid}`);
-
   users = () => this.db.ref('users');
+
+  member = uid => this.db.ref(`members/${uid}`);
+  members = () => this.db.ref('members');
+
+  event = uid => this.db.ref(`events/${uid}`);
+  events = () => this.db.ref('events');
+
 }
 
 
