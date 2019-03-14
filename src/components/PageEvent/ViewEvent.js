@@ -30,17 +30,25 @@ class ViewEvent extends Component {
     this.props.firebase.events().on("value", snapshot => {
       const eventsObject = snapshot.val();
 
-      const eventsList = Object.keys(eventsObject).map(key => ({
-        ...eventsObject[key],
-        uid: key
-      }));
+      try {
+        const eventsList = Object.keys(eventsObject).map(key => ({
+          ...eventsObject[key],
+          uid: key
+        }));
 
-      this.setState({
-        events: eventsList,
-      });
+        this.setState({
+          events: eventsList,
+        });
 
-      console.log(eventsList);
+        console.log(eventsList);
+      }
+      catch {
+        this.setState({
+          event: null
+        });
+      }
     });
+
 
   }
 

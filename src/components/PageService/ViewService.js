@@ -30,20 +30,22 @@ class ViewService extends Component {
     this.props.firebase.services().on("value", snapshot => {
       const servicesObject = snapshot.val();
 
-      const servicesList = Object.keys(servicesObject).map(key => ({
-        ...servicesObject[key],
-        uid: key
-      }));
+      try {
+        const servicesList = Object.keys(servicesObject).map(key => ({
+          ...servicesObject[key],
+          uid: key
+        }));
 
-      this.setState({
-        services: servicesList,
-      });
-
-      this.catch(error => {
-        this.setState({ error });
-      });
-
-      console.log(servicesList);
+        this.setState({
+          services: servicesList,
+        });
+        console.log(servicesList);
+      }
+      catch {
+        this.setState({
+          service: null
+        });
+      }      
     });
 
   }
