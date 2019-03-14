@@ -12,6 +12,7 @@ import AccountPage from '../PageAccount/PageAccount'
 import AdminPage from '../PageAdmin/PageAdmin'
 import MemberPage from '../PageMember/PageMember'
 import EventPage from '../PageEvent/PageEvent'
+import ServicePage from '../PageService/PageService'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -34,6 +35,7 @@ const App = () => (
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.MEMBER} component={MemberPage} />
       <Route path={ROUTES.EVENT} component={EventPage} />
+      <Route path={ROUTES.SERVICE} component={ServicePage} />
 
     </div>
   </Router>
