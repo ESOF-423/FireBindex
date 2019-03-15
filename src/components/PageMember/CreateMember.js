@@ -1,6 +1,30 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { withStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200
+  },
+  dense: {
+    marginTop: 19
+  },
+  menu: {
+    width: 200
+  }
+});
+
 const INITIAL_STATE = {
   firstName: "",
   middleName: "",
@@ -73,25 +97,32 @@ class CreateMember extends Component {
       emergencyPhoneNumber === "" ||
       emergencyRelationship === "";
 
+    const { classes } = this.props;
+
     return (
       <div>
         <h2>Create Member</h2>
-        <form onSubmit={this.onSubmit}>
-          <input
+        <form classname={classes.container} onSubmit={this.onSubmit}>
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="firstName"
             value={firstName}
-            type="text"
             onChange={this.onChange}
             placeholder="First Name"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="middleName"
             value={middleName}
             type="text"
             onChange={this.onChange}
             placeholder="Middle Name"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="lastName"
             value={lastName}
             type="text"
@@ -99,21 +130,27 @@ class CreateMember extends Component {
             placeholder="Last Name"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="birthday"
             value={birthday}
             type="date"
             onChange={this.onChange}
             placeholder="Birthday"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="phoneNumber"
             value={phoneNumber}
             type="text"
             onChange={this.onChange}
             placeholder="Phone Number"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="email"
             value={email}
             type="text"
@@ -121,14 +158,18 @@ class CreateMember extends Component {
             placeholder="Email"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="streetAddress"
             value={streetAddress}
             type="text"
             onChange={this.onChange}
             placeholder="Street Address"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="apartmentNumber"
             value={apartmentNumber}
             type="text"
@@ -136,21 +177,27 @@ class CreateMember extends Component {
             placeholder="Apartment No"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="city"
             value={city}
             type="text"
             onChange={this.onChange}
             placeholder="City"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="state"
             value={state}
             type="text"
             onChange={this.onChange}
             placeholder="State"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="zip"
             value={zip}
             type="text"
@@ -168,14 +215,18 @@ class CreateMember extends Component {
           />
 
           <h3>Emergency Contact</h3>
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="emergencyFirstName"
             value={emergencyFirstName}
             type="text"
             onChange={this.onChange}
             placeholder="First Name"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="emergencyLastName"
             value={emergencyLastName}
             type="text"
@@ -183,14 +234,18 @@ class CreateMember extends Component {
             placeholder="Last Name"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="emergencyPhoneNumber"
             value={emergencyPhoneNumber}
             type="text"
             onChange={this.onChange}
             placeholder="Phone Number"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="emergencyRelationship"
             value={emergencyRelationship}
             type="text"
@@ -207,4 +262,8 @@ class CreateMember extends Component {
   }
 }
 
-export default withFirebase(CreateMember);
+CreateMember.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(withFirebase(CreateMember));
