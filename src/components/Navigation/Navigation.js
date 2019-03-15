@@ -35,6 +35,9 @@ const NavigationAuth = () => (
       <Link to={ROUTES.EVENT}>Event</Link>
     </li>  
     <li>
+      <Link to={ROUTES.SERVICE}>Service</Link>
+    </li>  
+    <li>
       <SignOutButton />
     </li>
   </ul>

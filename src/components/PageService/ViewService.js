@@ -6,57 +6,55 @@ const tableStyle = {
   width: "100%"
 };
 
-const EventRows = ({ events }) =>
-  events.map(event => (
+const ServiceRows = ({ services }) =>
+  services.map(service => (
     <tr>
-      <td>{event.eventName}</td>
-      <td>{event.eventDate}</td>
-      <td>{event.eventStartTime}</td>
-      <td>{event.eventDescription}</td>
+      <td>{service.serviceName}</td>
+      <td>{service.serviceDate}</td>
+      <td>{service.serviceStartTime}</td>
+      <td>{service.serviceDescription}</td>
     </tr>
   ));
 
-class ViewEvent extends Component {
+class ViewService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      services: []
     };
   }
 
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.events().on("value", snapshot => {
-      const eventsObject = snapshot.val();
+    this.props.firebase.services().on("value", snapshot => {
+      const servicesObject = snapshot.val();
 
       try {
-        const eventsList = Object.keys(eventsObject).map(key => ({
-          ...eventsObject[key],
+        const servicesList = Object.keys(servicesObject).map(key => ({
+          ...servicesObject[key],
           uid: key
         }));
 
         this.setState({
-          events: eventsList,
+          services: servicesList,
         });
-
-        console.log(eventsList);
+        console.log(servicesList);
       }
       catch {
         this.setState({
-          event: null
+          service: null
         });
-      }
+      }      
     });
-
 
   }
 
   render() {
-    const { events } = this.state
+    const { services } = this.state
     return (
       <div>
-        <h2>All Events</h2>
+        <h2>All Services</h2>
         <table>
           <tbody>
             <tr style={tableStyle}>
@@ -65,11 +63,11 @@ class ViewEvent extends Component {
               <th>Time</th>
               <th>Description</th>
             </tr>
-            <EventRows events={events} />
+            <ServiceRows services={services} />
           </tbody>
         </table>
       </div >
     );
   }
 }
-export default withFirebase(ViewEvent);
+export default withFirebase(ViewService);
