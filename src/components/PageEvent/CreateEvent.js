@@ -1,6 +1,28 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200
+  },
+  dense: {
+    marginTop: 19
+  },
+  menu: {
+    width: 200
+  }
+});
+
 const INITIAL_STATE = {
   eventName: "",
   eventStartDate: "",
@@ -43,11 +65,15 @@ class CreateEvent extends Component {
       eventStartDate === "" ||
       eventStartTime === "";
 
+    const { classes } = this.props;
+
     return (
       <div>
         <h2>Create Event</h2>
-        <form onSubmit={this.onSubmit}>
-          <input
+        <form classname={classes.container} onSubmit={this.onSubmit}>
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="eventName"
             value={eventName}
             type="text"
@@ -55,14 +81,18 @@ class CreateEvent extends Component {
             placeholder="Name"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="eventStartDate"
             value={eventStartDate}
             type="date"
             onChange={this.onChange}
             placeholder="Start Date"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="eventEndDate"
             value={eventEndDate}
             type="date"
@@ -70,22 +100,28 @@ class CreateEvent extends Component {
             placeholder="End Date"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="eventStartTime"
             value={eventStartTime}
             type="time"
             onChange={this.onChange}
             placeholder="Start Time"
           />
-          <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="eventEndTime"
             value={eventEndTime}
             type="time"
             onChange={this.onChange}
             placeholder="End Time"
           />
-          <input
+          <br />
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="eventDescription"
             value={eventDescription}
             type="text"
@@ -93,10 +129,17 @@ class CreateEvent extends Component {
             placeholder="Description"
           />
           <br />
-          <button disabled={isInvalid} type="submit">Submit</button>
+          <button disabled={isInvalid} type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
-export default withFirebase(CreateEvent);
+
+CreateEvent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(withFirebase(CreateEvent));

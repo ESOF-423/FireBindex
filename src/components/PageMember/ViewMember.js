@@ -8,7 +8,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   root: {
@@ -89,7 +88,7 @@ class ViewMember extends Component {
     const { members, loading } = this.state;
     const { classes } = this.props;
     return (
-      <Paper className={classes.root}>
+      <div>
         <h2>All Members</h2>
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
@@ -108,7 +107,7 @@ class ViewMember extends Component {
             <MemberRows members={members} />
           </TableBody>
         </Table>
-      </Paper>
+      </div>
     );
   }
 }
