@@ -14,6 +14,19 @@ import PageService from '../components/PageService/PageService.js'
 import CreateService from '../components/PageService/CreateService.js'
 import ViewService from '../components/PageService/ViewService.js'
 
+import PageMemberCheckIn from '../components/PageMemberCheckIn/PageMemberCheckIn.js'
+import ViewEventForCheckin from '../components/PageMemberCheckIn/ViewEventForCheckin.js'
+
+it('shallow renders PageMemberCheckIn without exploding', () => {
+	const renderer = new ShallowRenderer();
+	renderer.render(React.createElement(PageMemberCheckIn));
+});
+
+it('shallow renders ViewEventForCheckin without exploding', () => {
+	const renderer = new ShallowRenderer();
+	renderer.render(React.createElement(ViewEventForCheckin));
+});
+
 it('shallow renders PageEvent without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(PageEvent));

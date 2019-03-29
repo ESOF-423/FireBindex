@@ -6,7 +6,6 @@ import Navigation from '../components/Navigation/Navigation.js'
 import PageAccount from '../components/PageAccount/PageAccount.js'
 import PageAdmin from '../components/PageAdmin/PageAdmin.js'
 import PageHome from '../components/PageHome/PageHome.js'
-import PageLanding from '../components/PageLanding/PageLanding.js'
 import PagePasswordForget from '../components/PagePasswordForget/PagePasswordForget.js'
 import PageSignIn from '../components/PageSignIn/PageSignIn.js'
 import PageSignUp from '../components/PageSignUp/PageSignUp.js'
@@ -36,11 +35,6 @@ it('shallow renders PageAdmin without exploding', () => {
 it('shallow renders PageHome without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(PageHome));
-});
-
-it('shallow renders PageLanding without exploding', () => {
-  const renderer = new ShallowRenderer();
-  renderer.render(React.createElement(PageLanding));
 });
 
 it('shallow renders PagePasswordForget without exploding', () => {
