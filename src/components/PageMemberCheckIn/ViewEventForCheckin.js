@@ -24,7 +24,7 @@ const EventRows = ({ events }) =>
   events.map(event => (
     <TableRow>
       <TableCell>{event.eventName}</TableCell>
-      <TableCell>{event.eventDate}</TableCell>
+      <TableCell>{event.eventStartDate}</TableCell>
       <TableCell>{event.eventStartTime}</TableCell>
       <TableCell>{event.eventDescription}</TableCell>
       <TableCell><button>Sign In</button></TableCell>
@@ -45,7 +45,6 @@ class ViewEvent extends Component {
 
     this.props.firebase.events().on("value", snapshot => {
       const eventsObject = snapshot.val();
-
       try {
         const eventsList = Object.keys(eventsObject).map(key => ({
           ...eventsObject[key],
@@ -65,8 +64,6 @@ class ViewEvent extends Component {
         });
       }
     });
-
-
   }
 
   render() {

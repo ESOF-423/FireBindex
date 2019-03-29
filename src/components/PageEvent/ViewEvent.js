@@ -24,7 +24,7 @@ const EventRows = ({ events }) =>
   events.map(event => (
     <TableRow>
       <TableCell>{event.eventName}</TableCell>
-      <TableCell>{event.eventDate}</TableCell>
+      <TableCell>{event.eventStartDate}</TableCell>
       <TableCell>{event.eventStartTime}</TableCell>
       <TableCell>{event.eventDescription}</TableCell>
     </TableRow>
