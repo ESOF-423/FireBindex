@@ -25,14 +25,17 @@ class CheckInMember extends Component {
         uid: key
       }));
 
+    //   console.log(membersList)
+
       for (var i = 0; i < membersList.length; i++) {
+          console.log("in the loooooooop")
         if (
           membersList[i].firstName.toLowerCase === firstName.toLowerCase &&
           membersList[i].lastName.toLowerCase === lastName.toLowerCase
         ) {
           console.log("MATCH");
 
-          this.setState({ firstName: firstName, lastName: lastName });
+        //   this.setState({ firstName: firstName, lastName: lastName });
 
           const attendance = {
             user_id: membersList[i].uid,
@@ -40,7 +43,7 @@ class CheckInMember extends Component {
           };
 
           console.log(attendance);
-          this.props.firebase.attendance().push(this.state);
+          this.props.firebase.attendances().push(attendance);
         }
       }
     });
@@ -51,12 +54,11 @@ class CheckInMember extends Component {
   };
 
   render() {
-    const { firstName, lastName, event_id } = this.state;
+    const { firstName, lastName } = this.state;
 
     return (
       <div>
-        <h1>Sign in to</h1>
-        {/* <p>{this.state}</p> */}
+        <h1>Sign in to event</h1>
 
         <form onSubmit={this.onSubmit}>
           <input
@@ -73,7 +75,7 @@ class CheckInMember extends Component {
             type="text"
             placeholder="Last Name"
           />
-          <button type="submit">Check In</button>
+          <button type="button" onClick={this.onSubmit}>Check In</button>
         </form>
       </div>
     );
