@@ -14,10 +14,6 @@ Bindex.tk is a web application meant to make the task of managing senior communi
    You'll also be able to use search tools to quickly access this information needed for printing forms, writing reports, and grants.
    In addition, you'll be able to create activities, services and meals that members can sign up for.
 
-* Volunteer tools
-
-   Volunteers will be able to log their hours, sign up for a specific position, and access basic information for members.
-
 * Member tools
 
    Members will be able to view and edit their own information, sign up for and check into activities/meals.
