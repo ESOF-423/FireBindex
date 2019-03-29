@@ -1,10 +1,20 @@
 language: node_js
+node_js: node
 
-node_js:
-  - stable
+jobs:
+  include:
+    - stage: "Node tests"
+      name: "shallow rendering components"
+      script: npm test --directory src/tests
 
-install:
-  - npm install
+    # use the following to add other test suites for travis to run
+    # stages will run in paralell, but scripts within a stage will run in sequence
+    #
+    # name: "name or brief description of the suite"
+    # script: npm test --directory path/to/suite
 
-script:
-  - npm test
+
+branches:
+  except:
+    - /documentation.*/
+    - /doc_.*/
