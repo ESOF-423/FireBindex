@@ -10,7 +10,7 @@ Table of Contents
 
 * [Developer Documentation](#developer-documentation)
   * [Quick Links](#quick-links)
-  * [Reporting Issues](#reporting-issues)
+  * [Reporting Issues or Bugs](#reporting-issues-or-bugs)
   * [Contacting Developers](#contacting-developers)
   * [Contributing](#contributing)
     * [Obtaining and Building Source Code](#obtaining-and-building-source-code)
@@ -23,13 +23,12 @@ Table of Contents
   * [Directory Structure](#directory-structure)
   * [How to Test the Software](#how-to-test-the-software)
   * [How to Release the Software](#how-to-release-the-software)
-  * [Adding to Outstanding/Resolved Bug List](#adding-to-outstandingresolved-bug-list)
   * [Database](#database)
   * [Design](#design)
     * [Routing](#routing)
     * [Pages](#pages)
 
-## Reporting Issues
+## Reporting Issues or Bugs
 
 ---
 To report an issue with Bindex.tk, on our [github](https://github.com/ESOF-423/FireBindex) page, please create an issue with as much detail about the issue as possible including your authorization status, the version you are using, and any other relevant information.
@@ -118,16 +117,6 @@ Something w/ Travis.. I heard he's a cool dude (or gal)
 ## How to Release the Software
 
 Please [contact us](bindexdevelopers@gmail.com) for information regarding deploying Bindex.tx 
-
-## Adding to Outstanding/Resolved Bug List
-
-> Be sure to check previous listed versions for unresolved bugs, as the one you found may currently be an on-going and unresolved bug.
-
-You found a bug! Please add the bug to the [Bug List](<https://github.com/ESOF-423/BindexTK/tree/documentation/Documentation>) in the corresponding section to the software version, making sure not to duplicate listed bugs.
-
-> All fixed bugs should be reported as fixed, along with the actions taken to resolve the bug.
-
-After a bug has been fixed and the correct patch has been applied, remember to find and mark the listed bug as fixed in the [Bug List](<https://github.com/ESOF-423/BindexTK/tree/documentation/Documentation>). In order to learn from mistakes, make sure to provide a description of how the bug was resolved.
 
 ## Database
 
