@@ -1,17 +1,13 @@
-# Bindex [![Build Status](https://travis-ci.com/ESOF-423/BindexTK.svg?branch=master)](https://travis-ci.com/ESOF-423/BindexTK)
+# Bindex [![Build Status](https://travis-ci.com/ESOF-423/FireBindex.svg?branch=master)](https://travis-ci.com/ESOF-423/FireBindex)
 
 ## A system for simplifying the day-to-day responsibilities of a rural senior center
 
 [bindex.tk](http://bindex.tk)
 
-<!-- [uglier but more reliable link to project](http://Bindex-env.mnh3v2fiz9.us-west-2.elasticbeanstalk.com) -->
-
 ## Documentation
 
-[User Documentation](https://github.com/ESOF-423/BindexTK/blob/master/Documentation/UserDocumentation.md)
+[User Documentation](https://github.com/ESOF-423/FireBindex/blob/master/docs/UserDocumentation.md)
 
-[Developer Documentation](https://github.com/ESOF-423/BindexTK/blob/master/Documentation/DeveloperDocumentation.md)
+[Developer Documentation](https://github.com/ESOF-423/FireBindex/blob/master/docs/DeveloperDocumentation.md)
 
-[Planning Reppository (with sprint planning docs)](https://github.com/ESOF-423/Planning-Repository/tree/master)
-
-[Previous Repo](https://github.com/ESOF-423/Bindex)
+[Planning Document](https://docs.google.com/spreadsheets/d/1xMjIITtQkeDwJo08xHoImPMyruj973JlfRIgZAmIlHw/edit?usp=sharing)
