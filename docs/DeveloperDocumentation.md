@@ -32,6 +32,7 @@ Table of Contents
 ## Reporting Issues
 
 ---
+To report an issue with Bindex.tk, on our [github](https://github.com/ESOF-423/FireBindex) page, please create an issue with as much detail about the issue as possible including your authorization status, the version you are using, and any other relevant information.
 
 ## Contacting Developers
 
@@ -39,32 +40,29 @@ Table of Contents
 Developers can be contacted through email:
 <bindexdevelopers@gmail.com>
 
-## Contributing
 
----
+## Obtaining and Building Source Code
 
-### Obtaining and Building Source Code
-
-All source code is hosted on GitHub @ <https://github.com/ESOF-423/BindexTK>
+All source code is hosted on GitHub @ <https://github.com/ESOF-423/FireBindex>
 
 Bindex is an open-source project written for a software engineering class at Montana State University by students.
 
-1. Make sure you have [Node](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/cli/install) installed on your machine. To check if you already have them, run `node -v` or `npm -v` to check the version you are running.
+1. Make sure you have [Node](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/cli/install) installed on your machine. To check if you have them, run `node -v` or `npm -v` to check the version you are running.
 2. In a terminal, run `git clone https://github.com/ESOF-423/BindexTK.git`
    * Optionally, checkout a branch to test pre-release features
 3. run `npm install`
 4. run `npm start`
 
-### Contributing to Live Development
+## Contributing to Live Development
 
 Thank you for your interest contributing to Bindex! Please observe the following process to ensure that your changes are easy to integrate into the service.
 
-  1. Fork the [repository](https://github.com/ESOF-423/BindexTK)
+  1. Fork the [repository](https://github.com/ESOF-423/FireBindex)
   2. Clone your fork
 
      `git clone https://github.com/yourusername/Bindex.git`
 
-  3. Add the [repository](https://github.com/ESOF-423/BindexTK) as an upstream remote
+  3. Add the [repository](https://github.com/ESOF-423/FireBindex) as an upstream remote
 
      `git remote add upstream https://github.com/ESOF-423/BindexTK.git`
 
@@ -80,20 +78,20 @@ Thank you for your interest contributing to Bindex! Please observe the following
 
      `git checkout -b myfeaturebranch`
 
-  7. Implement your feature (easier said than done)
-
+  7. Implement your feature 
+  
   8. Submit a pull request onto the `dev` branch of the [repository](https://github.com/ESOF-423/BindexTK)
 
 ## Class Diagram
 
-![Class Diagram](img/ESOF423.png "Class Diagram of Architecture")
+![Class Diagram](img/ClassDiagram.png "Class Diagram of Architecture")
 
 ## Versions
 
 ### Latest Stable Versions
 
 Current stable releases are hosted at [bindex.tk](http://bindex.tk)
-Source code for stable releases can be found on here on out [GitHub](https://github.com/ESOF-423/BindexTK)
+Source code for stable releases can be found on our [GitHub](https://github.com/ESOF-423/BindexTK)
 
 ### Development Versions
 
@@ -104,7 +102,7 @@ We do not host live versions of development code. To test these features, please
 
 > For Developers seeking to continue Bindex after its original developers have stopped supporting new versions.
 
-All software comes to an end; whether code is developed into a final version or developers stop mid-release. Bindex is an open source project, and therefore available to anyone who wants to continue its development. Contact us through the [email](bindexdevelopers@gmail.com) and ask us about spear-heading the future continuation of Bindex through your own releases.
+All software comes to an end; whether code is developed into a final version or developers stop mid-release. Bindex is an open source project, and therefore available to anyone who wants to continue its development. [Email](bindexdevelopers@gmail.com) us and ask us about spear-heading the future continuation of Bindex through your own releases.
 
 ## Directory Structure
 
@@ -119,7 +117,7 @@ Something w/ Travis.. I heard he's a cool dude (or gal)
 
 ## How to Release the Software
 
-UM
+Please [contact us](bindexdevelopers@gmail.com) for information regarding deploying Bindex.tx 
 
 ## Adding to Outstanding/Resolved Bug List
 
@@ -133,27 +131,75 @@ After a bug has been fixed and the correct patch has been applied, remember to f
 
 ## Database
 
-Still needs work. We are planning on using Firebase.
+We are using Firebase's Realtime Databse with the following structure: 
 
+```
+belgradeseniorcenter
+.
+|-- attendance
+|   |-- uid
+|       |-- event_id
+|       |-- member_id
+|-- events
+|   |-- uid
+|       |-- eventDescription
+|       |-- eventEndDate
+|       |-- eventEndTime
+|       |-- eventName
+|       |-- eventStartDate
+|       |-- eventStartTime
+|-- members
+|   |-- uid
+|       |-- apartmentNumber
+|       |-- birthday
+|       |-- city
+|       |-- email
+|       |-- emergencyFirstName
+|       |-- emergencyLastName
+|       |-- emergencyPhoneNumber
+|       |-- emergencyRelationship
+|       |-- firstname
+|       |-- lastName
+|       |-- meals
+|       |-- middleName
+|       |-- phoneNumber
+|       |-- state
+|       |-- streetAddress
+|       |-- zip
+|-- services
+|   |-- uid
+|       |-- serviceDescription
+|       |-- serviceEndDate
+|       |-- serviceEndTime
+|       |-- serviceName
+|       |-- serviceStartDate
+|       |-- serviceStartTime
+|-- users
+    |-- uid
+        |-- email
+        |-- username
+```
 ## Design
 
-For the design we are working with pre-built react code from one of the creative-tim repositories.
-<https://github.com/creativetimofficial/material-dashboard-react>
+Our app is very simple. We created it with the [create-react-app](https://facebook.github.io/create-react-app/) npm library and [this](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) tutorial
 
 ### Routing
 
-The routing for our application is a bit different than the creative-tim source code, as we had to update it for our application's needs.
-
-TODO: more info on the routing
+Our routing is very simple using the React Router from react-router-dom
 
 ### Pages
 
-Our final design will consist of:
+Our design consists of the following pages:
 
-* A login page
-* An Admin main page
-* Admin pages located in the sidebar
-* A Member main page
-* Member pages located in the sidebar
+* Account
+* Admin
+* Event
+* Home
+* Member
+* MemberCheckIn
+* PasswordForget
+* Service
+* SignIn
+* SignUp
 
-For each page in the side bar, the content was built by filling in a grid with the pre-built components from the creative-tim source code. For example: for any given form on the site, we start with a "Card" component to keep the design uniform, then fill that Card with smaller components, like "Custom Input." We can then begin filling each page up with multiple Grid Items, each containing a card which contains the components required for whatever functionality we need (ie the "Add Event" card in the Events page).
+Pages are treated as components made up of more specific components that can be reused from page to page.
