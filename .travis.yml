@@ -4,8 +4,8 @@ node_js: node
 jobs:
   include:
     - stage: "Node tests"
-      name: "shallow rendering pages and router"
-      script: npm test --directory src/tests/index.test.js
+      name: "shallow rendering components"
+      script: npm test --directory src/tests
 
     # use the following to add other test suites for travis to run
     # stages will run in paralell, but scripts within a stage will run in sequence
