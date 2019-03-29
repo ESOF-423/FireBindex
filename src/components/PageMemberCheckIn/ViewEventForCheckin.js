@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 import PropTypes from 'prop-types';
 
-
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -21,58 +20,59 @@ const styles = theme => ({
   }
 });
 
-const ServiceRows = ({ services }) =>
-  services.map(service => (
+const EventRows = ({ events }) =>
+  events.map(event => (
     <TableRow>
-      <TableCell>{service.serviceName}</TableCell>
-      <TableCell>{service.serviceDate}</TableCell>
-      <TableCell>{service.serviceStartTime}</TableCell>
-      <TableCell>{service.serviceDescription}</TableCell>
+      <TableCell>{event.eventName}</TableCell>
+      <TableCell>{event.eventStartDate}</TableCell>
+      <TableCell>{event.eventStartTime}</TableCell>
+      <TableCell>{event.eventDescription}</TableCell>
+      <TableCell><button>Sign In</button></TableCell>
     </TableRow>
   ));
 
-class ViewService extends Component {
+class ViewEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
-      services: []
+      loading:false,
+      events: []
     };
   }
 
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.services().on("value", snapshot => {
-      const servicesObject = snapshot.val();
-
+    this.props.firebase.events().on("value", snapshot => {
+      const eventsObject = snapshot.val();
       try {
-        const servicesList = Object.keys(servicesObject).map(key => ({
-          ...servicesObject[key],
+        const eventsList = Object.keys(eventsObject).map(key => ({
+          ...eventsObject[key],
           uid: key
         }));
 
         this.setState({
-          services: servicesList,
-          loading:false
+          events: eventsList,
+          loading: false
         });
-        console.log(servicesList);
+
+        console.log(eventsList);
       }
       catch {
         this.setState({
-          service: null
+          event: null
         });
-      }      
+      }
     });
-
   }
 
   render() {
-    const { services, loading } = this.state
+    const { events, loading } = this.state
     const { classes } = this.props;
+
     return (
       <div>
-        <h2>All Services</h2>
+        <h2>All Events</h2>
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>
@@ -81,18 +81,19 @@ class ViewService extends Component {
               <TableCell>Date</TableCell>
               <TableCell>Time</TableCell>
               <TableCell>Description</TableCell>
+              <TableCell></TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
-            <ServiceRows services={services} />
+            <EventRows events={events} />
             </TableBody>
         </Table>
       </div >
     );
   }
 }
-ViewService.propTypes = {
+ViewEvent.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withFirebase(ViewService));
+export default withStyles(styles)(withFirebase(ViewEvent));

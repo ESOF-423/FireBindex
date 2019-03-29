@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { withAuthentication }  from '../Session'
 
 import Navigation from '../Navigation/Navigation'
-import LandingPage from '../PageLanding/PageLanding'
+import MemberCheckInPage from '../PageMemberCheckIn/PageMemberCheckIn'
 import SignUpPage from '../PageSignUp/PageSignUp'
 import SignInPage from '../PageSignIn/PageSignIn'
 import PasswordForgetPage from '../PagePasswordForget/PagePasswordForget'
@@ -23,7 +23,7 @@ const App = () => (
 
       <hr />
 
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
+      <Route exact path={ROUTES.MEMBER_CHECK_IN} component={MemberCheckInPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route

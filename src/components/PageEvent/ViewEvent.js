@@ -1,25 +1,40 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+import PropTypes from 'prop-types';
 
-const tableStyle = {
-  textAlign: 'left',
-  width: "100%"
-};
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+
+const styles = theme => ({
+  root: {
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 700
+  }
+});
 
 const EventRows = ({ events }) =>
   events.map(event => (
-    <tr>
-      <td>{event.eventName}</td>
-      <td>{event.eventDate}</td>
-      <td>{event.eventStartTime}</td>
-      <td>{event.eventDescription}</td>
-    </tr>
+    <TableRow>
+      <TableCell>{event.eventName}</TableCell>
+      <TableCell>{event.eventStartDate}</TableCell>
+      <TableCell>{event.eventStartTime}</TableCell>
+      <TableCell>{event.eventDescription}</TableCell>
+    </TableRow>
   ));
 
 class ViewEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading:false,
       events: []
     };
   }
@@ -38,6 +53,7 @@ class ViewEvent extends Component {
 
         this.setState({
           events: eventsList,
+          loading: false
         });
 
         console.log(eventsList);
@@ -53,23 +69,32 @@ class ViewEvent extends Component {
   }
 
   render() {
-    const { events } = this.state
+    const { events, loading } = this.state
+    const { classes } = this.props;
+
     return (
       <div>
         <h2>All Events</h2>
-        <table>
-          <tbody>
-            <tr style={tableStyle}>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Description</th>
-            </tr>
+        {loading && <div>Loading ...</div>}
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow >
+              <TableCell>Name</TableCell>
+              <TableCell>Date</TableCell>
+              <TableCell>Time</TableCell>
+              <TableCell>Description</TableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
             <EventRows events={events} />
-          </tbody>
-        </table>
+            </TableBody>
+        </Table>
       </div >
     );
   }
 }
-export default withFirebase(ViewEvent);
+ViewEvent.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(withFirebase(ViewEvent));
