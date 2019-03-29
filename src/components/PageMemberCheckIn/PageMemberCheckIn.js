@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Component } from "react";
+import { withFirebase } from "../Firebase";
+import ViewEventForCheckin from "./ViewEventForCheckin"
 
-const MemberCheckIn = () => (
-  <div>
-    <h1>Member Check In</h1>
-  </div>
-);
+class PageMemberCheckIn extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Member Check In</h1>
+        <ViewEventForCheckin />
+      </div>
+    );
+  }
+}
 
-export default MemberCheckIn;
+export default withFirebase(PageMemberCheckIn);
