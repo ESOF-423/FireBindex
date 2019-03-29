@@ -79,7 +79,6 @@ class ViewMember extends Component {
         loading: false
       });
 
-      console.log("here");
       console.log(membersList);
     });
   }
