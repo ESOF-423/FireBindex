@@ -31,7 +31,8 @@ class CheckInMember extends Component {
           console.log("in the loooooooop")
         if (
           membersList[i].firstName.toLowerCase() === firstName.toLowerCase() &&
-          membersList[i].lastName.toLowerCase() === lastName.toLowerCase()
+          membersList[i].lastName.toLowerCase() === lastName.toLowerCase() &&
+          event_id.event_id !== ""
         ) {
           console.log("MATCH");
 
@@ -42,6 +43,11 @@ class CheckInMember extends Component {
 
           console.log(attendance);
           this.props.firebase.attendances().push(attendance);
+          document.getElementById("successMessage").innerHTML = "Sucesss!"
+        }
+        else {
+          document.getElementById("successMessage").innerHTML = "Member not found in database, try again"
+
         }
       }
     });
@@ -74,6 +80,7 @@ class CheckInMember extends Component {
             placeholder="Last Name"
           />
           <button type="button" onClick={this.onSubmit}>Check In</button>
+          <div id="successMessage"></div>
         </form>
       </div>
     );
