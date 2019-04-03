@@ -30,12 +30,10 @@ class CheckInMember extends Component {
       for (var i = 0; i < membersList.length; i++) {
           console.log("in the loooooooop")
         if (
-          membersList[i].firstName.toLowerCase === firstName.toLowerCase &&
-          membersList[i].lastName.toLowerCase === lastName.toLowerCase
+          membersList[i].firstName.toLowerCase() === firstName.toLowerCase() &&
+          membersList[i].lastName.toLowerCase() === lastName.toLowerCase()
         ) {
           console.log("MATCH");
-
-        //   this.setState({ firstName: firstName, lastName: lastName });
 
           const attendance = {
             user_id: membersList[i].uid,
