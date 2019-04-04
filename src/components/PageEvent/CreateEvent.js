@@ -78,7 +78,7 @@ class CreateEvent extends Component {
             value={eventName}
             type="text"
             onChange={this.onChange}
-            placeholder="Name"
+            label="Name"
           />
           <br />
           <TextField
@@ -88,7 +88,7 @@ class CreateEvent extends Component {
             value={eventStartDate}
             type="date"
             onChange={this.onChange}
-            placeholder="Start Date"
+            label="Start Date"
           />
           <TextField
             classname={classes.textField}
@@ -97,7 +97,7 @@ class CreateEvent extends Component {
             value={eventEndDate}
             type="date"
             onChange={this.onChange}
-            placeholder="End Date"
+            label="End Date"
           />
           <br />
           <TextField
@@ -107,7 +107,7 @@ class CreateEvent extends Component {
             value={eventStartTime}
             type="time"
             onChange={this.onChange}
-            placeholder="Start Time"
+            label="Start Time"
           />
           <TextField
             classname={classes.textField}
@@ -116,7 +116,7 @@ class CreateEvent extends Component {
             value={eventEndTime}
             type="time"
             onChange={this.onChange}
-            placeholder="End Time"
+            label="End Time"
           />
           <br />
           <TextField
@@ -126,7 +126,7 @@ class CreateEvent extends Component {
             value={eventDescription}
             type="text"
             onChange={this.onChange}
-            placeholder="Description"
+            label="Description"
           />
           <br />
           <button disabled={isInvalid} type="submit">

@@ -78,7 +78,7 @@ class CreateService extends Component {
             value={serviceName}
             type="text"
             onChange={this.onChange}
-            placeholder="Name"
+            label="Name"
           />
           <br />
           <TextField
@@ -88,7 +88,7 @@ class CreateService extends Component {
             value={serviceStartDate}
             type="date"
             onChange={this.onChange}
-            placeholder="Start Date"
+            label="Start Date"
           />
           <TextField
             classname={classes.textField}
@@ -97,7 +97,7 @@ class CreateService extends Component {
             value={serviceEndDate}
             type="date"
             onChange={this.onChange}
-            placeholder="End Date"
+            label="End Date"
           />
           <br />
           <TextField
@@ -107,7 +107,7 @@ class CreateService extends Component {
             value={serviceStartTime}
             type="time"
             onChange={this.onChange}
-            placeholder="Start Time"
+            label="Start Time"
           />
           <br />
           <TextField
@@ -117,7 +117,7 @@ class CreateService extends Component {
             value={serviceEndTime}
             type="time"
             onChange={this.onChange}
-            placeholder="End Time"
+            label="End Time"
           />
           <TextField
             classname={classes.textField}
@@ -126,7 +126,7 @@ class CreateService extends Component {
             value={serviceDescription}
             type="text"
             onChange={this.onChange}
-            placeholder="Description"
+            label="Description"
           />
           <br />
           <button disabled={isInvalid} type="submit">

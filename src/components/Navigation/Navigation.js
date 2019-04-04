@@ -38,9 +38,10 @@ class NavigationAuth extends Component {
       <div>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" color="inherit">
+            <Typography variant="title" color="inherit">
               Belgrade Senior Center
             </Typography>
+            <div style={{ width: "24px" }} />
             <Link
               style={{ textDecoration: "none" }}
               to={ROUTES.MEMBER_CHECK_IN}
@@ -80,9 +81,10 @@ function NavigationNonAuth(props) {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" color="inherit">
+          <Typography variant="title" color="inherit">
             Belgrade Senior Center
           </Typography>
+          <div style={{ width: "24px" }} />
           <div style={{ marginLeft: "auto" }}>
             <Link
               style={{ textDecoration: "none" }}
