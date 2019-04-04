@@ -1,57 +1,107 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import SignOutButton from '../SignOut/SignOut'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import SignOutButton from "../SignOut/SignOut";
 
-import * as ROUTES from '../../constants/routes'
-import { AuthUserContext } from '../Session';
+import * as ROUTES from "../../constants/routes";
+import { AuthUserContext } from "../Session";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+
+const styles = {
+  root: {
+    flexGrow: 1
+  },
+  grow: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  }
+};
 
 const Navigation = () => (
   <div>
     <AuthUserContext.Consumer>
-      {authUser => 
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />}
+      {authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
     </AuthUserContext.Consumer>
   </div>
 );
 
-const NavigationAuth = () => (
-  <ul>    
-    <li>
-      <Link to={ROUTES.MEMBER_CHECK_IN}>Member Check In</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ADMIN}>Admin</Link>
-    </li>   
-    <li>
-      <Link to={ROUTES.MEMBER}>Members</Link>
-    </li>  
-    <li>
-      <Link to={ROUTES.EVENT}>Event</Link>
-    </li>  
-    <li>
-      <Link to={ROUTES.SERVICE}>Service</Link>
-    </li>  
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
-);
+class NavigationAuth extends Component {
+  render() {
+    return (
+      <div>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              Belgrade Senior Center
+            </Typography>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={ROUTES.MEMBER_CHECK_IN}
+            >
+              <Button>Member Check In</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.HOME}>
+              <Button>Home</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.ACCOUNT}>
+              <Button>Account</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.ADMIN}>
+              <Button>Admin</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.MEMBER}>
+              <Button>Members</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.EVENT}>
+              <Button>Event</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.SERVICE}>
+              <Button>Service</Button>
+            </Link>
+            <div style={{ marginLeft: "auto" }}>
+              <SignOutButton />
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
 
-const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.MEMBER_CHECK_IN}>Member Check In</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
-);
+function NavigationNonAuth(props) {
+  return (
+    <div>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" color="inherit">
+            Belgrade Senior Center
+          </Typography>
+          <div style={{ marginLeft: "auto" }}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={ROUTES.MEMBER_CHECK_IN}
+            >
+              <Button>Member Check In</Button>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_IN}>
+              <Button>Sign In</Button>
+            </Link>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
 
-export default Navigation;
+Navigation.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Navigation);

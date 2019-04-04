@@ -22,8 +22,6 @@ const App = () => (
     <div>
       <Navigation />
 
-      <hr />
-
       <Route exact path={ROUTES.MEMBER_CHECK_IN} component={MemberCheckInPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />

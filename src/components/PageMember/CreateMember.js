@@ -204,7 +204,9 @@ class CreateMember extends Component {
           />
 
           <h3>Meals</h3>
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             value={meals}
             type="text"
             onChange={this.onChange}

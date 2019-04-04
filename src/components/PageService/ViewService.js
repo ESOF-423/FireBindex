@@ -69,7 +69,7 @@ class ViewService extends Component {
 
   render() {
     const { services, loading } = this.state
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <div>
         <h2>All Services</h2>
