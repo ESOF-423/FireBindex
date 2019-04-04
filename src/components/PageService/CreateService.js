@@ -1,6 +1,28 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200
+  },
+  dense: {
+    marginTop: 19
+  },
+  menu: {
+    width: 200
+  }
+});
+
 const INITIAL_STATE = {
   serviceName: "",
   serviceStartDate: "",
@@ -43,11 +65,15 @@ class CreateService extends Component {
       serviceStartDate === "" ||
       serviceStartTime === "";
 
+    const { classes } = this.props;
+
     return (
       <div>
         <h2>Create Service</h2>
-        <form onSubmit={this.onSubmit}>
-          <input
+        <form classname={classes.container} onSubmit={this.onSubmit}>
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="serviceName"
             value={serviceName}
             type="text"
@@ -55,14 +81,18 @@ class CreateService extends Component {
             placeholder="Name"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="serviceStartDate"
             value={serviceStartDate}
             type="date"
             onChange={this.onChange}
             placeholder="Start Date"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="serviceEndDate"
             value={serviceEndDate}
             type="date"
@@ -70,7 +100,9 @@ class CreateService extends Component {
             placeholder="End Date"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="serviceStartTime"
             value={serviceStartTime}
             type="time"
@@ -78,14 +110,18 @@ class CreateService extends Component {
             placeholder="Start Time"
           />
           <br />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="serviceEndTime"
             value={serviceEndTime}
             type="time"
             onChange={this.onChange}
             placeholder="End Time"
           />
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             name="serviceDescription"
             value={serviceDescription}
             type="text"
@@ -93,10 +129,16 @@ class CreateService extends Component {
             placeholder="Description"
           />
           <br />
-          <button disabled={isInvalid} type="submit">Submit</button>
+          <button disabled={isInvalid} type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
-export default withFirebase(CreateService);
+CreateService.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(withFirebase(CreateService));

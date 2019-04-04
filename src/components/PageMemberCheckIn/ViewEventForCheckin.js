@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom"
+
+import * as ROUTES from '../../constants/routes'
+
 
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -8,6 +12,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -22,11 +27,22 @@ const styles = theme => ({
 
 const EventRows = ({ events }) =>
   events.map(event => (
-    <TableRow>
+    <TableRow key={event.uid}>
       <TableCell>{event.eventName}</TableCell>
       <TableCell>{event.eventStartDate}</TableCell>
       <TableCell>{event.eventStartTime}</TableCell>
       <TableCell>{event.eventDescription}</TableCell>
+      <TableCell>
+        <Link
+          to={{
+            pathname: ROUTES.EVENT_CHECK_IN,
+          state: {
+            event_id: event.uid
+          }}}
+        >
+          Sign In To Event
+        </Link>
+      </TableCell>
     </TableRow>
   ));
 
@@ -34,7 +50,7 @@ class ViewEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading:false,
+      loading: false,
       events: []
     };
   }
@@ -44,7 +60,6 @@ class ViewEvent extends Component {
 
     this.props.firebase.events().on("value", snapshot => {
       const eventsObject = snapshot.val();
-
       try {
         const eventsList = Object.keys(eventsObject).map(key => ({
           ...eventsObject[key],
@@ -57,19 +72,16 @@ class ViewEvent extends Component {
         });
 
         console.log(eventsList);
-      }
-      catch {
+      } catch {
         this.setState({
           event: null
         });
       }
     });
-
-
   }
 
   render() {
-    const { events, loading } = this.state
+    const { events, loading } = this.state;
     const { classes } = this.props;
 
     return (
@@ -78,18 +90,19 @@ class ViewEvent extends Component {
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>
-            <TableRow >
+            <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>Time</TableCell>
               <TableCell>Description</TableCell>
+              <TableCell />
             </TableRow>
-            </TableHead>
-            <TableBody>
+          </TableHead>
+          <TableBody>
             <EventRows events={events} />
-            </TableBody>
+          </TableBody>
         </Table>
-      </div >
+      </div>
     );
   }
 }
@@ -97,4 +110,4 @@ ViewEvent.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withFirebase(ViewEvent));
+export default withRouter(withStyles(styles)(withFirebase(ViewEvent)));

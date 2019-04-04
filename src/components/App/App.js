@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { withAuthentication }  from '../Session'
 
 import Navigation from '../Navigation/Navigation'
-import LandingPage from '../PageLanding/PageLanding'
+import MemberCheckInPage from '../PageMemberCheckIn/PageMemberCheckIn'
 import SignUpPage from '../PageSignUp/PageSignUp'
 import SignInPage from '../PageSignIn/PageSignIn'
 import PasswordForgetPage from '../PagePasswordForget/PagePasswordForget'
@@ -13,6 +13,7 @@ import AdminPage from '../PageAdmin/PageAdmin'
 import MemberPage from '../PageMember/PageMember'
 import EventPage from '../PageEvent/PageEvent'
 import ServicePage from '../PageService/PageService'
+import CheckInMember from '../PageMemberCheckIn/CheckInMember'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -23,7 +24,7 @@ const App = () => (
 
       <hr />
 
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
+      <Route exact path={ROUTES.MEMBER_CHECK_IN} component={MemberCheckInPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route
@@ -34,6 +35,7 @@ const App = () => (
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.MEMBER} component={MemberPage} />
+      <Route path={ROUTES.EVENT_CHECK_IN} component={CheckInMember} />
       <Route path={ROUTES.EVENT} component={EventPage} />
       <Route path={ROUTES.SERVICE} component={ServicePage} />
 

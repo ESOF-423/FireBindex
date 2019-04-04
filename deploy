@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo INSTALLING PACKAGES
+npm install
+
+echo RESOLVING WARNINGS
+npm audit fix
+
+echo CREATING PRODUCTION BUILD
+npm run build
+
+echo DEPLOYING TO FIREBASE
+firebase deploy
