@@ -83,6 +83,10 @@ class ViewMember extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.firebase.members().off();
+  }
+
   render() {
     const { members, loading } = this.state;
     const { classes } = this.props;
