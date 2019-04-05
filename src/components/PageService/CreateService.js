@@ -4,6 +4,7 @@ import { withFirebase } from "../Firebase";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   container: {
@@ -25,10 +26,10 @@ const styles = theme => ({
 
 const INITIAL_STATE = {
   serviceName: "",
-  serviceStartDate: "",
-  serviceEndDate: "",
-  serviceStartTime: "",
-  serviceEndTime: "",
+  serviceStartDate: new Date(),
+  serviceEndDate: new Date(),
+  serviceStartTime: new Date(),
+  serviceEndTime: new Date(),
   serviceDescription: ""
 };
 
@@ -57,13 +58,13 @@ class CreateService extends Component {
       serviceDescription
     } = this.state;
 
-    const isInvalid =
-      serviceDescription === "" ||
-      serviceEndDate === "" ||
-      serviceEndTime === "" ||
-      serviceName === "" ||
-      serviceStartDate === "" ||
-      serviceStartTime === "";
+    // const isInvalid =
+    //   serviceDescription === "" ||
+    //   serviceEndDate === "" ||
+    //   serviceEndTime === "" ||
+    //   serviceName === "" ||
+    //   serviceStartDate === "" ||
+    //   serviceStartTime === "";
 
     const { classes } = this.props;
 
@@ -78,7 +79,8 @@ class CreateService extends Component {
             value={serviceName}
             type="text"
             onChange={this.onChange}
-            placeholder="Name"
+            label="Name"
+            required
           />
           <br />
           <TextField
@@ -88,7 +90,8 @@ class CreateService extends Component {
             value={serviceStartDate}
             type="date"
             onChange={this.onChange}
-            placeholder="Start Date"
+            label="Start Date"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -97,7 +100,8 @@ class CreateService extends Component {
             value={serviceEndDate}
             type="date"
             onChange={this.onChange}
-            placeholder="End Date"
+            label="End Date"
+            required
           />
           <br />
           <TextField
@@ -107,9 +111,9 @@ class CreateService extends Component {
             value={serviceStartTime}
             type="time"
             onChange={this.onChange}
-            placeholder="Start Time"
+            label="Start Time"
+            required
           />
-          <br />
           <TextField
             classname={classes.textField}
             margin="normal"
@@ -117,8 +121,10 @@ class CreateService extends Component {
             value={serviceEndTime}
             type="time"
             onChange={this.onChange}
-            placeholder="End Time"
+            label="End Time"
+            required
           />
+          <br />
           <TextField
             classname={classes.textField}
             margin="normal"
@@ -126,12 +132,19 @@ class CreateService extends Component {
             value={serviceDescription}
             type="text"
             onChange={this.onChange}
-            placeholder="Description"
+            label="Description"
+            required
           />
           <br />
-          <button disabled={isInvalid} type="submit">
+          <Button
+            // disabled={isInvalid}
+            type="submit"
+            size="large"
+            color="primary"
+            variant="contained"
+          >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

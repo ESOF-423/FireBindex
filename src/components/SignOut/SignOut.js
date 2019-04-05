@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import Button from '@material-ui/core/Button';
 
 const SignOutButton = ({ firebase }) => (
-  <Link to={ROUTES.MEMBER_CHECK_IN}>
-    <button type="button" onClick={firebase.doSignOut}>
+  <Link to={ROUTES.MEMBER_CHECK_IN} style={{ textDecoration: 'none' }}>
+    <Button onClick={firebase.doSignOut}>
       Sign Out
-    </button>
+    </Button>
   </Link>
 );
 

@@ -4,6 +4,7 @@ import { withFirebase } from "../Firebase";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   container: {
@@ -25,10 +26,10 @@ const styles = theme => ({
 
 const INITIAL_STATE = {
   eventName: "",
-  eventStartDate: "",
-  eventEndDate: "",
-  eventStartTime: "",
-  eventEndTime: "",
+  eventStartDate: new Date(),
+  eventEndDate: new Date(),
+  eventStartTime: new Date(),
+  eventEndTime: new Date(),
   eventDescription: ""
 };
 
@@ -57,13 +58,13 @@ class CreateEvent extends Component {
       eventDescription
     } = this.state;
 
-    const isInvalid =
-      eventDescription === "" ||
-      eventEndDate === "" ||
-      eventEndTime === "" ||
-      eventName === "" ||
-      eventStartDate === "" ||
-      eventStartTime === "";
+    // const isInvalid =
+    //   eventDescription === "" ||
+    //   eventEndDate === "" ||
+    //   eventEndTime === "" ||
+    //   eventName === "" ||
+    //   eventStartDate === "" ||
+    //   eventStartTime === "";
 
     const { classes } = this.props;
 
@@ -78,7 +79,8 @@ class CreateEvent extends Component {
             value={eventName}
             type="text"
             onChange={this.onChange}
-            placeholder="Name"
+            label="Name"
+            required
           />
           <br />
           <TextField
@@ -88,7 +90,8 @@ class CreateEvent extends Component {
             value={eventStartDate}
             type="date"
             onChange={this.onChange}
-            placeholder="Start Date"
+            label="Start Date"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -97,7 +100,8 @@ class CreateEvent extends Component {
             value={eventEndDate}
             type="date"
             onChange={this.onChange}
-            placeholder="End Date"
+            label="End Date"
+            required
           />
           <br />
           <TextField
@@ -107,7 +111,8 @@ class CreateEvent extends Component {
             value={eventStartTime}
             type="time"
             onChange={this.onChange}
-            placeholder="Start Time"
+            label="Start Time"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -116,7 +121,8 @@ class CreateEvent extends Component {
             value={eventEndTime}
             type="time"
             onChange={this.onChange}
-            placeholder="End Time"
+            label="End Time"
+            required
           />
           <br />
           <TextField
@@ -126,12 +132,19 @@ class CreateEvent extends Component {
             value={eventDescription}
             type="text"
             onChange={this.onChange}
-            placeholder="Description"
+            label="Description"
+            required
           />
           <br />
-          <button disabled={isInvalid} type="submit">
+          <Button
+            // disabled={isInvalid}
+            type="submit"
+            size="large"
+            color="primary"
+            variant="contained"
+          >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

@@ -4,6 +4,7 @@ import { withFirebase } from "../Firebase";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   container: {
@@ -27,7 +28,7 @@ const INITIAL_STATE = {
   firstName: "",
   middleName: "",
   lastName: "",
-  birthday: "",
+  birthday: new Date(),
   phoneNumber: "",
   email: "",
   streetAddress: "",
@@ -79,21 +80,21 @@ class CreateMember extends Component {
       emergencyRelationship
     } = this.state;
 
-    const isInvalid =
-      firstName === "" ||
-      lastName === "" ||
-      birthday === "" ||
-      phoneNumber === "" ||
-      !email.match(/.*@.*\..*/g) ||
-      streetAddress === "" ||
-      city === "" ||
-      state === "" ||
-      zip === "" ||
-      meals === "" ||
-      emergencyFirstName === "" ||
-      emergencyLastName === "" ||
-      emergencyPhoneNumber === "" ||
-      emergencyRelationship === "";
+    // const isInvalid =
+    //   firstName === "" ||
+    //   lastName === "" ||
+    //   birthday === "" ||
+    //   phoneNumber === "" ||
+    //   !email.match(/.*@.*\..*/g) ||
+    //   streetAddress === "" ||
+    //   city === "" ||
+    //   state === "" ||
+    //   zip === "" ||
+    //   meals === "" ||
+    //   emergencyFirstName === "" ||
+    //   emergencyLastName === "" ||
+    //   emergencyPhoneNumber === "" ||
+    //   emergencyRelationship === "";
 
     const { classes } = this.props;
 
@@ -107,7 +108,8 @@ class CreateMember extends Component {
             name="firstName"
             value={firstName}
             onChange={this.onChange}
-            placeholder="First Name"
+            label="First Name"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -116,7 +118,8 @@ class CreateMember extends Component {
             value={middleName}
             type="text"
             onChange={this.onChange}
-            placeholder="Middle Name"
+            label="Middle Name"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -125,7 +128,8 @@ class CreateMember extends Component {
             value={lastName}
             type="text"
             onChange={this.onChange}
-            placeholder="Last Name"
+            label="Last Name"
+            required
           />
           <br />
           <TextField
@@ -135,7 +139,8 @@ class CreateMember extends Component {
             value={birthday}
             type="date"
             onChange={this.onChange}
-            placeholder="Birthday"
+            label="Birthday"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -144,7 +149,8 @@ class CreateMember extends Component {
             value={phoneNumber}
             type="text"
             onChange={this.onChange}
-            placeholder="Phone Number"
+            label="Phone Number"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -153,7 +159,8 @@ class CreateMember extends Component {
             value={email}
             type="text"
             onChange={this.onChange}
-            placeholder="Email"
+            label="Email"
+            required
           />
           <br />
           <TextField
@@ -163,7 +170,8 @@ class CreateMember extends Component {
             value={streetAddress}
             type="text"
             onChange={this.onChange}
-            placeholder="Street Address"
+            label="Street Address"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -172,7 +180,8 @@ class CreateMember extends Component {
             value={apartmentNumber}
             type="text"
             onChange={this.onChange}
-            placeholder="Apartment No"
+            label="Apartment No"
+            required
           />
           <br />
           <TextField
@@ -182,7 +191,8 @@ class CreateMember extends Component {
             value={city}
             type="text"
             onChange={this.onChange}
-            placeholder="City"
+            label="City"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -191,7 +201,8 @@ class CreateMember extends Component {
             value={state}
             type="text"
             onChange={this.onChange}
-            placeholder="State"
+            label="State"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -200,16 +211,20 @@ class CreateMember extends Component {
             value={zip}
             type="text"
             onChange={this.onChange}
-            placeholder="Zip"
+            label="Zip"
+            required
           />
 
           <h3>Meals</h3>
-          <input
+          <TextField
+            classname={classes.textField}
+            margin="normal"
             value={meals}
             type="text"
             onChange={this.onChange}
             name="meals"
-            placeholder="0,1, or 2"
+            label="0,1, or 2"
+            required
           />
 
           <h3>Emergency Contact</h3>
@@ -220,7 +235,8 @@ class CreateMember extends Component {
             value={emergencyFirstName}
             type="text"
             onChange={this.onChange}
-            placeholder="First Name"
+            label="First Name"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -229,7 +245,8 @@ class CreateMember extends Component {
             value={emergencyLastName}
             type="text"
             onChange={this.onChange}
-            placeholder="Last Name"
+            label="Last Name"
+            required
           />
           <br />
           <TextField
@@ -239,7 +256,8 @@ class CreateMember extends Component {
             value={emergencyPhoneNumber}
             type="text"
             onChange={this.onChange}
-            placeholder="Phone Number"
+            label="Phone Number"
+            required
           />
           <TextField
             classname={classes.textField}
@@ -248,12 +266,19 @@ class CreateMember extends Component {
             value={emergencyRelationship}
             type="text"
             onChange={this.onChange}
-            placeholder="Relationship"
+            label="Relationship"
+            required
           />
           <br />
-          <button disabled={isInvalid} type="submit">
+          <Button
+            // disabled={isInvalid}
+            type="submit"
+            size="large"
+            color="primary"
+            variant="contained"
+          >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );
