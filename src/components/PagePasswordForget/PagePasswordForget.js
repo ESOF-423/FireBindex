@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-
-import { withFirebase } from '../Firebase'
-import * as ROUTES from '../../constants/routes'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
 
 const PasswordForgetPage = () => (
   <div>
@@ -12,8 +12,8 @@ const PasswordForgetPage = () => (
 );
 
 const INITIAL_STATE = {
-  email: '',
-  error: null,
+  email: "",
+  error: null
 };
 
 class PasswordForgetFormBase extends Component {
@@ -45,7 +45,7 @@ class PasswordForgetFormBase extends Component {
   render() {
     const { email, error } = this.state;
 
-    const isInvalid = email === '';
+    const isInvalid = email === "";
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -68,7 +68,11 @@ class PasswordForgetFormBase extends Component {
 
 const PasswordForgetLink = () => (
   <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+    <Link style={{ textDecoration: "none" }} to={ROUTES.PASSWORD_FORGET}>
+      <Button size="large" color="secondary" variant="contained">
+        Forgot Password?
+      </Button>
+    </Link>
   </p>
 );
 

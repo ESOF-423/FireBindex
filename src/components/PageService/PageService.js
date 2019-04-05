@@ -9,10 +9,10 @@ class PageService extends Component {
     return (
       <div>
         <Grid container justify="center">
-          <Grid item xs={12} sm={12} md={6} lg={5}>
+          <Grid item xs={12} sm={12} md={5} lg={4}>
             <CreateService />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={5}>
+          <Grid item xs={12} sm={12} md={7} lg={6}>
             <ViewService />
           </Grid>
         </Grid>

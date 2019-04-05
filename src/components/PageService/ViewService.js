@@ -25,7 +25,7 @@ const ServiceRows = ({ services }) =>
   services.map(service => (
     <TableRow>
       <TableCell>{service.serviceName}</TableCell>
-      <TableCell>{service.serviceDate}</TableCell>
+      <TableCell>{service.serviceStartDate}</TableCell>
       <TableCell>{service.serviceStartTime}</TableCell>
       <TableCell>{service.serviceDescription}</TableCell>
     </TableRow>
