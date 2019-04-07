@@ -68,7 +68,8 @@ class ViewUser extends Component {
             <TableRow>
               <TableCell>Name</TableCell>              
               <TableCell>User Id</TableCell>
-              <TableCell>Email</TableCell>              
+              <TableCell>Email</TableCell>
+              <TableCell></TableCell>              
             </TableRow>
           </TableHead>
           <TableBody>           

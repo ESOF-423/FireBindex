@@ -82,7 +82,7 @@ class ViewMember extends Component {
               <TableCell>Address</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Emergency Contact</TableCell>
-              <TableCell>Meals</TableCell>
+              <TableCell>Meals</TableCell>              
             </TableRow>
           </TableHead>
           <TableBody>  

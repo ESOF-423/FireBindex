@@ -74,6 +74,7 @@ class ViewEvent extends Component {
               <TableCell>Date</TableCell>
               <TableCell>Time</TableCell>
               <TableCell>Description</TableCell>
+              <TableCell></TableCell>
             </TableRow>
             </TableHead>
             <TableBody>                      
