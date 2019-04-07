@@ -1,4 +1,4 @@
-# Bindex [![Build Status](https://travis-ci.com/ESOF-423/FireBindex.svg?branch=master)](https://travis-ci.com/ESOF-423/FireBindex)
+# Bindex [![Build Status](https://travis-ci.com/ESOF-423/FireBindex.svg?branch=master)](https://travis-ci.com/ESOF-423/FireBindex) [![Coverage Status](https://coveralls.io/repos/github/ESOF-423/FireBindex/badge.svg?branch=coveralls)](https://coveralls.io/github/ESOF-423/FireBindex?branch=coveralls)
 
 ## A system for simplifying the day-to-day responsibilities of a rural senior center
 
