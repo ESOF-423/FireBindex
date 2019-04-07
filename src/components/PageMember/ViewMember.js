@@ -92,7 +92,6 @@ class ViewMember extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <h2>All Members</h2>
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>

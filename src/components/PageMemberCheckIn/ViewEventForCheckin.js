@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom"
-
-import * as ROUTES from '../../constants/routes'
-
-
+import { withRouter } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
@@ -34,13 +32,17 @@ const EventRows = ({ events }) =>
       <TableCell>{event.eventDescription}</TableCell>
       <TableCell>
         <Link
+          style={{ textDecoration: "none" }}
           to={{
             pathname: ROUTES.EVENT_CHECK_IN,
-          state: {
-            event_id: event.uid
-          }}}
+            state: {
+              event_id: event.uid
+            }
+          }}
         >
-          Sign In To Event
+          <Button size="large" color="primary" variant="contained">
+            Sign In To Event
+          </Button>
         </Link>
       </TableCell>
     </TableRow>
@@ -86,7 +88,6 @@ class ViewEvent extends Component {
 
     return (
       <div>
-        <h2>All Events</h2>
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>

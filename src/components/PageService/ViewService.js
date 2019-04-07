@@ -72,7 +72,6 @@ class ViewService extends Component {
     const { classes } = this.props
     return (
       <div>
-        <h2>All Services</h2>
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>

@@ -1,8 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
+import TextField from "@material-ui/core/TextField";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200
+  },
+  dense: {
+    marginTop: 19
+  },
+  menu: {
+    width: 200
+  }
+});
 
 const PasswordForgetPage = () => (
   <div>
@@ -47,18 +68,30 @@ class PasswordForgetFormBase extends Component {
 
     const isInvalid = email === "";
 
+    const { classes } = this.props;
+
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <form classname={classes.container} onSubmit={this.onSubmit}>
+        <TextField
+          classname={classes.textField}
+          margin="normal"
           name="email"
           value={this.state.email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          label="Email Address"
+          fullWidth
         />
-        <button disabled={isInvalid} type="submit">
+        <br />
+        <Button
+          disabled={isInvalid}
+          type="submit"
+          size="large"
+          color="primary"
+          variant="contained"
+        >
           Reset My Password
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -76,8 +109,14 @@ const PasswordForgetLink = () => (
   </p>
 );
 
+PasswordForgetFormBase.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
 export default PasswordForgetPage;
 
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+const PasswordForgetForm = withStyles(styles)(
+  withFirebase(PasswordForgetFormBase)
+);
 
 export { PasswordForgetForm, PasswordForgetLink };
