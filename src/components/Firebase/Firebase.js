@@ -2,6 +2,7 @@ import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 require('dotenv').config()
+require("firebase/database");
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,

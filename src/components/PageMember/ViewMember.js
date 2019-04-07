@@ -20,30 +20,6 @@ const styles = theme => ({
   }
 });
 
-const MemberRows = ({ members }) =>
-  members.map(member => (
-    <TableRow>
-      <TableCell>
-        {member.firstName} {member.middleName} {member.lastName}
-      </TableCell>
-      <TableCell>{getAge(member.birthday)}</TableCell>
-      <TableCell>{member.phoneNumber}</TableCell>
-      <TableCell>
-        {member.streetAddress} {member.apartmentNumber}
-        <br />
-        {member.city}, {member.state} {member.zip}
-      </TableCell>
-      <TableCell>{member.email}</TableCell>
-      <TableCell>
-        {member.emergencyFirstName} {member.emergencyLastName}{" "}
-        {member.emergencyRelationship}
-        <br />
-        {member.emergencyPhoneNumber}
-      </TableCell>
-      <TableCell>{member.meals}</TableCell>
-    </TableRow>
-  ));
-
 function getAge(dateString) {
   var today = new Date();
   var birthDate = new Date(dateString);
@@ -87,6 +63,10 @@ class ViewMember extends Component {
     this.props.firebase.members().off();
   }
 
+  removeMember(mid) {
+    this.props.firebase.members().child(mid).remove();
+  }
+
   render() {
     const { members, loading } = this.state;
     const { classes } = this.props;
@@ -106,8 +86,32 @@ class ViewMember extends Component {
               <TableCell>Meals</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            <MemberRows members={members} />
+          <TableBody>  
+          {members.map(member => (
+            <TableRow>
+              <TableCell>
+                {member.firstName} {member.middleName} {member.lastName}
+              </TableCell>
+              <TableCell>{getAge(member.birthday)}</TableCell>
+              <TableCell>{member.phoneNumber}</TableCell>
+              <TableCell>
+                {member.streetAddress} {member.apartmentNumber}
+                <br />
+                {member.city}, {member.state} {member.zip}
+              </TableCell>
+              <TableCell>{member.email}</TableCell>
+              <TableCell>
+                {member.emergencyFirstName} {member.emergencyLastName}{" "}
+                {member.emergencyRelationship}
+                <br />
+                {member.emergencyPhoneNumber}
+              </TableCell>
+              <TableCell>{member.meals}</TableCell>
+              <TableCell><button type="submit"  onClick={
+                (e) => this.removeMember(member.uid)}>
+                Delete Member</button>
+              </TableCell>
+            </TableRow>))}
           </TableBody>
         </Table>
       </div>

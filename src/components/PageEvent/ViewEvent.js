@@ -20,16 +20,6 @@ const styles = theme => ({
   }
 });
 
-const EventRows = ({ events }) =>
-  events.map(event => (
-    <TableRow>
-      <TableCell>{event.eventName}</TableCell>
-      <TableCell>{event.eventStartDate}</TableCell>
-      <TableCell>{event.eventStartTime}</TableCell>
-      <TableCell>{event.eventDescription}</TableCell>
-    </TableRow>
-  ));
-
 class ViewEvent extends Component {
   constructor(props) {
     super(props);
@@ -64,9 +54,11 @@ class ViewEvent extends Component {
         });
       }
     });
-
-
   }
+  
+  removeEvent(eid) {        
+    this.props.firebase.events().child(eid).remove();
+  }  
 
   render() {
     const { events, loading } = this.state
@@ -85,8 +77,18 @@ class ViewEvent extends Component {
               <TableCell>Description</TableCell>
             </TableRow>
             </TableHead>
-            <TableBody>
-            <EventRows events={events} />
+            <TableBody>                      
+              {events.map(event => (
+              <TableRow>
+                <TableCell>{event.eventName}</TableCell>
+                <TableCell>{event.eventStartDate}</TableCell>
+                <TableCell>{event.eventStartTime}</TableCell>
+                <TableCell>{event.eventDescription}</TableCell>
+                <TableCell><button type="submit"  onClick={
+                  (e) => this.removeEvent(event.uid)}>
+                  Delete Event</button>
+                </TableCell>
+              </TableRow>))}
             </TableBody>
         </Table>
       </div >

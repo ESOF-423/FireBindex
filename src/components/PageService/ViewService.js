@@ -21,16 +21,6 @@ const styles = theme => ({
   }
 });
 
-const ServiceRows = ({ services }) =>
-  services.map(service => (
-    <TableRow>
-      <TableCell>{service.serviceName}</TableCell>
-      <TableCell>{service.serviceStartDate}</TableCell>
-      <TableCell>{service.serviceStartTime}</TableCell>
-      <TableCell>{service.serviceDescription}</TableCell>
-    </TableRow>
-  ));
-
 class ViewService extends Component {
   constructor(props) {
     super(props);
@@ -64,8 +54,11 @@ class ViewService extends Component {
         });
       }      
     });
-
   }
+
+  removeService(sid) {    
+    this.props.firebase.services().child(sid).remove();
+  }  
 
   render() {
     const { services, loading } = this.state
@@ -83,14 +76,25 @@ class ViewService extends Component {
               <TableCell>Description</TableCell>
             </TableRow>
             </TableHead>
-            <TableBody>
-            <ServiceRows services={services} />
+            <TableBody>            
+              {services.map(service => (
+                <TableRow>
+                  <TableCell>{service.serviceName}</TableCell>
+                  <TableCell>{service.serviceStartDate}</TableCell>
+                  <TableCell>{service.serviceStartTime}</TableCell>
+                  <TableCell>{service.serviceDescription}</TableCell>
+                  <TableCell><button type="submit"  onClick={
+                    (e) => this.removeService(service.uid)}>
+                    Delete Service</button>
+                  </TableCell>
+                </TableRow>))}
             </TableBody>
         </Table>
       </div >
     );
   }
 }
+
 ViewService.propTypes = {
   classes: PropTypes.object.isRequired
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase, { withFirebase } from "../Firebase";
+
 import PropTypes from 'prop-types';
 
 import { withStyles } from "@material-ui/core/styles";
@@ -19,17 +20,6 @@ const styles = theme => ({
     minWidth: 700
   }
 });
-
-const UserRows = ({ users }) =>
-  users.map(user => (
-    <TableRow>
-      <TableCell>{user.username}</TableCell>
-      <TableCell>{user.uid}</TableCell>
-      <TableCell>{user.email}</TableCell>        
-      <TableCell><button type="button">
-          Delete User </button></TableCell>   
-    </TableRow>
-  ));
 
 class ViewUser extends Component {
   constructor(props) {
@@ -54,11 +44,13 @@ class ViewUser extends Component {
       this.setState({
         users: usersList,
         loading: false
-      });
-
-      console.log(usersList);
+      });      
     });
-  }
+  }  
+
+  removeUser(uid) {    
+    this.props.firebase.users().child(uid).remove();
+  }  
 
   componentWillUnmount() {
     this.props.firebase.users().off();
@@ -79,8 +71,17 @@ class ViewUser extends Component {
               <TableCell>Email</TableCell>              
             </TableRow>
           </TableHead>
-          <TableBody>
-            <UserRows users={users}/>            
+          <TableBody>           
+            {users.map(user => (
+            <TableRow key={user.uid}>
+              <TableCell>{user.username}</TableCell>
+              <TableCell>{user.uid}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell><button type="submit"  onClick={
+                (e) => this.removeUser(user.uid)}>
+                Delete User</button>
+              </TableCell>
+            </TableRow>))}                        
           </TableBody>
         </Table>
       </div>
