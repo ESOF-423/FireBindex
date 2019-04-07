@@ -31,7 +31,7 @@ function getAge(dateString) {
   return age;
 }
 
-class ViewMember extends Component {
+class ViewShortMemberList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,12 +75,7 @@ class ViewMember extends Component {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Age</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Emergency Contact</TableCell>
-              <TableCell>Meals</TableCell>              
+              <TableCell>Age</TableCell>                            
             </TableRow>
           </TableHead>
           <TableBody>  
@@ -89,25 +84,7 @@ class ViewMember extends Component {
               <TableCell>
                 {member.firstName} {member.middleName} {member.lastName}
               </TableCell>
-              <TableCell>{getAge(member.birthday)}</TableCell>
-              <TableCell>{member.phoneNumber}</TableCell>
-              <TableCell>
-                {member.streetAddress} {member.apartmentNumber}
-                <br />
-                {member.city}, {member.state} {member.zip}
-              </TableCell>
-              <TableCell>{member.email}</TableCell>
-              <TableCell>
-                {member.emergencyFirstName} {member.emergencyLastName}{" "}
-                {member.emergencyRelationship}
-                <br />
-                {member.emergencyPhoneNumber}
-              </TableCell>
-              <TableCell>{member.meals}</TableCell>
-              <TableCell><button type="submit"  onClick={
-                (e) => this.removeMember(member.uid)}>
-                Delete Member</button>
-              </TableCell>
+              <TableCell>{getAge(member.birthday)}</TableCell>              
             </TableRow>))}
           </TableBody>
         </Table>
@@ -116,8 +93,8 @@ class ViewMember extends Component {
   }
 }
 
-ViewMember.propTypes = {
+ViewShortMemberList.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withFirebase(ViewMember));
+export default withStyles(styles)(withFirebase(ViewShortMemberList));

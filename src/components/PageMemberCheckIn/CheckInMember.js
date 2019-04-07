@@ -10,6 +10,8 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 
+import ViewShortMemberlist from "./ViewShortMemberList"
+
 const styles = theme => ({
   container: {
     display: "flex",
@@ -133,6 +135,7 @@ class CheckInMember extends Component {
                     </Button>
                     <div id="successMessage" />
                   </form>
+                  <ViewShortMemberlist/>
                 </CardContent>
               </Card>
             </div>
