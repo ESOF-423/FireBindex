@@ -3,6 +3,9 @@ import { withFirebase } from "../Firebase";
 import ViewService from "./ViewService";
 import CreateService from "./CreateService";
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
 
 class PageService extends Component {
   render() {
@@ -10,10 +13,24 @@ class PageService extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={5} lg={4}>
-            <CreateService />
+            <div style={{ margin: "20px" }}>
+              <Card>
+                <CardHeader align="center" title="Create a new service" />
+                <CardContent>
+                  <CreateService />
+                </CardContent>
+              </Card>
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={7} lg={6}>
-            <ViewService />
+            <div style={{ margin: "20px" }}>
+              <Card>
+                <CardHeader align="center" title="All Services" />
+                <CardContent>
+                  <ViewService />
+                </CardContent>
+              </Card>
+            </div>
           </Grid>
         </Grid>
       </div>

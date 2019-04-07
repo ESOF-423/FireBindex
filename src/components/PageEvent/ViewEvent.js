@@ -66,7 +66,6 @@ class ViewEvent extends Component {
 
     return (
       <div>
-        <h2>All Events</h2>
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>

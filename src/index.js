@@ -8,6 +8,11 @@ import Firebase, { FirebaseContext } from './components/Firebase';
 
 import { createMuiTheme } from '@material-ui/core/styles';
 
+const palette = {
+  primary: { main: '#ffffff' },
+  secondary: { main: '#f50057' }
+};
+const themeName = 'San Marino Razzmatazz Jaguar';
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
@@ -15,12 +20,5 @@ ReactDOM.render(
   </FirebaseContext.Provider>,
   document.getElementById('root'),
 );
-
-
-const palette = {
-  primary: { main: '#ffffff' },
-  secondary: { main: '#f50057' }
-};
-const themeName = 'San Marino Razzmatazz Jaguar';
 
 export default createMuiTheme({ palette, themeName });

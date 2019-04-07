@@ -5,22 +5,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap"
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
-  },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200
   }
 });
 
@@ -70,72 +60,86 @@ class CreateService extends Component {
 
     return (
       <div>
-        <h2>Create Service</h2>
         <form classname={classes.container} onSubmit={this.onSubmit}>
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="serviceName"
-            value={serviceName}
-            type="text"
-            onChange={this.onChange}
-            label="Name"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="serviceStartDate"
-            value={serviceStartDate}
-            type="date"
-            onChange={this.onChange}
-            label="Start Date"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="serviceEndDate"
-            value={serviceEndDate}
-            type="date"
-            onChange={this.onChange}
-            label="End Date"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="serviceStartTime"
-            value={serviceStartTime}
-            type="time"
-            onChange={this.onChange}
-            label="Start Time"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="serviceEndTime"
-            value={serviceEndTime}
-            type="time"
-            onChange={this.onChange}
-            label="End Time"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="serviceDescription"
-            value={serviceDescription}
-            type="text"
-            onChange={this.onChange}
-            label="Description"
-            required
-          />
-          <br />
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="serviceName"
+                value={serviceName}
+                type="text"
+                onChange={this.onChange}
+                label="Name"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="serviceStartDate"
+                value={serviceStartDate}
+                type="date"
+                onChange={this.onChange}
+                label="Start Date"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="serviceEndDate"
+                value={serviceEndDate}
+                type="date"
+                onChange={this.onChange}
+                label="End Date"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="serviceStartTime"
+                value={serviceStartTime}
+                type="time"
+                onChange={this.onChange}
+                label="Start Time"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="serviceEndTime"
+                value={serviceEndTime}
+                type="time"
+                onChange={this.onChange}
+                label="End Time"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="serviceDescription"
+                value={serviceDescription}
+                type="text"
+                onChange={this.onChange}
+                label="Description"
+                fullWidth
+              />
+            </Grid>
+          </Grid>
           <Button
             // disabled={isInvalid}
             type="submit"
