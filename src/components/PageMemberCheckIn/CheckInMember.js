@@ -99,7 +99,7 @@ class CheckInMember extends Component {
                   subheader="Sign in with your first and last name"
                 />
                 <CardContent>
-                  <form onSubmit={this.onSubmit}>
+                  <form classname={classes.container} onSubmit={this.onSubmit}>
                     <TextField
                       classname={classes.textField}
                       margin="normal"

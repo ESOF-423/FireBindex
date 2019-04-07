@@ -3,6 +3,9 @@ import { withFirebase } from "../Firebase";
 import CreateMember from "./CreateMember";
 import ViewMembers from "./ViewMember";
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
 
 class PageMember extends Component {
   render() {
@@ -10,8 +13,22 @@ class PageMember extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={10} lg={10}>
-            <CreateMember />
-            <ViewMembers />
+            <div style={{ marginTop: "20px" }}>
+              <Card>
+                <CardHeader align="center" title="Create a new member" />
+                <CardContent>
+                  <CreateMember />
+                </CardContent>
+              </Card>
+            </div>
+            <div  style={{ marginTop: "20px" }}>
+              <Card>
+                <CardHeader align="center" title="All Members" />
+                <CardContent>
+                  <ViewMembers />
+                </CardContent>
+              </Card>
+            </div>
           </Grid>
         </Grid>
       </div>

@@ -5,22 +5,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap"
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
-  },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200
   }
 });
 
@@ -100,176 +90,225 @@ class CreateMember extends Component {
 
     return (
       <div>
-        <h2>Create Member</h2>
         <form classname={classes.container} onSubmit={this.onSubmit}>
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="firstName"
-            value={firstName}
-            onChange={this.onChange}
-            label="First Name"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="middleName"
-            value={middleName}
-            type="text"
-            onChange={this.onChange}
-            label="Middle Name"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="lastName"
-            value={lastName}
-            type="text"
-            onChange={this.onChange}
-            label="Last Name"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="birthday"
-            value={birthday}
-            type="date"
-            onChange={this.onChange}
-            label="Birthday"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="phoneNumber"
-            value={phoneNumber}
-            type="text"
-            onChange={this.onChange}
-            label="Phone Number"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="email"
-            value={email}
-            type="text"
-            onChange={this.onChange}
-            label="Email"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="streetAddress"
-            value={streetAddress}
-            type="text"
-            onChange={this.onChange}
-            label="Street Address"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="apartmentNumber"
-            value={apartmentNumber}
-            type="text"
-            onChange={this.onChange}
-            label="Apartment No"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="city"
-            value={city}
-            type="text"
-            onChange={this.onChange}
-            label="City"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="state"
-            value={state}
-            type="text"
-            onChange={this.onChange}
-            label="State"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="zip"
-            value={zip}
-            type="text"
-            onChange={this.onChange}
-            label="Zip"
-            required
-          />
+          <Grid container>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="firstName"
+                value={firstName}
+                onChange={this.onChange}
+                label="First Name"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="middleName"
+                value={middleName}
+                type="text"
+                onChange={this.onChange}
+                label="Middle Name"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="lastName"
+                value={lastName}
+                type="text"
+                onChange={this.onChange}
+                label="Last Name"
+                required
+                fullWidth
+              />
+            </Grid>
 
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="birthday"
+                value={birthday}
+                type="date"
+                onChange={this.onChange}
+                label="Birthday"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="phoneNumber"
+                value={phoneNumber}
+                type="text"
+                onChange={this.onChange}
+                label="Phone Number"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="email"
+                value={email}
+                type="text"
+                onChange={this.onChange}
+                label="Email"
+                fullWidth
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="streetAddress"
+                value={streetAddress}
+                type="text"
+                onChange={this.onChange}
+                label="Street Address"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="apartmentNumber"
+                value={apartmentNumber}
+                type="text"
+                onChange={this.onChange}
+                label="Apartment No"
+                fullWidth
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="city"
+                value={city}
+                type="text"
+                onChange={this.onChange}
+                label="City"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="state"
+                value={state}
+                type="text"
+                onChange={this.onChange}
+                label="State"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={4} md={4} lg={4}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="zip"
+                value={zip}
+                type="text"
+                onChange={this.onChange}
+                label="Zip"
+                required
+                fullWidth
+              />
+            </Grid>
+          </Grid>
           <h3>Meals</h3>
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            value={meals}
-            type="text"
-            onChange={this.onChange}
-            name="meals"
-            label="0,1, or 2"
-            required
-          />
-
+          <Grid container>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                value={meals}
+                type="text"
+                onChange={this.onChange}
+                name="meals"
+                label="0,1, or 2"
+                required
+                fullWidth
+              />
+            </Grid>
+          </Grid>
           <h3>Emergency Contact</h3>
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="emergencyFirstName"
-            value={emergencyFirstName}
-            type="text"
-            onChange={this.onChange}
-            label="First Name"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="emergencyLastName"
-            value={emergencyLastName}
-            type="text"
-            onChange={this.onChange}
-            label="Last Name"
-            required
-          />
-          <br />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="emergencyPhoneNumber"
-            value={emergencyPhoneNumber}
-            type="text"
-            onChange={this.onChange}
-            label="Phone Number"
-            required
-          />
-          <TextField
-            classname={classes.textField}
-            margin="normal"
-            name="emergencyRelationship"
-            value={emergencyRelationship}
-            type="text"
-            onChange={this.onChange}
-            label="Relationship"
-            required
-          />
-          <br />
+          <Grid container>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="emergencyFirstName"
+                value={emergencyFirstName}
+                type="text"
+                onChange={this.onChange}
+                label="First Name"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="emergencyLastName"
+                value={emergencyLastName}
+                type="text"
+                onChange={this.onChange}
+                label="Last Name"
+                required
+                fullWidth
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="emergencyPhoneNumber"
+                value={emergencyPhoneNumber}
+                type="text"
+                onChange={this.onChange}
+                label="Phone Number"
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                classname={classes.textField}
+                margin="normal"
+                name="emergencyRelationship"
+                value={emergencyRelationship}
+                type="text"
+                onChange={this.onChange}
+                label="Relationship"
+                required
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+
           <Button
             // disabled={isInvalid}
             type="submit"
