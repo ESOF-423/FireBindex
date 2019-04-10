@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import PropTypes from 'prop-types';
 
@@ -8,6 +9,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+
+import * as ROUTES from "../../constants/routes";
 
 const styles = theme => ({
   root: {
@@ -80,6 +83,19 @@ class ViewEvent extends Component {
             <TableBody>                      
               {events.map(event => (
               <TableRow>
+                <TableCell>
+                  <Link
+                    to={{
+                      pathname: ROUTES.EVENT_VIEW_ATTENDANCE,
+                      state: {
+                        event_id: event.uid
+                      }
+                    }}>
+                  <button>
+                    View Attendance
+                    </button>
+                  </Link>
+                </TableCell>
                 <TableCell>{event.eventName}</TableCell>
                 <TableCell>{event.eventStartDate}</TableCell>
                 <TableCell>{event.eventStartTime}</TableCell>
