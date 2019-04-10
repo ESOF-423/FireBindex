@@ -38,6 +38,24 @@ class ViewEventAttendance extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this.setState({ loading: true });
+
+		this.props.firebase.events().on("value", snapshot => {
+			const attendancesObject = snapshot.val();
+			var attendingMembers = [];
+			const attencancesList = Object.keys(attendancesObject).map(key => ({
+				...attendancesObject[key],
+				uid: key
+			}))
+			attencancesList.map(att => {
+				if (att.event_id === event_id {
+					console.log()
+				}
+			})
+		});
+	}
+
 	render() {
 		return (
 			<div>
@@ -49,9 +67,9 @@ class ViewEventAttendance extends Component {
 									title={"Members attending " + this.state.eventName.eventName + ":"}
 								/>
 								<CardContent>
-									<div id = "attendingMemberList">
-									 {/* {this.props.firebase.doGetEventAttendance(this.state.eventUID.eventUID)} */}
-									 </div>
+									<div id="attendingMemberList">
+										{/* {this.props.firebase.doGetEventAttendance(this.state.eventUID.eventUID)} */}
+									</div>
 								</CardContent>
 							</Card>
 						</div>
