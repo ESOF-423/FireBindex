@@ -4,22 +4,19 @@ import { withFirebase } from "../Firebase";
 import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 
 import MUIDataTable from "mui-datatables";
 
-const columns = ["Name", "Date", "Time", "Description", ""];
+import * as ROUTES from "../../constants/routes";
+
+const columns = ["", "Name", "Date", "Time", "Description", ""];
 
 const options = {
-  selectableRows: false
+  selectableRows: false,
+  // resizableColumns: true,
+  responsive: "scroll"
 };
-
-import * as ROUTES from "../../constants/routes";
 
 const styles = theme => ({
   root: {
@@ -82,6 +79,23 @@ class ViewEvent extends Component {
     var eventsArray = [];
 
     events.map(event => eventsArray.push([
+      <Link
+        to={{
+          pathname: ROUTES.EVENT_VIEW_ATTENDANCE,
+          state: { 
+            eventUID: event.uid,
+            eventName: event.eventName
+          }
+        }}>
+        <Button 
+          type="submit"
+          color= "primary"
+          size= "small"
+          variant= "contained"          
+        >
+          View Attendance
+        </Button>
+      </Link>,
       event.eventName,
       event.eventStartDate,
       event.eventStartTime,
