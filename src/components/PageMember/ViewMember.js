@@ -91,6 +91,9 @@ class ViewMember extends Component {
     var membersArray = [];    
 
     members.map(member => membersArray.push([
+      <button type="submit">
+        button
+      </button>,
       member.firstName + " " + 
         member.middleName + " " + 
         member.lastName,
@@ -101,7 +104,11 @@ class ViewMember extends Component {
         member.city + " " +
         member.state + " " +
         member.zip,
-
+      member.email,
+      member.emergencyFirstName + " " +
+        member.emergencyLastName + " " +
+        member.emergencyRelationship + " " +
+        member.emergencyPhoneNumber,
 
     ]))
     /*---------------------------------*/
