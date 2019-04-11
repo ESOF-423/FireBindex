@@ -53,7 +53,7 @@ class ViewEvent extends Component {
       }
       catch {
         this.setState({
-          event: null
+          events: null
         });
       }
     });
@@ -72,7 +72,8 @@ class ViewEvent extends Component {
         {loading && <div>Loading ...</div>}
         <Table className={classes.table}>
           <TableHead>
-            <TableRow >
+            <TableRow>
+              <TableCell>Button</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>Time</TableCell>
@@ -82,14 +83,14 @@ class ViewEvent extends Component {
             </TableHead>
             <TableBody>                      
               {events.map(event => (
-              <TableRow>
+              <TableRow>                
                 <TableCell>
                   <Link
                     to={{
                       pathname: ROUTES.EVENT_VIEW_ATTENDANCE,
                       state: {
-                        event_id: event.uid
-                      }
+                        event: event.eventName                        
+                      }                      
                     }}>
                   <button>
                     View Attendance

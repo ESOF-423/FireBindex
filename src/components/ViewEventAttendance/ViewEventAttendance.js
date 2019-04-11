@@ -33,8 +33,7 @@ class ViewEventAttendance extends Component {
 		this.state = {
 			firstName: "",
 			lastName: "",
-			eventName: this.props.location.state,
-			eventUID: this.props.location.state
+			eventName: this.props.location.state.event,			
 		};
 	}
 
@@ -48,11 +47,11 @@ class ViewEventAttendance extends Component {
 				...attendancesObject[key],
 				uid: key
 			}))
-			attencancesList.map(att => {
-				if (att.event_id === event_id {
-					console.log()
-				}
-			})
+			//attencancesList.map(att => {
+			//	if (att.event_id === event_id {
+			//		console.log()
+			//	}
+			//})
 		});
 	}
 
@@ -64,7 +63,7 @@ class ViewEventAttendance extends Component {
 						<div align="center" style={{ marginTop: "20px" }}>
 							<Card>
 								<CardHeader
-									title={"Members attending " + this.state.eventName.eventName + ":"}
+									title={"Members attending " + this.state.eventName + ":"}
 								/>
 								<CardContent>
 									<div id="attendingMemberList">
