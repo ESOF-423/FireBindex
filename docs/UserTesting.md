@@ -4,7 +4,7 @@
 
 Cam Walkuski is 55 years old and is the Managing Director of Business Operations at a software company but does not have any technical skills. She is familiar with user interfaces and how an interface should be intuitive to an unfamiliar user.
 
-#### Her tasks included:
+### Her tasks included:
 
 - Create a new admin account for herself
 - Create a new event
@@ -13,7 +13,7 @@ Cam Walkuski is 55 years old and is the Managing Director of Business Operations
 - Reset her password
 - Create a service
 
-#### What we learned:
+### What we learned:
 
 When creating an admin account:
 
@@ -51,6 +51,6 @@ Other observations:
 - We both wondered if there arenthe same date/time picker drop downs when the site is accessed on an ipad.
 - She suggested that we duplicate a lot of the buttons that are on the nav-bar on big buttons or pictures on the home page so they can be accessed from more than one place.
 
-#### What we learned:
+### What we learned:
 
 - We don't necessarily have to add more features to make the product more useable, just polishing the user stories and making sure things can be found in more than one place and making sure there are success messages where necessary will make a big difference.

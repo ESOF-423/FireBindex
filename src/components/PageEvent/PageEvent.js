@@ -24,12 +24,7 @@ class PageEvent extends Component {
           </Grid>
           <Grid item xs={12} sm={12} md={7} lg={6}>
             <div style={{ margin: "20px" }}>
-              <Card>
-                <CardHeader align="center" title="All Events" />
-                <CardContent>
-                  <ViewEvent />
-                </CardContent>
-              </Card>
+              <ViewEvent/>
             </div>
           </Grid>
         </Grid>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -8,6 +8,15 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Button from "@material-ui/core/Button";
+
+import MUIDataTable from "mui-datatables";
+
+const columns = ["Name", "Date", "Time", "Description", ""];
+
+const options = {
+  selectableRows: false
+};
 
 const styles = theme => ({
   root: {
@@ -24,7 +33,7 @@ class ViewEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading:false,
+      loading: false,
       events: []
     };
   }
@@ -45,53 +54,50 @@ class ViewEvent extends Component {
           events: eventsList,
           loading: false
         });
-
-        console.log(eventsList);
-      }
-      catch {
+      } catch {
         this.setState({
           event: null
         });
       }
     });
   }
-  
-  removeEvent(eid) {        
-    this.props.firebase.events().child(eid).remove();
-  }  
+
+  removeEvent(eid) {
+    // console.log(eid);
+    this.props.firebase
+      .events()
+      .child(eid)
+      .remove();
+  }
 
   render() {
-    const { events, loading } = this.state
+    const { events, loading } = this.state;
     const { classes } = this.props;
+
+    // var eventsArray = getEventsArray(events);
+
+    var eventsArray = [];
+
+    events.map(event => eventsArray.push([
+      event.eventName,
+      event.eventStartDate,
+      event.eventStartTime,
+      event.eventDescription,
+      <Button type="submit" onClick={e => this.removeEvent(event.uid)}>
+        Delete Event
+      </Button>
+    ]))
 
     return (
       <div>
-        {loading && <div>Loading ...</div>}
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow >
-              <TableCell>Name</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Time</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
-            </TableHead>
-            <TableBody>                      
-              {events.map(event => (
-              <TableRow>
-                <TableCell>{event.eventName}</TableCell>
-                <TableCell>{event.eventStartDate}</TableCell>
-                <TableCell>{event.eventStartTime}</TableCell>
-                <TableCell>{event.eventDescription}</TableCell>
-                <TableCell><button type="submit"  onClick={
-                  (e) => this.removeEvent(event.uid)}>
-                  Delete Event</button>
-                </TableCell>
-              </TableRow>))}
-            </TableBody>
-        </Table>
-      </div >
+        <MUIDataTable
+          title={"All Events"}
+          data={eventsArray}
+          columns={columns}
+          options={options}
+        />
+        {loading && <div>Loading ...</div>}      
+      </div>
     );
   }
 }
