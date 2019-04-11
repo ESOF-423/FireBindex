@@ -35,7 +35,7 @@ class ViewEventAttendance extends Component {
 			lastName: "",
 			eventUID: this.props.location.state.eventUID,
 			eventName: this.props.location.state.eventName,
-			attendance: []
+			attendingMembers: []
 		};
 	}
 
@@ -49,22 +49,21 @@ class ViewEventAttendance extends Component {
 					...attendanceObject[key],
 					uid: key
 				}))
+
+				const attendingMembers = attendanceList.filter(att =>
+					att.event_id === this.state.eventUID)
+
 				this.setState({
 					loading: false,
-					// attendingMembers: attendanceList.filter(att =>
-				// att.event_id === this.state.eventUID))
-				})
-
-				console.log("all: ");
-				console.log(attendanceList);
-				console.log("attending: ");
-				console.log(attendanceList.filter(att =>
-				att.event_id === this.state.eventUID));
+					attendingMembers: attendingMembers									
+				})				
 			} catch{
 				this.setState({
-					attendance: null
+					attendingMembers: null,				
 				})
-			}
+			}			
+			console.log("attending: ");
+			console.log(this.state.attendingMembers);
 		});
 	}
 
@@ -78,10 +77,7 @@ class ViewEventAttendance extends Component {
 								<CardHeader
 									title={"Members attending " + this.state.eventName + ":"}
 								/>
-								<CardContent>
-									<div id="attendingMemberList">
-										{/* {this.props.firebase.doGetEventAttendance(this.state.eventUID.eventUID)} */}
-									</div>
+								<CardContent>									
 								</CardContent>
 							</Card>
 						</div>
