@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import PropTypes from "prop-types";
 
@@ -17,6 +18,8 @@ const columns = ["Name", "Date", "Time", "Description", ""];
 const options = {
   selectableRows: false
 };
+
+import * as ROUTES from "../../constants/routes";
 
 const styles = theme => ({
   root: {
@@ -56,7 +59,7 @@ class ViewEvent extends Component {
         });
       } catch {
         this.setState({
-          event: null
+          events: null
         });
       }
     });

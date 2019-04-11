@@ -2,7 +2,7 @@
 
 ## Cam Walkuski
 
-Cam Walkuski is 55 years old and is the Managing Director of Business Operations at a software company but does not have any technical skills. She is familiar with user interfaces and how an interface should be intuitive to an unfamiliar user.
+Cam Walkuski is 54 years old and is the Managing Director of Business Operations at a software company but does not have any technical skills. She is familiar with user interfaces and how an interface should be intuitive to an unfamiliar user.
 
 ### Her tasks included:
 
