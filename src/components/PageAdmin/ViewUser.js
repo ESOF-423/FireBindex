@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import firebase, { withFirebase } from "../Firebase";
+import { withFirebase } from "../Firebase";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -44,13 +44,16 @@ class ViewUser extends Component {
       this.setState({
         users: usersList,
         loading: false
-      });      
+      });
     });
-  }  
+  }
 
-  removeUser(uid) {    
-    this.props.firebase.users().child(uid).remove();
-  }  
+  removeUser(uid) {
+    this.props.firebase
+      .users()
+      .child(uid)
+      .remove();
+  }
 
   componentWillUnmount() {
     this.props.firebase.users().off();
@@ -66,23 +69,28 @@ class ViewUser extends Component {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>              
+              <TableCell>Name</TableCell>
               <TableCell>User Id</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell></TableCell>              
+              <TableCell />
             </TableRow>
           </TableHead>
-          <TableBody>           
+          <TableBody>
             {users.map(user => (
-            <TableRow key={user.uid}>
-              <TableCell>{user.username}</TableCell>
-              <TableCell>{user.uid}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell><button type="submit"  onClick={
-                (e) => this.removeUser(user.uid)}>
-                Delete User</button>
-              </TableCell>
-            </TableRow>))}                        
+              <TableRow key={user.uid}>
+                <TableCell>{user.username}</TableCell>
+                <TableCell>{user.uid}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>
+                  <button
+                    type="submit"
+                    onClick={e => this.removeUser(user.uid)}
+                  >
+                    Delete User
+                  </button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

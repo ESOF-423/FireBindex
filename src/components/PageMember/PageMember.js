@@ -12,7 +12,7 @@ class PageMember extends Component {
     return (
       <div>
         <Grid container justify="center">
-          <Grid item xs={12} sm={12} md={10} lg={10}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <div style={{ marginTop: "20px" }}>
               <Card>
                 <CardHeader align="center" title="Create a new member" />
@@ -22,12 +22,8 @@ class PageMember extends Component {
               </Card>
             </div>
             <div  style={{ marginTop: "20px" }}>
-              <Card>
-                <CardHeader align="center" title="All Members" />
-                <CardContent>
                   <ViewMembers />
-                </CardContent>
-              </Card>
+                
             </div>
           </Grid>
         </Grid>

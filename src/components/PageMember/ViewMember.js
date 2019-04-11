@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-import PropTypes from 'prop-types';
+import MUIDataTable from "mui-datatables";
+import Button from "@material-ui/core/Button";
 
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+const columns = [
+  "Name",
+  "Age",
+  "Phone",
+  "Address",
+  "Email",
+  "Emergency Contact",
+  "Meals",
+  ""
+];
 
-const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
-  }
-});
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
+};
 
 function getAge(dateString) {
   var today = new Date();
@@ -35,13 +34,10 @@ class ViewMember extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       members: []
     };
   }
   componentDidMount() {
-    this.setState({ loading: true });
-
     this.props.firebase.members().on("value", snapshot => {
       const membersObject = snapshot.val();
 
@@ -51,9 +47,8 @@ class ViewMember extends Component {
       }));
 
       this.setState({
-        members: membersList,
-        loading: false
-      });      
+        members: membersList
+      });
     });
   }
 
@@ -62,62 +57,62 @@ class ViewMember extends Component {
   }
 
   removeMember(mid) {
-    this.props.firebase.members().child(mid).remove();
+    this.props.firebase
+      .members()
+      .child(mid)
+      .remove();
   }
 
   render() {
-    const { members, loading } = this.state;
-    const { classes } = this.props;
+    const { members } = this.state;
+
+    var membersArray = [];
+
+    members.map(member =>
+      membersArray.push([
+        member.firstName + " " + member.lastName,
+        getAge(member.birthday),
+        member.phoneNumber,
+        member.streetAddress +
+          " " +
+          member.apartmentNumber +
+          "\n" +
+          member.city +
+          " " +
+          member.state +
+          " " +
+          member.zip,
+        member.email,
+        member.emergencyFirstName +
+          " " +
+          member.emergencyLastName +
+          " " +
+          member.emergencyPhoneNumber +
+          " " +
+          member.emergencyRelationship,
+        member.meals,
+        <Button
+          type="submit"
+          size="small"
+          variant="contained"
+          onClick={e => this.removeMember(member.uid)}
+        >
+          Delete Member
+        </Button>
+      ])
+    );
+
     return (
       <div>
-        {loading && <div>Loading ...</div>}
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Age</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Emergency Contact</TableCell>
-              <TableCell>Meals</TableCell>              
-            </TableRow>
-          </TableHead>
-          <TableBody>  
-          {members.map(member => (
-            <TableRow>
-              <TableCell>
-                {member.firstName} {member.middleName} {member.lastName}
-              </TableCell>
-              <TableCell>{getAge(member.birthday)}</TableCell>
-              <TableCell>{member.phoneNumber}</TableCell>
-              <TableCell>
-                {member.streetAddress} {member.apartmentNumber}
-                <br />
-                {member.city}, {member.state} {member.zip}
-              </TableCell>
-              <TableCell>{member.email}</TableCell>
-              <TableCell>
-                {member.emergencyFirstName} {member.emergencyLastName}{" "}
-                {member.emergencyRelationship}
-                <br />
-                {member.emergencyPhoneNumber}
-              </TableCell>
-              <TableCell>{member.meals}</TableCell>
-              <TableCell><button type="submit"  onClick={
-                (e) => this.removeMember(member.uid)}>
-                Delete Member</button>
-              </TableCell>
-            </TableRow>))}
-          </TableBody>
-        </Table>
+        <MUIDataTable
+          title={"All Members"}
+          data={membersArray}
+          columns={columns}
+          options={options}
+        />
       </div>
     );
   }
 }
 
-ViewMember.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(withFirebase(ViewMember));
+export default withFirebase(ViewMember);
