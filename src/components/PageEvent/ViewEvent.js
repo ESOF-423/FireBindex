@@ -89,7 +89,8 @@ class ViewEvent extends Component {
                     to={{
                       pathname: ROUTES.EVENT_VIEW_ATTENDANCE,
                       state: {
-                        event: event.eventName                        
+                        eventUID: event.uid,                        
+                        eventName: event.eventName                        
                       }                      
                     }}>
                   <button>

@@ -33,26 +33,36 @@ class ViewEventAttendance extends Component {
 		this.state = {
 			firstName: "",
 			lastName: "",
-			eventName: this.props.location.state.event,			
+			eventUID: this.props.location.state.eventUID,
+			eventName: this.props.location.state.eventName,
+			attendance: []			
 		};
 	}
 
 	componentDidMount() {
 		this.setState({ loading: true });
 
-		this.props.firebase.events().on("value", snapshot => {
-			const attendancesObject = snapshot.val();
+		this.props.firebase.attendances().on("value", snapshot => {
+			const attendanceObject = snapshot.val();
 			var attendingMembers = [];
-			const attencancesList = Object.keys(attendancesObject).map(key => ({
-				...attendancesObject[key],
-				uid: key
-			}))
-			//attencancesList.map(att => {
-			//	if (att.event_id === event_id {
-			//		console.log()
-			//	}
-			//})
-		});
+			try{
+				const attendanceList = Object.keys(attendanceObject).map(key => ({
+					...attendanceObject[key],
+					uid: key
+				}))
+				this.setState({
+					loading: false,
+					attendance: attendanceList
+				})
+				
+				console.log(attendanceList)
+			}
+			catch{
+				this.setState({
+					attendance: null
+				})
+			}		
+		});						
 	}
 
 	render() {
