@@ -48,8 +48,7 @@ class ViewEvent extends Component {
           events: eventsList,
           loading: false
         });
-
-        console.log(eventsList);
+        // console.log(eventsList);
       }
       catch {
         this.setState({
@@ -58,10 +57,10 @@ class ViewEvent extends Component {
       }
     });
   }
-  
-  removeEvent(eid) {        
+
+  removeEvent(eid) {
     this.props.firebase.events().child(eid).remove();
-  }  
+  }
 
   render() {
     const { events, loading } = this.state
@@ -81,17 +80,17 @@ class ViewEvent extends Component {
               <TableCell></TableCell>
             </TableRow>
             </TableHead>
-            <TableBody>                      
+            <TableBody>
               {events.map(event => (
-              <TableRow>                
+              <TableRow>
                 <TableCell>
                   <Link
                     to={{
                       pathname: ROUTES.EVENT_VIEW_ATTENDANCE,
                       state: {
-                        eventUID: event.uid,                        
-                        eventName: event.eventName                        
-                      }                      
+                        eventUID: event.uid,
+                        eventName: event.eventName
+                      }
                     }}>
                   <button>
                     View Attendance

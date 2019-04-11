@@ -35,7 +35,7 @@ class ViewEventAttendance extends Component {
 			lastName: "",
 			eventUID: this.props.location.state.eventUID,
 			eventName: this.props.location.state.eventName,
-			attendance: []			
+			attendance: []
 		};
 	}
 
@@ -44,25 +44,28 @@ class ViewEventAttendance extends Component {
 
 		this.props.firebase.attendances().on("value", snapshot => {
 			const attendanceObject = snapshot.val();
-			var attendingMembers = [];
-			try{
+			try {
 				const attendanceList = Object.keys(attendanceObject).map(key => ({
 					...attendanceObject[key],
 					uid: key
 				}))
 				this.setState({
 					loading: false,
-					attendance: attendanceList
+					// attendingMembers: attendanceList.filter(att =>
+				// att.event_id === this.state.eventUID))
 				})
-				
-				console.log(attendanceList)
-			}
-			catch{
+
+				console.log("all: ");
+				console.log(attendanceList);
+				console.log("attending: ");
+				console.log(attendanceList.filter(att =>
+				att.event_id === this.state.eventUID));
+			} catch{
 				this.setState({
 					attendance: null
 				})
-			}		
-		});						
+			}
+		});
 	}
 
 	render() {
