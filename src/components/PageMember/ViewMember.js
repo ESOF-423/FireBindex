@@ -9,6 +9,25 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
+import MUIDataTable from "mui-datatables";
+
+const columns = [
+  "", 
+  "Name", 
+  "Age", 
+  "Phone", 
+  "Address", 
+  "Email", 
+  "Emergency Contact",
+  "Meals",
+  ""
+]
+
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
+};
+
 const styles = theme => ({
   root: {
     width: "100%",
@@ -68,50 +87,77 @@ class ViewMember extends Component {
   render() {
     const { members, loading } = this.state;
     const { classes } = this.props;
+
+    var membersArray = [];    
+
+    members.map(member => membersArray.push([
+      member.firstName + " " + 
+        member.middleName + " " + 
+        member.lastName,
+      getAge(member.birthday),
+      member.phoneNumber,    
+      member.streetAddress + " " + 
+        member.apartmentNumber + " " +
+        member.city + " " +
+        member.state + " " +
+        member.zip,
+
+
+    ]))
+    /*---------------------------------*/
     return (
       <div>
-        {loading && <div>Loading ...</div>}
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Age</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Emergency Contact</TableCell>
-              <TableCell>Meals</TableCell>              
-            </TableRow>
-          </TableHead>
-          <TableBody>  
-          {members.map(member => (
-            <TableRow>
-              <TableCell>
-                {member.firstName} {member.middleName} {member.lastName}
-              </TableCell>
-              <TableCell>{getAge(member.birthday)}</TableCell>
-              <TableCell>{member.phoneNumber}</TableCell>
-              <TableCell>
-                {member.streetAddress} {member.apartmentNumber}
-                <br />
-                {member.city}, {member.state} {member.zip}
-              </TableCell>
-              <TableCell>{member.email}</TableCell>
-              <TableCell>
-                {member.emergencyFirstName} {member.emergencyLastName}{" "}
-                {member.emergencyRelationship}
-                <br />
-                {member.emergencyPhoneNumber}
-              </TableCell>
-              <TableCell>{member.meals}</TableCell>
-              <TableCell><button type="submit"  onClick={
-                (e) => this.removeMember(member.uid)}>
-                Delete Member</button>
-              </TableCell>
-            </TableRow>))}
-          </TableBody>
-        </Table>
+        <MUIDataTable
+          title={"All Events"}
+          data={membersArray}
+          columns={columns}
+          options={options}
+        />
+        {loading && <div>Loading ...</div>}      
       </div>
+      // <div>
+      //   {loading && <div>Loading ...</div>}
+      //   <Table className={classes.table}>
+      //     <TableHead>
+      //       <TableRow>
+      //         <TableCell>Name</TableCell>
+      //         <TableCell>Age</TableCell>
+      //         <TableCell>Phone</TableCell>
+      //         <TableCell>Address</TableCell>
+      //         <TableCell>Email</TableCell>
+      //         <TableCell>Emergency Contact</TableCell>
+      //         <TableCell>Meals</TableCell>              
+      //       </TableRow>
+      //     </TableHead>
+      //     <TableBody>  
+      //     {members.map(member => (
+      //       <TableRow>
+      //         <TableCell>
+      //           {member.firstName} {member.middleName} {member.lastName}
+      //         </TableCell>
+      //         <TableCell>{getAge(member.birthday)}</TableCell>
+      //         <TableCell>{member.phoneNumber}</TableCell>
+      //         <TableCell>
+      //           {member.streetAddress} {member.apartmentNumber}
+      //           <br />
+      //           {member.city}, {member.state} {member.zip}
+      //         </TableCell>
+      //         <TableCell>{member.email}</TableCell>
+      //         <TableCell>
+      //           {member.emergencyFirstName} {member.emergencyLastName}{" "}
+      //           {member.emergencyRelationship}
+      //           <br />
+      //           {member.emergencyPhoneNumber}
+      //         </TableCell>
+      //         <TableCell>{member.meals}</TableCell>
+      //         <TableCell><button type="submit"  onClick={
+      //           (e) => this.removeMember(member.uid)}>
+      //           Delete Member</button>
+      //         </TableCell>
+      //       </TableRow>))}
+      //     </TableBody>
+      //   </Table>
+      // </div>
     );
   }
 }

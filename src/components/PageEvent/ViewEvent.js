@@ -62,8 +62,7 @@ class ViewEvent extends Component {
     });
   }
 
-  removeEvent(eid) {
-    // console.log(eid);
+  removeEvent(eid) {  
     this.props.firebase
       .events()
       .child(eid)
@@ -99,8 +98,13 @@ class ViewEvent extends Component {
       event.eventName,
       event.eventStartDate,
       event.eventStartTime,
-      event.eventDescription,
-      <Button type="submit" onClick={e => this.removeEvent(event.uid)}>
+      event.eventDescription,      
+      <Button
+        type="submit" onClick={e => this.removeEvent(event.uid)}
+        color= "primary"
+        size= "small"
+        variant= "contained"          
+      >
         Delete Event
       </Button>
     ]))
