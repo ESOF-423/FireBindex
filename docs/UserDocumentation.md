@@ -32,6 +32,7 @@ Bindex.tk is a web application meant to make the task of managing senior communi
     - [Add a Service](#add-a-service)
     - [Check Members in to Events](#check-members-in-to-events)
     - [View Event Attendance](#view-event-attendance)
+    - [Searching/Sorting/Filtering](#searchingsortingfiltering)
 
 ---
 
@@ -100,5 +101,17 @@ OR
 - You should see a table listing all the events at the senior center
 - Click the **View Attendance** button next to the event you are interested in
 - You should be redirected to a page listing the people that signed in to that event
+
+### Searching/Sorting/Filtering
+
+- Log into Bindex.tk as instructed above
+- When viewing an table of data (members, events, attendance, etc.), you can search and filter using the buttons on the top right of the table.
+  - The magnifying glass allows you to type in characters and the data in the table filters to only show rows that contain that data.
+  - The cloud with the arrow allows you to download the table's data in csv (excel) format.
+  - The printer allows you to print the table.
+  - The three vertical bars allow you to chose to show or hide certain columns.
+  - The three horizontal bars allow you to filter the data using the dropdowns.
+- To sort the data, click the column header to sort the data by that column. Click the header again to sort the data in the other direction.
+- **Note:** the tables now support paging, so if you aren't seeing all the data, it could be on the next page. Click the arrows at the bottom of the table to navigate between the pages. You can also change the number of rows displayed per page with the **Rows per page:** dropdown at the bottom of the table.
 
 ---
