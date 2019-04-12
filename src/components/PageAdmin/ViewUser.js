@@ -73,7 +73,7 @@ class ViewUser extends Component {
           variant="contained"
           onClick={e => this.removeUser(user.uid)}
         >
-          Delete Member
+          Delete User
         </Button>
       ])
     );
