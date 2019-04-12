@@ -1,7 +1,6 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import Firebase from '../components/Firebase/Firebase.js'
 import PageEvent from '../components/PageEvent/PageEvent.js'
 import CreateEvent from '../components/PageEvent/CreateEvent.js'
 import ViewEvent from '../components/PageEvent/ViewEvent.js'
@@ -14,8 +13,10 @@ import PageService from '../components/PageService/PageService.js'
 import CreateService from '../components/PageService/CreateService.js'
 import ViewService from '../components/PageService/ViewService.js'
 
+import CheckInMember from '../components/PageMemberCheckIn/CheckInMember.js'
 import PageMemberCheckIn from '../components/PageMemberCheckIn/PageMemberCheckIn.js'
 import ViewEventForCheckin from '../components/PageMemberCheckIn/ViewEventForCheckin.js'
+import ViewShortMemberList from '../components/PageMemberCheckIn/ViewShortMemberList.js'
 
 it('shallow renders PageMemberCheckIn without exploding', () => {
 	const renderer = new ShallowRenderer();
@@ -70,4 +71,14 @@ it('shallow renders CreateService without exploding', () => {
 it('shallow renders ViewService without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(ViewService));
+});
+
+it('shallow renders CheckInMember without exploding', () => {
+	const renderer = new ShallowRenderer();
+	renderer.render(React.createElement(CheckInMember));
+});
+
+it('shallow renders ViewShortMemberList without exploding', () => {
+	const renderer = new ShallowRenderer();
+	renderer.render(React.createElement(ViewShortMemberList));
 });
