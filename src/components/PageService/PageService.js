@@ -1,7 +1,11 @@
+//import react
 import React, { Component } from "react";
+//import firebase
 import { withFirebase } from "../Firebase";
+//import pages 
 import ViewService from "./ViewService";
 import CreateService from "./CreateService";
+
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -16,11 +20,13 @@ class PageService extends Component {
             <Card>
               <CardHeader align="center" title="Create a new service" />
               <CardContent>
+                {/* display createService component */}
                 <CreateService />
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={7} lg={6}>
+            {/* display ViewService component */}
             <ViewService />
           </Grid>
         </Grid>

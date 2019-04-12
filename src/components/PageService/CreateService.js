@@ -1,4 +1,6 @@
+//import react, component
 import React, { Component } from "react";
+//import firebase
 import { withFirebase } from "../Firebase";
 
 import PropTypes from "prop-types";
@@ -23,6 +25,7 @@ const INITIAL_STATE = {
   serviceDescription: ""
 };
 
+//class createService
 class CreateService extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +37,7 @@ class CreateService extends Component {
     this.setState({ [service.target.name]: service.target.value });
   };
 
+  //onSubmit, push service into services in db
   onSubmit = service => {
     this.props.firebase.services().push(this.state);
   };
@@ -48,6 +52,7 @@ class CreateService extends Component {
       serviceDescription
     } = this.state;
 
+    //check if data in user form is within what we specify
     // const isInvalid =
     //   serviceDescription === "" ||
     //   serviceEndDate === "" ||

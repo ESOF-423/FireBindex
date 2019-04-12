@@ -1,6 +1,9 @@
+//import react, component
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+//import firebase component
 import { withFirebase } from "../Firebase";
+//import constants from ROUTES for page urls
 import * as ROUTES from "../../constants/routes";
 import TextField from "@material-ui/core/TextField";
 import PropTypes from "prop-types";
@@ -25,6 +28,7 @@ const styles = theme => ({
   }
 });
 
+//create const of PasswordForgetPage
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -37,6 +41,7 @@ const INITIAL_STATE = {
   error: null
 };
 
+//class for PasswordForgetForm
 class PasswordForgetFormBase extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +52,7 @@ class PasswordForgetFormBase extends Component {
   onSubmit = event => {
     const { email } = this.state;
 
+    //reset password in firebase with email
     this.props.firebase
       .doPasswordReset(email)
       .then(() => {

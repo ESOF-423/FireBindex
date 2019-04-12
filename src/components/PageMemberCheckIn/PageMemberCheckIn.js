@@ -1,11 +1,16 @@
+//import react & component 
 import React, { Component } from "react";
+//import firebase
 import { withFirebase } from "../Firebase";
+//import page
 import ViewEventForCheckin from "./ViewEventForCheckin";
+//import material-ui
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 
+//Create class pageMemberCheckIn
 class PageMemberCheckIn extends Component {
   render() {
     return (

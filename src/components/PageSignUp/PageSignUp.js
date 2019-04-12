@@ -1,11 +1,14 @@
+//import react, component
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+//import firebase
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import Button from "@material-ui/core/Button";
-
+//import constants from ROUTES for page URLs
 import * as ROUTES from "../../constants/routes";
 
+//contain signUpForm in page
 const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
@@ -28,9 +31,11 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  //onSubmit, set state to new user info
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
 
+    //push new user info to firebase users, and db user table
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -58,6 +63,7 @@ class SignUpFormBase extends Component {
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
 
+    //check if input info is within our specified parameters
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
@@ -104,6 +110,7 @@ class SignUpFormBase extends Component {
   }
 }
 
+//link to sign up page
 const SignUpLink = () => (
   <p>
     Don't have an account?{" "}

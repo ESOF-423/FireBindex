@@ -12,10 +12,13 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 
+//import MUIdata table
 import MUIDataTable from "mui-datatables";
 
+//Table column headers
 const columns = ["Member Names", "Check In"];
 
+//MUI table options
 const options = {
   selectableRows: false,
   responsive: "scroll"
@@ -43,23 +46,28 @@ class CheckInMember extends Component {
   constructor(props) {
     super(props);
 
+    //Set initial state
     this.state = {
       firstName: "",
       lastName: "",
+      //set event to passed parameter from viewEventForCheckIn
       event_id: this.props.location.state,
       membersList: []
     };
   }
 
+  //on component mounting, do:
   componentDidMount() {
     this.props.firebase.members().on("value", snapshot => {
       const membersObject = snapshot.val();
 
+      //Create list of members from object from database, mapping with their key of uid
       const membersList = Object.keys(membersObject).map(key => ({
         ...membersObject[key],
         uid: key
       }));
-
+      
+      //update state with newly made members list
       this.setState({
         membersList: membersList,
       });      
@@ -71,33 +79,40 @@ class CheckInMember extends Component {
     this.props.firebase.attendances().off();
   }
 
+  //Called from buttons. Searches for member in db and then pushes into db attendance table
   onSubmit = (nameArray) => {    
     var firstName = this.state.firstName
     var lastName = this.state.lastName
     const { event_id, membersList } = this.state;
     
+    //submit() may be called without parameters.
+    //check if param undefined; then use state firstName & lastName. Else use parameters
     if(typeof nameArray[0] !== "undefined"  && typeof nameArray[1] !== "undefined"){
       firstName = nameArray[0]
       lastName = nameArray[1]
     }
+      //For every member in db, check if member exists such that firstname & lastname match
       for (var i = 0; i < membersList.length; i++) {        
         if (
           membersList[i].firstName.toLowerCase() === firstName.toLowerCase() &&
           membersList[i].lastName.toLowerCase() === lastName.toLowerCase() &&
           event_id.event_id !== ""
         ) {          
-
+          //Create attendance using member uid and event uid
           const attendance = {
             user_id: membersList[i].uid,
             event_id: event_id.event_id
           };          
+          //push to db
           this.props.firebase.attendances().push(attendance);
+          //display success message
           document.getElementById("successMessage").innerHTML = 
             "Success! " 
             + firstName + " "
             + lastName  + " is checked in!";
           break
-        } else {
+        } 
+        else {
           document.getElementById("successMessage").innerHTML =
             "Member not found in database, try again";
         }
@@ -113,7 +128,8 @@ class CheckInMember extends Component {
     const { classes } = this.props;    
 
     var membersArray = [];
-
+    
+    //map all db members so we can display list to choose from
     membersList.map(member =>
       membersArray.push([
         member.firstName + " " + member.middleName + " " + member.lastName,        
@@ -122,7 +138,8 @@ class CheckInMember extends Component {
           size="small"
           variant="contained"
           onClick={(e) =>
-            this.onSubmit([member.firstName, member.lastName])                        
+            this.onSubmit([member.firstName, member.lastName]) 
+            //calls onSubmit with parameters
           }
         >
           Check In
