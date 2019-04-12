@@ -1,18 +1,21 @@
+//import react component
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-
 import { SignUpLink } from "../PageSignUp/PageSignUp";
+//import firebase
 import { withFirebase } from "../Firebase";
 import { withStyles } from "@material-ui/core/styles";
+//import constants from ROUTES
 import * as ROUTES from "../../constants/routes";
+import PropTypes from "prop-types";
 import { PasswordForgetLink } from "../PagePasswordForget/PagePasswordForget";
+//import material ui
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
-import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
@@ -67,14 +70,16 @@ class SignInFormBase extends Component {
 
     this.state = { ...INITIAL_STATE };
   }
-
+  //set state to email & password
   onSubmit = event => {
     const { email, password } = this.state;
 
+    //sign in to firebase with email and password
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
+        //push user to HOME page url
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
@@ -91,6 +96,7 @@ class SignInFormBase extends Component {
   render() {
     const { email, password, error } = this.state;
 
+    //check if password and email arent empty
     const isInvalid = password === "" || email === "";
 
     const { classes } = this.props;

@@ -1,5 +1,6 @@
+//import react
 import React from 'react';
-
+//import firebase
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 
@@ -12,7 +13,7 @@ const withAuthentication = Component => {
         authUser: null,
       };
     }
-
+    //listen for auth changes to state
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {

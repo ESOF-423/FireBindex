@@ -1,5 +1,6 @@
+//import react, component
 import React, { Component } from "react";
-
+//import firebase
 import { withFirebase } from "../Firebase";
 import TextField from "@material-ui/core/TextField";
 import PropTypes from "prop-types";
@@ -36,11 +37,11 @@ class PasswordChangeForm extends Component {
 
     this.state = { ...INITIAL_STATE };
   }
-
+  //submit updated password to firebase
   onSubmit = event => {
     const { passwordOne } = this.state;
-
-    this.props.firebase
+    //push new password to firebase
+    this.props.firebase 
       .doPasswordUpdate(passwordOne)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
@@ -59,6 +60,7 @@ class PasswordChangeForm extends Component {
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
 
+    //check the password is not null and is same in both fields
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     const { classes } = this.props;
