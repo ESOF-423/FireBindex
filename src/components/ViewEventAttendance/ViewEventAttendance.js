@@ -35,7 +35,7 @@ class ViewEventAttendance extends Component {
           att => att.event_id === this.state.eventUID
         );
 
-       
+
 
         this.setState({
           attendances: attendances

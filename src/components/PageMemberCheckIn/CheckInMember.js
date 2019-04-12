@@ -11,7 +11,15 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import ViewShortMemberlist from "./ViewShortMemberList"
+
+import MUIDataTable from "mui-datatables";
+
+const columns = ["Member Names", "Check In"];
+
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
+};
 
 const styles = theme => ({
   container: {
@@ -38,15 +46,12 @@ class CheckInMember extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      event_id: this.props.location.state
+      event_id: this.props.location.state,
+      membersList: []
     };
   }
 
-  onSubmit = event => {
-    const { firstName, lastName, event_id } = this.state;
-    console.log("hello");
-    console.log(event_id);
-
+  componentDidMount() {
     this.props.firebase.members().on("value", snapshot => {
       const membersObject = snapshot.val();
 
@@ -55,32 +60,48 @@ class CheckInMember extends Component {
         uid: key
       }));
 
-      //   console.log(membersList)
+      this.setState({
+        membersList: membersList,
+      });      
+    });
+  }
 
-      for (var i = 0; i < membersList.length; i++) {
-        console.log("in the loooooooop");
+  componentWillUnmount() {
+    this.props.firebase.members().off();
+    this.props.firebase.attendances().off();
+  }
+
+  onSubmit = (nameArray) => {    
+    var firstName = this.state.firstName
+    var lastName = this.state.lastName
+    const { event_id, membersList } = this.state;
+    
+    if(typeof nameArray[0] !== "undefined"  && typeof nameArray[1] !== "undefined"){
+      firstName = nameArray[0]
+      lastName = nameArray[1]
+    }
+      for (var i = 0; i < membersList.length; i++) {        
         if (
           membersList[i].firstName.toLowerCase() === firstName.toLowerCase() &&
           membersList[i].lastName.toLowerCase() === lastName.toLowerCase() &&
           event_id.event_id !== ""
-        ) {
-          console.log("MATCH");
+        ) {          
 
           const attendance = {
             user_id: membersList[i].uid,
             event_id: event_id.event_id
-          };
-
-          console.log(attendance);
+          };          
           this.props.firebase.attendances().push(attendance);
-          document.getElementById("successMessage").innerHTML = "Sucesss!";
+          document.getElementById("successMessage").innerHTML = 
+            "Success! " 
+            + firstName + " "
+            + lastName  + " is checked in!";
           break
         } else {
           document.getElementById("successMessage").innerHTML =
             "Member not found in database, try again";
         }
-      }
-    });
+      }    
   };
 
   onChange = event => {
@@ -88,8 +109,26 @@ class CheckInMember extends Component {
   };
 
   render() {
-    const { firstName, lastName } = this.state;
-    const { classes } = this.props;
+    const { firstName, lastName, membersList } = this.state;
+    const { classes } = this.props;    
+
+    var membersArray = [];
+
+    membersList.map(member =>
+      membersArray.push([
+        member.firstName + " " + member.middleName + " " + member.lastName,        
+        <Button
+          type="submit"
+          size="small"
+          variant="contained"
+          onClick={(e) =>
+            this.onSubmit([member.firstName, member.lastName])                        
+          }
+        >
+          Check In
+        </Button>
+      ])
+    );
 
     return (
       <div>
@@ -136,7 +175,12 @@ class CheckInMember extends Component {
                     </Button>
                     <div id="successMessage" />
                   </form>
-                  <ViewShortMemberlist/>
+                  <MUIDataTable
+                    title={"All Members"}
+                    data={membersArray}
+                    columns={columns}
+                    options={options}
+                  />
                 </CardContent>
               </Card>
             </div>

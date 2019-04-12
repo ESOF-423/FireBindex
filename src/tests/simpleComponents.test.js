@@ -4,13 +4,13 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import App from '../components/App/App.js'
 import Navigation from '../components/Navigation/Navigation.js'
 import PageAccount from '../components/PageAccount/PageAccount.js'
-import PageAdmin from '../components/PageAdmin/PageAdmin.js'
 import PageHome from '../components/PageHome/PageHome.js'
 import PagePasswordForget from '../components/PagePasswordForget/PagePasswordForget.js'
 import PageSignIn from '../components/PageSignIn/PageSignIn.js'
 import PageSignUp from '../components/PageSignUp/PageSignUp.js'
 import PasswordChange from '../components/PasswordChange/PasswordChange.js'
 import SignOut from '../components/SignOut/SignOut.js'
+import ViewEventAttendance from '../components/ViewEventAttendance/ViewEventAttendance.js'
 
 it('shallow renders App without exploding', () => {
 	const renderer = new ShallowRenderer();
@@ -25,11 +25,6 @@ it('shallow renders Navigation without exploding', () => {
 it('shallow renders PageAccount without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(PageAccount));
-});
-
-it('shallow renders PageAdmin without exploding', () => {
-	const renderer = new ShallowRenderer();
-	renderer.render(React.createElement(PageAdmin));
 });
 
 it('shallow renders PageHome without exploding', () => {
@@ -60,4 +55,9 @@ it('shallow renders PasswordChange without exploding', () => {
 it('shallow renders SignOut without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(SignOut));
+});
+
+it('shallow renders ViewEventAttendance without exploding', () => {
+	const renderer = new ShallowRenderer();
+	renderer.render(React.createElement(ViewEventAttendance));
 });

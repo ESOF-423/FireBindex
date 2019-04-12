@@ -36,7 +36,18 @@ function getAge(dateString) {
   return age;
 }
 
+// function to display the correct meal type
+function convertMeals(input) {
+  switch (input) {
+    case 0: return "In-Center Meals"
+    case 1: return "Meals on Wheels"
+    case 2: return "No Meals"
+    default: return "DB ERROR"
+  }
+}
+
 // class to view all the members in the database
+
 class ViewMember extends Component {
   constructor(props) {
     super(props);
@@ -101,7 +112,7 @@ class ViewMember extends Component {
           member.emergencyPhoneNumber +
           " " +
           member.emergencyRelationship,
-        member.meals,
+        convertMeals(member.meals),
         <Button
           type="submit"
           size="small"

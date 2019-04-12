@@ -230,7 +230,7 @@ class CreateMember extends Component {
           <h3>Meals</h3>
           <Grid container>
             <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
+              {/* <TextField
                 classname={classes.textField}
                 margin="normal"
                 value={meals}
@@ -239,8 +239,19 @@ class CreateMember extends Component {
                 name="meals"
                 label="0,1, or 2"
                 required
-                fullWidth
-              />
+                fullWidth */}
+              <FormControl component="fieldset" className={classes.formControl}>
+                <RadioGroup
+                  name="meals"
+                  className={classes.group}
+                  value={this.state.value}
+                  onChange={this.onChange}
+                >
+                  <FormControlLabel value="0" control={<Radio />} label="In-Center Meals" />
+                  <FormControlLabel value="1" control={<Radio />} label="Meals on Wheels" />
+                  <FormControlLabel value="2" control={<Radio />} label="No Meals" />
+                </RadioGroup>
+              </FormControl>
             </Grid>
           </Grid>
           <h3>Emergency Contact</h3>
