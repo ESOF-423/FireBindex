@@ -1,11 +1,18 @@
+import Button from "@material-ui/core/Button";
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
+import Grid from "@material-ui/core/Grid";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+
+
 
 const styles = theme => ({
   container: {
@@ -69,22 +76,6 @@ class CreateMember extends Component {
       emergencyPhoneNumber,
       emergencyRelationship
     } = this.state;
-
-    // const isInvalid =
-    //   firstName === "" ||
-    //   lastName === "" ||
-    //   birthday === "" ||
-    //   phoneNumber === "" ||
-    //   !email.match(/.*@.*\..*/g) ||
-    //   streetAddress === "" ||
-    //   city === "" ||
-    //   state === "" ||
-    //   zip === "" ||
-    //   meals === "" ||
-    //   emergencyFirstName === "" ||
-    //   emergencyLastName === "" ||
-    //   emergencyPhoneNumber === "" ||
-    //   emergencyRelationship === "";
 
     const { classes } = this.props;
 
@@ -239,7 +230,7 @@ class CreateMember extends Component {
           <h3>Meals</h3>
           <Grid container>
             <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
+              {/* <TextField
                 classname={classes.textField}
                 margin="normal"
                 value={meals}
@@ -248,8 +239,19 @@ class CreateMember extends Component {
                 name="meals"
                 label="0,1, or 2"
                 required
-                fullWidth
-              />
+                fullWidth */}
+              <FormControl component="fieldset" className={classes.formControl}>
+                <RadioGroup
+                  name="meals"
+                  className={classes.group}
+                  value={this.state.value}
+                  onChange={this.onChange}
+                >
+                  <FormControlLabel value="0" control={<Radio />} label="In-Center Meals" />
+                  <FormControlLabel value="1" control={<Radio />} label="Meals on Wheels" />
+                  <FormControlLabel value="2" control={<Radio />} label="No Meals" />
+                </RadioGroup>
+              </FormControl>
             </Grid>
           </Grid>
           <h3>Emergency Contact</h3>
