@@ -1,12 +1,18 @@
+// import react/firebase components
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+
+// import custom components
 import CreateMember from "./CreateMember";
 import ViewMembers from "./ViewMember";
+
+// import @material-ui components
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 
+// page that displays the create and view member components
 class PageMember extends Component {
   render() {
     return (

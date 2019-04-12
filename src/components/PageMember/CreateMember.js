@@ -1,12 +1,14 @@
+// import react/firebase components
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 
-import PropTypes from "prop-types";
+// import @material-ui components
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
+// form theme
 const styles = theme => ({
   container: {
     display: "flex",
@@ -14,6 +16,7 @@ const styles = theme => ({
   }
 });
 
+// form initial state
 const INITIAL_STATE = {
   firstName: "",
   middleName: "",
@@ -33,6 +36,7 @@ const INITIAL_STATE = {
   emergencyRelationship: ""
 };
 
+// class with the form to create a member
 class CreateMember extends Component {
   constructor(props) {
     super(props);
@@ -42,10 +46,12 @@ class CreateMember extends Component {
     };
   }
 
+  // updates the state whenever a form field is modified
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // submits the member to the database
   onSubmit = event => {
     this.props.firebase.members().push(this.state);
   };
@@ -70,24 +76,9 @@ class CreateMember extends Component {
       emergencyRelationship
     } = this.state;
 
-    // const isInvalid =
-    //   firstName === "" ||
-    //   lastName === "" ||
-    //   birthday === "" ||
-    //   phoneNumber === "" ||
-    //   !email.match(/.*@.*\..*/g) ||
-    //   streetAddress === "" ||
-    //   city === "" ||
-    //   state === "" ||
-    //   zip === "" ||
-    //   meals === "" ||
-    //   emergencyFirstName === "" ||
-    //   emergencyLastName === "" ||
-    //   emergencyPhoneNumber === "" ||
-    //   emergencyRelationship === "";
-
     const { classes } = this.props;
 
+    // the form
     return (
       <div>
         <form classname={classes.container} onSubmit={this.onSubmit}>
@@ -323,9 +314,5 @@ class CreateMember extends Component {
     );
   }
 }
-
-CreateMember.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(withFirebase(CreateMember));

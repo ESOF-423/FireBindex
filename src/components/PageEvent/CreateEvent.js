@@ -1,12 +1,15 @@
+// import react and firebase components
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-
 import PropTypes from "prop-types";
+
+// import @material-ui components
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
+// form style
 const styles = theme => ({
   container: {
     display: "flex",
@@ -14,6 +17,7 @@ const styles = theme => ({
   }
 });
 
+// form initial state
 const INITIAL_STATE = {
   eventName: "",
   eventStartDate: new Date(),
@@ -23,6 +27,7 @@ const INITIAL_STATE = {
   eventDescription: ""
 };
 
+// class that contains the form to create an event
 class CreateEvent extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +35,12 @@ class CreateEvent extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  // updates the state when a form field is filled out
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // pushes event to database
   onSubmit = event => {
     this.props.firebase.events().push(this.state);
   };
@@ -48,16 +55,9 @@ class CreateEvent extends Component {
       eventDescription
     } = this.state;
 
-    // const isInvalid =
-    //   eventDescription === "" ||
-    //   eventEndDate === "" ||
-    //   eventEndTime === "" ||
-    //   eventName === "" ||
-    //   eventStartDate === "" ||
-    //   eventStartTime === "";
-
     const { classes } = this.props;
 
+    // renders the form
     return (
       <div>
         <form classname={classes.container} onSubmit={this.onSubmit}>

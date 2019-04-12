@@ -1,15 +1,16 @@
+// import react/firebase components
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+import PropTypes from "prop-types";
 
+// import @material-ui components
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
-import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-
 import ViewShortMemberlist from "./ViewShortMemberList"
 
 const styles = theme => ({

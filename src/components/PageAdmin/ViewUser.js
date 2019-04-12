@@ -1,20 +1,25 @@
+// import react component
 import React, { Component } from "react";
+
+// import firebase
 import { withFirebase } from "../Firebase";
+
+// import node module
 import MUIDataTable from "mui-datatables";
+
+// import @material-ui components
 import Button from "@material-ui/core/Button";
 
-const columns = [
-  "Username",
-  "ID",
-  "Email",
-  ""
-];
+// sets the headers of the columns of the table
+const columns = ["Username", "ID", "Email", ""];
 
+// sets the options for the table
 const options = {
   selectableRows: false,
   responsive: "scroll"
 };
 
+// class to view user information
 class ViewUser extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +28,7 @@ class ViewUser extends Component {
     };
   }
 
+  // function runs when page renders
   componentDidMount() {
     this.props.firebase.users().on("value", snapshot => {
       const usersObject = snapshot.val();
@@ -33,11 +39,12 @@ class ViewUser extends Component {
       }));
 
       this.setState({
-        users: usersList,
+        users: usersList
       });
     });
   }
 
+  // deletes user
   removeUser(uid) {
     this.props.firebase
       .users()
@@ -52,9 +59,9 @@ class ViewUser extends Component {
   render() {
     const { users } = this.state;
 
+    var usersArray = [];
 
-      var usersArray = [];
-
+    // maps json data to array data for table
     users.map(user =>
       usersArray.push([
         user.username,
@@ -71,7 +78,6 @@ class ViewUser extends Component {
       ])
     );
 
-
     return (
       <div>
         <MUIDataTable
@@ -80,7 +86,6 @@ class ViewUser extends Component {
           columns={columns}
           options={options}
         />
-    
       </div>
     );
   }
