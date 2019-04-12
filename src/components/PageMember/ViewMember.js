@@ -124,4 +124,5 @@ class ViewMember extends Component {
   }
 }
 
+export {getAge, convertMeals};
 export default withFirebase(ViewMember);
