@@ -1,32 +1,27 @@
 # Developer Documentation
 
-## Quick Links
+Bindex is an open-source project written by students of ESOF423: Applications of Software Engineering at Montana State University Spring of 2019. The live version of our site can be found at [Bindex.tk](Bindex.tk).
 
-* [Reporting Issues](#Reporting-Issues)
-* [Contacting Developers](#Contacting-Developers)
-* [Contributing](#Contributing)
+## Table of Contents
 
-Table of Contents
-
-* [Developer Documentation](#developer-documentation)
-  * [Quick Links](#quick-links)
-  * [Reporting Issues or Bugs](#reporting-issues-or-bugs)
-  * [Contacting Developers](#contacting-developers)
-  * [Contributing](#contributing)
-    * [Obtaining and Building Source Code](#obtaining-and-building-source-code)
-    * [Contributing to Live Development](#contributing-to-live-development)
-  * [Class Diagram](#class-diagram)
-  * [Versions](#versions)
-    * [Latest Stable Versions](#latest-stable-versions)
-    * [Development Versions](#development-versions)
-    * [Continuing Development on End of Life (EOL) Versions](#continuing-development-on-end-of-life-eol-versions)
-  * [Directory Structure](#directory-structure)
-  * [How to Test the Software](#how-to-test-the-software)
-  * [How to Release the Software](#how-to-release-the-software)
-  * [Database](#database)
-  * [Design](#design)
-    * [Routing](#routing)
-    * [Pages](#pages)
+- [Developer Documentation](#developer-documentation)
+  - [Table of Contents](#table-of-contents)
+  - [Reporting Issues or Bugs](#reporting-issues-or-bugs)
+  - [Contacting Developers](#contacting-developers)
+  - [Obtaining and Building Source Code](#obtaining-and-building-source-code)
+  - [Contributing to Live Development](#contributing-to-live-development)
+  - [Class Diagram](#class-diagram)
+  - [Versions](#versions)
+    - [Latest Stable Versions](#latest-stable-versions)
+    - [Development Versions](#development-versions)
+    - [Continuing Development on End of Life (EOL) Versions](#continuing-development-on-end-of-life-eol-versions)
+  - [Directory Structure](#directory-structure)
+  - [How to Test the Software](#how-to-test-the-software)
+  - [How to Release the Software](#how-to-release-the-software)
+  - [Database](#database)
+  - [Design](#design)
+    - [Routing](#routing)
+    - [Pages](#pages)
 
 ## Reporting Issues or Bugs
 
@@ -36,21 +31,18 @@ To report an issue with Bindex.tk, on our [github](https://github.com/ESOF-423/F
 ## Contacting Developers
 
 ---
-Developers can be contacted through email:
+Developers can be contacted via email:
 <bindexdevelopers@gmail.com>
 
 
 ## Obtaining and Building Source Code
 
-All source code is hosted on GitHub @ <https://github.com/ESOF-423/FireBindex>
-
-Bindex is an open-source project written for a software engineering class at Montana State University by students.
-
-1. Make sure you have [Node](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/cli/install) installed on your machine. To check if you have them, run `node -v` or `npm -v` to check the version you are running.
-2. In a terminal, run `git clone https://github.com/ESOF-423/BindexTK.git`
+1. Make sure you have [Node](https://nodejs.org/en/download/) and [npm](https://docs.npmjs.com/cli/install) installed on your machine. To check if you already have them, run `node -v` or `npm -v` to check the version you are running.
+2. In a terminal, run the command `git clone https://github.com/ESOF-423/BindexTK.git`
    * Optionally, checkout a branch to test pre-release features
-3. run `npm install`
-4. run `npm start`
+3. Run `npm install`
+4. Run `npm start`
+5. A browser should open with the code running from your local machine
 
 ## Contributing to Live Development
 
@@ -89,7 +81,7 @@ Thank you for your interest contributing to Bindex! Please observe the following
 
 ### Latest Stable Versions
 
-Current stable releases are hosted at [bindex.tk](http://bindex.tk)
+Current stable releases are hosted at [bindex.tk](bindex.tk)
 Source code for stable releases can be found on our [GitHub](https://github.com/ESOF-423/BindexTK)
 
 ### Development Versions
@@ -101,13 +93,13 @@ We do not host live versions of development code. To test these features, please
 
 > For Developers seeking to continue Bindex after its original developers have stopped supporting new versions.
 
-All software comes to an end; whether code is developed into a final version or developers stop mid-release. Bindex is an open source project, and therefore available to anyone who wants to continue its development. [Email](bindexdevelopers@gmail.com) us and ask us about spear-heading the future continuation of Bindex through your own releases.
+All software comes to an end; whether code is developed into a final version or developers stop mid-release. Bindex is an open source project, and therefore available to anyone who wants to continue its development. [Email](bindexdevelopers@gmail.com) the bindex developers and ask us about spear-heading the future continuation of Bindex through your own releases.
 
 ## Directory Structure
 
-* [/Documentation](<https://github.com/ESOF-423/BindexTK/tree/master/Documentation>) contains documentation for both users and developers
-* [/src/tests](<https://github.com/ESOF-423/BindexTK/tree/master/src/tests>) contains test cases for both Node and Python
-* [/src](<https://github.com/ESOF-423/BindexTK/tree/master/src>) contains the project JavaScript
+* [/docs](<https://github.com/ESOF-423/BindexTK/tree/master/docs>) contains the project documentation
+* [/src/tests](<https://github.com/ESOF-423/BindexTK/tree/master/src/tests>) contains test cases for the project
+* [/src](<https://github.com/ESOF-423/BindexTK/tree/master/src>) contains the main project code, this is where you'll want to pay most of you attention
 * [/public](https://github.com/ESOF-423/BindexTK/tree/master/public) contains project assets not added as a Node module
 
 ## How to Test the Software
@@ -116,11 +108,11 @@ Something w/ Travis.. I heard he's a cool dude (or gal)
 
 ## How to Release the Software
 
-Please [contact us](bindexdevelopers@gmail.com) for information regarding deploying Bindex.tx 
+Please [contact us](bindexdevelopers@gmail.com) for information regarding deploying Bindex.tx
 
 ## Database
 
-We are using Firebase's Realtime Databse with the following structure: 
+We are using Firebase's Realtime Databse with the following structure:
 
 ```
 belgradeseniorcenter
