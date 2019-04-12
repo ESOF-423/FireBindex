@@ -44,14 +44,14 @@ class ViewService extends Component {
         this.setState({
           service: null
         });
-      }      
+      }
     });
   }
 
   //remove service using unique id 
   removeService(sid) {    
     this.props.firebase.services().child(sid).remove();
-  }  
+  }
 
   render() {
     const { services } = this.state
@@ -69,7 +69,7 @@ class ViewService extends Component {
           type="submit"
           size="small"
           variant="contained"
-          onClick={e => this.removeEvent(service.uid)}
+          onClick={e => this.removeService(service.uid)}
         >
           Delete Service
         </Button>
