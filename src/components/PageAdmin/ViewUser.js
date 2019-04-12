@@ -1,38 +1,29 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+import MUIDataTable from "mui-datatables";
+import Button from "@material-ui/core/Button";
 
-import PropTypes from "prop-types";
+const columns = [
+  "Username",
+  "ID",
+  "Email",
+  ""
+];
 
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-
-const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
-  }
-});
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
+};
 
 class ViewUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       users: []
     };
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
-
     this.props.firebase.users().on("value", snapshot => {
       const usersObject = snapshot.val();
 
@@ -43,7 +34,6 @@ class ViewUser extends Component {
 
       this.setState({
         users: usersList,
-        loading: false
       });
     });
   }
@@ -60,46 +50,40 @@ class ViewUser extends Component {
   }
 
   render() {
-    const { users, loading } = this.state;
-    const { classes } = this.props;
+    const { users } = this.state;
+
+
+      var usersArray = [];
+
+    users.map(user =>
+      usersArray.push([
+        user.username,
+        user.uid,
+        user.email,
+        <Button
+          type="submit"
+          size="small"
+          variant="contained"
+          onClick={e => this.removeUser(user.uid)}
+        >
+          Delete Member
+        </Button>
+      ])
+    );
+
+
     return (
       <div>
-        <h2>Users</h2>
-        {loading && <div>Loading ...</div>}
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>User Id</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.map(user => (
-              <TableRow key={user.uid}>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.uid}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
-                  <button
-                    type="submit"
-                    onClick={e => this.removeUser(user.uid)}
-                  >
-                    Delete User
-                  </button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        <MUIDataTable
+          title={"All Users"}
+          data={usersArray}
+          columns={columns}
+          options={options}
+        />
+    
       </div>
     );
   }
 }
 
-ViewUser.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(withFirebase(ViewUser));
+export default withFirebase(ViewUser);

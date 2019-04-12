@@ -13,19 +13,15 @@ class PageEvent extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={5} lg={4}>
-            <div style={{ margin: "20px" }}>
               <Card>
                 <CardHeader align="center" title="Create a new event" />
                 <CardContent>
                   <CreateEvent />
                 </CardContent>
               </Card>
-            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={7} lg={6}>
-            <div style={{ margin: "20px" }}>
               <ViewEvent/>
-            </div>
           </Grid>
         </Grid>
       </div>

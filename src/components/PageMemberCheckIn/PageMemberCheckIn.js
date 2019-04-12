@@ -12,7 +12,7 @@ class PageMemberCheckIn extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={10} lg={10}>
-            <div align="center" style={{ marginTop: "20px" }}>
+            <div align="center">
               <Card>
                 <CardHeader
                   title="Member Check In"

@@ -13,18 +13,13 @@ class PageMember extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <div style={{ marginTop: "20px" }}>
-              <Card>
-                <CardHeader align="center" title="Create a new member" />
-                <CardContent>
-                  <CreateMember />
-                </CardContent>
-              </Card>
-            </div>
-            <div  style={{ marginTop: "20px" }}>
-                  <ViewMembers />
-                
-            </div>
+            <Card>
+              <CardHeader align="center" title="Create a new member" />
+              <CardContent>
+                <CreateMember />
+              </CardContent>
+            </Card>
+            <ViewMembers />
           </Grid>
         </Grid>
       </div>

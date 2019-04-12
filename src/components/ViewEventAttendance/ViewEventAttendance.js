@@ -72,7 +72,7 @@ class ViewEventAttendance extends Component {
 			<div>
 				<Grid container justify="center">
 					<Grid item xs={12} sm={8} md={6} lg={6}>
-						<div align="center" style={{ marginTop: "20px" }}>
+						<div align="center">
 							<Card>
 								<CardHeader
 									title={"Members attending " + this.state.eventName + ":"}
