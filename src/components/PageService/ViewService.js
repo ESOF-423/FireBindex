@@ -1,38 +1,24 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-import PropTypes from 'prop-types';
+import Button from "@material-ui/core/Button";
+import MUIDataTable from "mui-datatables";
 
+const columns = ["", "Name", "Date", "Time", "Description", ""];
 
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-
-const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
-  }
-});
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
+};
 
 class ViewService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       services: []
     };
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
-
     this.props.firebase.services().on("value", snapshot => {
       const servicesObject = snapshot.val();
 
@@ -44,7 +30,6 @@ class ViewService extends Component {
 
         this.setState({
           services: servicesList,
-          loading:false
         });
         console.log(servicesList);
       }
@@ -61,42 +46,38 @@ class ViewService extends Component {
   }  
 
   render() {
-    const { services, loading } = this.state
-    const { classes } = this.props
+    const { services } = this.state
+
+    var servicesArray = [];
+
+    services.map(service =>
+      servicesArray.push([
+        service.serviceName,
+        service.serviceStartDate,
+        service.serviceStartTime,
+        service.serviceDescription,
+        <Button
+          type="submit"
+          size="small"
+          variant="contained"
+          onClick={e => this.removeEvent(service.uid)}
+        >
+          Delete Service
+        </Button>
+      ])
+    );
+
     return (
       <div>
-        {loading && <div>Loading ...</div>}
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow >
-              <TableCell>Name</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Time</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell></TableCell>              
-            </TableRow>
-            </TableHead>
-            <TableBody>            
-              {services.map(service => (
-                <TableRow>
-                  <TableCell>{service.serviceName}</TableCell>
-                  <TableCell>{service.serviceStartDate}</TableCell>
-                  <TableCell>{service.serviceStartTime}</TableCell>
-                  <TableCell>{service.serviceDescription}</TableCell>
-                  <TableCell><button type="submit"  onClick={
-                    (e) => this.removeService(service.uid)}>
-                    Delete Service</button>
-                  </TableCell>
-                </TableRow>))}
-            </TableBody>
-        </Table>
+        <MUIDataTable
+          title={"All Services"}
+          data={servicesArray}
+          columns={columns}
+          options={options}
+        />
       </div >
     );
   }
 }
 
-ViewService.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(withFirebase(ViewService));
+export default withFirebase(ViewService);

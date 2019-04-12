@@ -1,24 +1,14 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-import PropTypes from 'prop-types';
+import Button from "@material-ui/core/Button";
+import MUIDataTable from "mui-datatables";
 
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+const columns = ["Name", "Date", ""];
 
-const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
-  }
-});
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
+};
 
 function getAge(dateString) {
   var today = new Date();
@@ -35,13 +25,10 @@ class ViewShortMemberList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       members: []
     };
   }
   componentDidMount() {
-    this.setState({ loading: true });
-
     this.props.firebase.members().on("value", snapshot => {
       const membersObject = snapshot.val();
 
@@ -52,7 +39,6 @@ class ViewShortMemberList extends Component {
 
       this.setState({
         members: membersList,
-        loading: false
       });      
     });
   }
@@ -66,35 +52,36 @@ class ViewShortMemberList extends Component {
   }
 
   render() {
-    const { members, loading } = this.state;
-    const { classes } = this.props;
+    const { members } = this.state;
+
+    var membersArray = [];
+
+    members.map(member =>
+      membersArray.push([
+        member.firstName + " " + member.middleName + " " + member.lastName,
+        getAge(member.birthday),
+        <Button
+          type="submit"
+          size="small"
+          variant="contained"
+          onClick={(member.uid)}
+        >
+          Check In
+        </Button>
+      ])
+    );
+
     return (
       <div>
-        {loading && <div>Loading ...</div>}
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Age</TableCell>                            
-            </TableRow>
-          </TableHead>
-          <TableBody>  
-          {members.map(member => (
-            <TableRow>
-              <TableCell>
-                {member.firstName} {member.middleName} {member.lastName}
-              </TableCell>
-              <TableCell>{getAge(member.birthday)}</TableCell>              
-            </TableRow>))}
-          </TableBody>
-        </Table>
+        <MUIDataTable
+          title={"All Members"}
+          data={membersArray}
+          columns={columns}
+          options={options}
+        />
       </div>
     );
   }
 }
 
-ViewShortMemberList.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(withFirebase(ViewShortMemberList));
+export default withFirebase(ViewShortMemberList);
