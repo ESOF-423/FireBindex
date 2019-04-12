@@ -1,29 +1,20 @@
+// import react modules
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import SignOutButton from "../SignOut/SignOut";
 
+// import custom components
+import SignOutButton from "../SignOut/SignOut";
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
+
+// import @material-ui components
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  }
-};
-
+// constant to display the correct nav bar to an authenticated or unauthenticated user
 const Navigation = () => (
   <div>
     <AuthUserContext.Consumer>
@@ -32,6 +23,7 @@ const Navigation = () => (
   </div>
 );
 
+// the navbar for authorized users
 class NavigationAuth extends Component {
   render() {
     return (
@@ -76,6 +68,7 @@ class NavigationAuth extends Component {
   }
 }
 
+// the navbar for unauthorized users
 function NavigationNonAuth(props) {
   return (
     <div>
@@ -106,4 +99,4 @@ Navigation.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Navigation);
+export default (Navigation);

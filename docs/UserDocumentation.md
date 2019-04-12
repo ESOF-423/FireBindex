@@ -88,8 +88,10 @@ To change any information, please ask for an administrator. In order to best pre
 - Click the **Member Check In** button in the navigation bar at the top of the screen
 - You should see a list of events happening at the Belgrade Senior Center
 - Choose the event you would like to sign into and click the **Sign in to Event** button on the right
-- You should now see two feilds where you can enter your first and last name
+- You should now see two feilds where you can enter your first and last name followed by a table showing all members
 - Enter your first and last name (this is not case sensitive) and click the **Check In** button
+OR
+- Find your name on the list of members and click **Check In**
 
 ### View Event Attendance
 
