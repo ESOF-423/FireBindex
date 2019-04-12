@@ -13,20 +13,15 @@ class PageService extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={5} lg={4}>
-              <Card>
-                <CardHeader align="center" title="Create a new service" />
-                <CardContent>
-                  <CreateService />
-                </CardContent>
-              </Card>
+            <Card>
+              <CardHeader align="center" title="Create a new service" />
+              <CardContent>
+                <CreateService />
+              </CardContent>
+            </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={7} lg={6}>
-              <Card>
-                <CardHeader align="center" title="All Services" />
-                <CardContent>
-                  <ViewService />
-                </CardContent>
-              </Card>
+            <ViewService />
           </Grid>
         </Grid>
       </div>

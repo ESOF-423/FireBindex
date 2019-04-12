@@ -1,95 +1,108 @@
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
-
 import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import MUIDataTable from "mui-datatables";
 
-const styles = theme => ({
-	container: {
-		display: "flex",
-		flexWrap: "wrap"
-	},
-	textField: {
-		marginLeft: theme.spacing.unit,
-		marginRight: theme.spacing.unit,
-		width: 200
-	},
-	dense: {
-		marginTop: 19
-	},
-	menu: {
-		width: 200
-	}
-});
+const columns = ["Name", "Phone"];
 
-class ViewEventAttendance extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			firstName: "",
-			lastName: "",
-			eventUID: this.props.location.state.eventUID,
-			eventName: this.props.location.state.eventName,
-			attendingMembers: []
-		};
-	}
-
-	componentDidMount() {
-		this.setState({ loading: true });
-
-		this.props.firebase.attendances().on("value", snapshot => {
-			const attendanceObject = snapshot.val();
-			try {
-				const attendanceList = Object.keys(attendanceObject).map(key => ({
-					...attendanceObject[key],
-					uid: key
-				}))
-
-				const attendingMembers = attendanceList.filter(att =>
-					att.event_id === this.state.eventUID)
-
-				this.setState({
-					loading: false,
-					attendingMembers: attendingMembers									
-				})				
-			} catch{
-				this.setState({
-					attendingMembers: null,				
-				})
-			}			
-			console.log("attending: ");
-			console.log(this.state.attendingMembers);
-		});
-	}
-
-	render() {
-		return (
-			<div>
-				<Grid container justify="center">
-					<Grid item xs={12} sm={8} md={6} lg={6}>
-						<div align="center">
-							<Card>
-								<CardHeader
-									title={"Members attending " + this.state.eventName + ":"}
-								/>
-								<CardContent>									
-								</CardContent>
-							</Card>
-						</div>
-					</Grid>
-				</Grid>
-			</div>
-		);
-	}
-}
-
-ViewEventAttendance.propTypes = {
-	classes: PropTypes.object.isRequired
+const options = {
+  selectableRows: false,
+  responsive: "scroll"
 };
 
-export default withStyles(styles)(withFirebase(ViewEventAttendance));
+class ViewEventAttendance extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      firstName: "",
+      lastName: "",
+      eventUID: this.props.location.state.eventUID,
+      eventName: this.props.location.state.eventName,
+      attendances: [],
+      attendingMembers: []
+    };
+  }
+
+  componentDidMount() {
+    this.props.firebase.attendances().on("value", snapshot => {
+      const attendanceObject = snapshot.val();
+      try {
+        const attendanceList = Object.keys(attendanceObject).map(key => ({
+          ...attendanceObject[key],
+          uid: key
+        }));
+
+        const attendances = attendanceList.filter(
+          att => att.event_id === this.state.eventUID
+        );
+
+        this.setState({
+			attendances: attendances
+        });
+      } catch {
+        this.setState({
+			attendances: null
+        });
+      }
+      console.log("attending: ");
+      console.log(this.state.attendances);
+    });
+
+    this.props.firebase.members().on("value", snapshot => {
+      const membersObject = snapshot.val();
+
+      const membersList = Object.keys(membersObject).map(key => ({
+        ...membersObject[key],
+        uid: key
+      }));
+
+      console.log("all members: ");
+	  console.log(this.state.members);
+	  
+	  const attendingMembers = [];
+	  this.state.attendances.map(att => {
+		  membersList.map(mem => {
+			  if (att.user_id === mem.uid) attendingMembers.push(mem)
+		  })
+	  })
+
+	    this.setState({
+        attendingMembers: attendingMembers
+	  });
+	
+    });
+  }
+
+  render() {
+    const { attendingMembers } = this.state;
+
+    var membersArray = [];
+
+    attendingMembers.map(member =>
+      membersArray.push([
+        member.firstName + " " + member.lastName,
+        member.phoneNumber
+      ])
+    );
+
+    return (
+      <div>
+        <Grid container justify="center">
+          <Grid item xs={12} sm={10} md={8} lg={8}>
+            <div align="center">
+              <MUIDataTable
+                title={"All Members Attending " + this.state.eventName}
+                data={membersArray}
+                columns={columns}
+                options={options}
+              />
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
+}
+
+export default withFirebase(ViewEventAttendance);
