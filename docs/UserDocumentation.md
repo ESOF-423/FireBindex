@@ -2,127 +2,101 @@
 
 ## How to Use Bindex.tk
 
-This is the documentation for all users of bindex.tk on how to use the website. Instructions include commonly performed user actions, as well as a Frequently Asked Question [FAQ](#faq) section
+This documentation should help all the users of [Bindex.tk](Bindex.tk) use the website. Instructions include step by step instructions for commonly performed user actions.
 
-## What is Bindex.tk
+## What is Bindex.tk?
 
-Bindex.tk is a web application meant to make the task of managing senior community centers simple. We hope the final product will give your members and staff the ability to keep track of everything your center offers with an easy-to-use and effective toolset:
+Bindex.tk is a web application meant to make the task of managing senior community centers simple. We hope the product will give your staff the ability to keep track of everything your center offers with an easy-to-use and effective toolset:
 
-* Administrator tools
+- Administrator tools
 
-   With Administrator tools, you'll be able to manage members and volunteers and all of their information.
-   You'll also be able to use search tools to quickly access this information needed for printing forms, writing reports, and grants.
-   In addition, you'll be able to create activities, services and meals that members can sign up for.
+  Administrators will be able to manage members and all their information, use search tools to quickly access information, and create services and events that members can sign up for.
 
-* Member tools
+- Member tools
 
-   Members will be able to view and edit their own information, sign up for and check into activities/meals.
-
-## Quick Links
-
-* [Members](#members)
-* [Administrators](#administrators)
+  Members will be able to check into events.
 
 ## Table of Contents
 
-* [User Documentation](#user-documentation)
-  * [How to Use Bindex.tk](#how-to-use-bindextk)
-  * [What is Bindex.tk](#what-is-bindextk)
-  * [Quick Links](#quick-links)
-  * [Table of Contents](#table-of-contents)
-  * [Members](#members)
-    * [How to Check-In to Activities](#how-to-check-in-to-activities)
-    * [Changing my Information](#changing-my-information)
-    * [Check-Out Medical Equipment](#check-out-medical-equipment)
-  * [Administrators](#administrators)
-    * [Log into Bindex.tk](#log-into-bindextk)
-    * [Check-In Members to Activities or Services](#check-in-members-to-activities-or-services-1)
-    * [Edit Basic Member Information](#edit-basic-member-information-1)
-    * [Add Members](#add-members)
-    * [Add an Event](#add-an-event)
-  * [FAQ](#faq)
-    * [Members Questions](#members-questions)
-    * [Volunteers Questions](#volunteers-questions)
-    * [Administrator Questions](#administrator-questions)
+- [User Documentation](#user-documentation)
+  - [How to Use Bindex.tk](#how-to-use-bindextk)
+  - [What is Bindex.tk?](#what-is-bindextk)
+  - [Table of Contents](#table-of-contents)
+  - [Members](#members)
+    - [How to Check-In to Events](#how-to-check-in-to-events)
+    - [How to Change Your Information](#how-to-change-your-information)
+  - [Administrators](#administrators)
+    - [Log into Bindex.tk](#log-into-bindextk)
+    - [Add a New Member](#add-a-new-member)
+    - [Add an Event](#add-an-event)
+    - [Add a Service](#add-a-service)
+    - [Check Members in to Events](#check-members-in-to-events)
+    - [View Event Attendance](#view-event-attendance)
 
 ---
 
 ## Members
 
-### How to Check-In to Activities
+### How to Check-In to Events
 
-To Check-In to Events:
-* Open a new web browser and navigate to [Bindex.tk](Bindex.tk)
-* You should see a list of events happening at the Belgrade Senior Center
-* Choose the event you would like to sign into and click the **Sign in to Event** button on the right
-* You should now see two feilds where you can enter your first and last name
-* Enter your first and last name (this is not case sensitive) and click the **Check In** button
+- Open a new web browser and navigate to [Bindex.tk](Bindex.tk)
+- You should see a list of events happening at the Belgrade Senior Center
+- Choose the event you would like to sign in to and click the **Sign in to Event** button on the right
+- You should now see two fields where you can enter your first and last name
+- Enter your first and last name (this is not case sensitive) and click the **Check In** button
 
-### Changing my Information
+### How to Change Your Information
 
-To change any information, please ask for an administrator. In order to best preserve your existing data and ensure quality on your new data, only those in charge and who have training with the tools can edit your information.
+To change any information, please ask for an administrator. In order to best preserve your existing data and ensure the quality of your new data, only those who have training with the tool can edit your information.
 
 ## Administrators
 
 ### Log into Bindex.tk
 
-* Open a new web browser and navigate to [Bindex.tk](Bindex.tk)
-* In the navigation bar at the top, click the **Sign In** button
-* Type your credentials into the fields and click "Log in"
-* You should now see several more options in the navigation bar that allow you to manage data
+- Open a new web browser and navigate to [Bindex.tk](Bindex.tk)
+- In the navigation bar at the top, click the **Sign In** button
+- Type your credentials into the fields and click **Sign in**
+- You should now see several more options in the navigation bar that allow you to view and manage data
 
-### [Check-In Members to Activities or Services](#check-in-members-to-activities-or-services)
-* Click the **Member Check In** button in the navigation bar at the top of the screen
-* You should see a list of events happening at the Belgrade Senior Center
-* Choose the event you would like to sign into and click the **Sign in to Event** button on the right
-* You should now see two feilds where you can enter your first and last name
-* Enter your first and last name (this is not case sensitive) and click the **Check In** button
+### Add a New Member
 
-### [Edit Basic Member Information](#edit-basic-member-information)
-
-* Log into Bindex.tk as instructed above
-* Click on "Members" in navigation bar at the top of the screen
-* Search for the member who's information you want to change
-  * Find the search form and fill out the First and Last name of your member then click the "Search" button.
-  * Wait for your results to show up in the "Search results" table.
-* Edit your member's information
-  * Locate your member in the "Search results" table and click the "edit" link located on the end of the row which holds your member's details
-  * Click the link 
-  * Update the information in the new form shown
-  * Click submit 
-  
-### Add Members
-
-This guide is meant to help you add members (seniors who have membership at your facility) to your bindex.tk site.
-
-* Log into Bindex.tk as instructed above
-* Click on **Members** in navigation bar at the top of the screen
-* You should see a form on the screen to add a member
-* Enter the member's information
-   * Make sure the information is correct and complete. The form cannot be submitted if all the information is not present.
-* Click the **Submit** button
+- Log into Bindex.tk as instructed above
+- Click on **Member** in navigation bar at the top of the screen
+- You should see a form on the screen to add a member
+- Enter the member's information. Make sure the information is correct and complete, otherwise the form cannot be submitted.
+- Click the **Submit** button
 
 ### Add an Event
 
-* Log into Bindex.tk as instructed above
-* Click on **Events** in navigation bar at the top of the screen
-* You should see a form on the screen to add an event
-* Enter the event's information
-* Click the **Submit** button
+- Log into Bindex.tk as instructed above
+- Click on **Event** in navigation bar at the top of the screen
+- You should see a form on the screen to add an event
+- Enter the event's information
+- Click the **Submit** button
+
+### Add a Service
+
+- Log into Bindex.tk as instructed above
+- Click on **Service** in navigation bar at the top of the screen
+- You should see a form on the screen to add a service
+- Enter the service's information
+- Click the **Submit** button
+
+### Check Members in to Events
+
+- Log into Bindex.tk as instructed above
+- Click the **Member Check In** button in the navigation bar at the top of the screen
+- You should see a list of events happening at the Belgrade Senior Center
+- Choose the event you would like to sign into and click the **Sign in to Event** button on the right
+- You should now see two feilds where you can enter your first and last name
+- Enter your first and last name (this is not case sensitive) and click the **Check In** button
+
+### View Event Attendance
+
+- Log into Bindex.tk as instructed above
+- Click on **Event** in navigation bar at the top of the screen
+- You should see a table listing all the events at the senior center
+- Click the **View Attendance** button next to the event you are interested in
+- You should be redirected to a page listing the people that signed in to that event
 
 ---
-
----
-
-## FAQ
-
-### Members Questions
-
-### Volunteers Questions
-
-### Administrator Questions
-
-* How do I add Seniors?
-* How do I edit information of Seniors?
-* How do I fill out forms?
-* How do I print out forms?
