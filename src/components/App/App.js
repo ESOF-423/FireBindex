@@ -1,7 +1,9 @@
+// import react 
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withAuthentication } from "../Session";
 
+// import pages
 import Navigation from "../Navigation/Navigation";
 import MemberCheckInPage from "../PageMemberCheckIn/PageMemberCheckIn";
 import SignUpPage from "../PageSignUp/PageSignUp";
@@ -16,8 +18,10 @@ import ServicePage from "../PageService/PageService";
 import CheckInMember from "../PageMemberCheckIn/CheckInMember";
 import AttendancePage from "../ViewEventAttendance/ViewEventAttendance"
 
+// import routes
 import * as ROUTES from "../../constants/routes";
 
+// constant to manage the whole app and its routing
 const App = () => (
   <Router>
     <div>

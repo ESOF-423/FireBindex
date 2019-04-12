@@ -1,17 +1,25 @@
+// import react/firebase components
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withFirebase } from "../Firebase";
-import Button from "@material-ui/core/Button";
 import MUIDataTable from "mui-datatables";
+
+// import @material-ui components
+import Button from "@material-ui/core/Button";
+
+// import routes
 import * as ROUTES from "../../constants/routes";
 
+// defines the headers of the columns in the table
 const columns = ["", "Name", "Date", "Time", "Description", ""];
 
+// defines the options for the table
 const options = {
   selectableRows: false,
   responsive: "scroll"
 };
 
+// class to view all the events in the database
 class ViewEvent extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +28,7 @@ class ViewEvent extends Component {
     };
   }
 
+  // function runs when page renders to get all events in the database
   componentDidMount() {
     this.props.firebase.events().on("value", snapshot => {
       const eventsObject = snapshot.val();
@@ -41,6 +50,7 @@ class ViewEvent extends Component {
     });
   }
 
+  // function to delete an event
   removeEvent(eid) {
     this.props.firebase
       .events()
@@ -53,6 +63,7 @@ class ViewEvent extends Component {
 
     var eventsArray = [];
 
+    // maps the event JSON object to an array for the table
     events.map(event =>
       eventsArray.push([
         <Link

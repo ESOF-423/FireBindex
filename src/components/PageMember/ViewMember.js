@@ -1,8 +1,12 @@
+// import react/firebase components
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
 import MUIDataTable from "mui-datatables";
+
+// import @material-ui components
 import Button from "@material-ui/core/Button";
 
+// headers for the table
 const columns = [
   "Name",
   "Age",
@@ -14,11 +18,13 @@ const columns = [
   ""
 ];
 
+// options for the table
 const options = {
   selectableRows: false,
   responsive: "scroll"
 };
 
+// function to convert birthday to age
 function getAge(dateString) {
   var today = new Date();
   var birthDate = new Date(dateString);
@@ -30,6 +36,7 @@ function getAge(dateString) {
   return age;
 }
 
+// function to display the correct meal type
 function convertMeals(input) {
   switch (input) {
     case 0: return "In-Center Meals"
@@ -39,6 +46,8 @@ function convertMeals(input) {
   }
 }
 
+// class to view all the members in the database
+
 class ViewMember extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +55,8 @@ class ViewMember extends Component {
       members: []
     };
   }
+
+  // function that gets all the members from the database
   componentDidMount() {
     this.props.firebase.members().on("value", snapshot => {
       const membersObject = snapshot.val();
@@ -65,6 +76,7 @@ class ViewMember extends Component {
     this.props.firebase.members().off();
   }
 
+  // function to delete a member
   removeMember(mid) {
     this.props.firebase
       .members()
@@ -77,6 +89,7 @@ class ViewMember extends Component {
 
     var membersArray = [];
 
+    // maps the member JSON data to a member array for the table
     members.map(member =>
       membersArray.push([
         member.firstName + " " + member.lastName,

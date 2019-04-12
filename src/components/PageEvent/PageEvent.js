@@ -1,12 +1,18 @@
+//import react/firebase components
 import React, { Component } from "react";
 import { withFirebase } from "../Firebase";
+
+// import custom components
 import ViewEvent from "./ViewEvent";
 import CreateEvent from "./CreateEvent";
+
+// import @material-ui components
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 
+// class that renders the event page with create and view event capabilities
 class PageEvent extends Component {
   render() {
     return (
