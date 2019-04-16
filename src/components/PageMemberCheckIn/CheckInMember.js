@@ -24,14 +24,14 @@ const options = {
   responsive: "scroll"
 };
 
-const styles = theme => ({
+const styles = style => ({
   container: {
     display: "flex",
     flexWrap: "wrap"
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    marginLeft: style.spacing.unit,
+    marginRight: style.spacing.unit,
     width: 200
   },
   dense: {

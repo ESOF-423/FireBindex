@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
-const styles = theme => ({
+const styles = ({
   container: {
     display: "flex",
     flexWrap: "wrap"

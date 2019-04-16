@@ -1,12 +1,18 @@
+// import react components
 import React from "react";
-import { withAuthorization } from "../Session";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+// import material-ui components
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
+// import custom components
+import { withAuthorization } from "../Session";
+
+// import icons
 import event_available from "../../assets/icons/baseline_event_available_black_48dp.png";
 import event from "../../assets/icons/baseline_event_black_48dp.png";
 import person_add from "../../assets/icons/baseline_person_add_black_48dp.png";

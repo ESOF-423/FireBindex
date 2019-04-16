@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
 // form style
-const styles = theme => ({
+const styles = ({
   container: {
     display: "flex",
     flexWrap: "wrap"

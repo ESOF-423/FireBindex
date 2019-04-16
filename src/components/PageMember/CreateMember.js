@@ -13,8 +13,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 
-// form theme
-const styles = theme => ({
+// form styles
+const styles = ({
   container: {
     display: "flex",
     flexWrap: "wrap"
