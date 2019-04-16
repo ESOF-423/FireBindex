@@ -38,7 +38,7 @@ function getAge(dateString) {
 
 // function to display the correct meal type
 function convertMeals(input) {
-  switch (input) {
+  switch (parseInt(input)) {
     case 0: return "In-Center Meals"
     case 1: return "Meals on Wheels"
     case 2: return "No Meals"

@@ -29,7 +29,7 @@ class ViewService extends Component {
       const servicesObject = snapshot.val();
 
       try {
-        //map object into list 
+        //map object into list
         const servicesList = Object.keys(servicesObject).map(key => ({
           ...servicesObject[key],
           uid: key
@@ -38,7 +38,6 @@ class ViewService extends Component {
         this.setState({
           services: servicesList,
         });
-        console.log(servicesList);
       }
       catch {
         this.setState({
@@ -48,8 +47,8 @@ class ViewService extends Component {
     });
   }
 
-  //remove service using unique id 
-  removeService(sid) {    
+  //remove service using unique id
+  removeService(sid) {
     this.props.firebase.services().child(sid).remove();
   }
 
