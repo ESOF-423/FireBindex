@@ -72,7 +72,7 @@ class ViewEvent extends Component {
             }
           }}
         >
-          <Button size="large" color="primary" variant="contained">
+          <Button size="large" color="secondary" variant="contained">
             Sign In To Event
           </Button>
         </Link>

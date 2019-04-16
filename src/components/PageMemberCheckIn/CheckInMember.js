@@ -16,7 +16,7 @@ import { withStyles } from "@material-ui/core/styles";
 import MUIDataTable from "mui-datatables";
 
 //Table column headers
-const columns = ["Member Names", "Check In"];
+const columns = ["Member Names", "Birthday", "Check In"];
 
 //MUI table options
 const options = {
@@ -34,11 +34,8 @@ const styles = style => ({
     marginRight: style.spacing.unit,
     width: 200
   },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200
+  item: {
+    padding: 24
   }
 });
 
@@ -66,11 +63,11 @@ class CheckInMember extends Component {
         ...membersObject[key],
         uid: key
       }));
-      
+
       //update state with newly made members list
       this.setState({
-        membersList: membersList,
-      });      
+        membersList: membersList
+      });
     });
   }
 
@@ -80,43 +77,43 @@ class CheckInMember extends Component {
   }
 
   //Called from buttons. Searches for member in db and then pushes into db attendance table
-  onSubmit = (nameArray) => {    
-    var firstName = this.state.firstName
-    var lastName = this.state.lastName
+  onSubmit = nameArray => {
+    var firstName = this.state.firstName;
+    var lastName = this.state.lastName;
     const { event_id, membersList } = this.state;
-    
+
     //submit() may be called without parameters.
     //check if param undefined; then use state firstName & lastName. Else use parameters
-    if(typeof nameArray[0] !== "undefined"  && typeof nameArray[1] !== "undefined"){
-      firstName = nameArray[0]
-      lastName = nameArray[1]
+    if (
+      typeof nameArray[0] !== "undefined" &&
+      typeof nameArray[1] !== "undefined"
+    ) {
+      firstName = nameArray[0];
+      lastName = nameArray[1];
     }
-      //For every member in db, check if member exists such that firstname & lastname match
-      for (var i = 0; i < membersList.length; i++) {        
-        if (
-          membersList[i].firstName.toLowerCase() === firstName.toLowerCase() &&
-          membersList[i].lastName.toLowerCase() === lastName.toLowerCase() &&
-          event_id.event_id !== ""
-        ) {          
-          //Create attendance using member uid and event uid
-          const attendance = {
-            user_id: membersList[i].uid,
-            event_id: event_id.event_id
-          };          
-          //push to db
-          this.props.firebase.attendances().push(attendance);
-          //display success message
-          document.getElementById("successMessage").innerHTML = 
-            "Success! " 
-            + firstName + " "
-            + lastName  + " is checked in!";
-          break
-        } 
-        else {
-          document.getElementById("successMessage").innerHTML =
-            "Member not found in database, try again";
-        }
-      }    
+    //For every member in db, check if member exists such that firstname & lastname match
+    for (var i = 0; i < membersList.length; i++) {
+      if (
+        membersList[i].firstName.toLowerCase() === firstName.toLowerCase() &&
+        membersList[i].lastName.toLowerCase() === lastName.toLowerCase() &&
+        event_id.event_id !== ""
+      ) {
+        //Create attendance using member uid and event uid
+        const attendance = {
+          user_id: membersList[i].uid,
+          event_id: event_id.event_id
+        };
+        //push to db
+        this.props.firebase.attendances().push(attendance);
+        //display success message
+        document.getElementById("successMessage").innerHTML =
+          "Success! " + firstName + " " + lastName + " is checked in!";
+        break;
+      } else {
+        document.getElementById("successMessage").innerHTML =
+          "Member not found in database, try again";
+      }
+    }
   };
 
   onChange = event => {
@@ -125,20 +122,22 @@ class CheckInMember extends Component {
 
   render() {
     const { firstName, lastName, membersList } = this.state;
-    const { classes } = this.props;    
+    const { classes } = this.props;
 
     var membersArray = [];
-    
+
     //map all db members so we can display list to choose from
     membersList.map(member =>
       membersArray.push([
-        member.firstName + " " + member.middleName + " " + member.lastName,        
+        member.firstName + " " + member.middleName + " " + member.lastName,
+        member.birthday,
         <Button
           type="submit"
-          size="small"
+          size="large"
           variant="contained"
-          onClick={(e) =>
-            this.onSubmit([member.firstName, member.lastName]) 
+          color="secondary"
+          onClick={
+            e => this.onSubmit([member.firstName, member.lastName])
             //calls onSubmit with parameters
           }
         >
@@ -149,14 +148,11 @@ class CheckInMember extends Component {
 
     return (
       <div>
-        <Grid container justify="center">
-          <Grid item xs={12} sm={8} md={6} lg={6}>
+        <Grid container>
+          <Grid item className={classes.item} xs={12} sm={12} md={4} lg={4}>
             <div align="center">
               <Card>
-                <CardHeader
-                  title="Sign in to Event"
-                  subheader="Sign in with your first and last name"
-                />
+                <CardHeader title="Sign in With Your First and Last Name" />
                 <CardContent>
                   <form classname={classes.container} onSubmit={this.onSubmit}>
                     <TextField
@@ -185,22 +181,24 @@ class CheckInMember extends Component {
                       type="button"
                       onClick={this.onSubmit}
                       size="large"
-                      color="primary"
+                      color="secondary"
                       variant="contained"
                     >
                       Check In
                     </Button>
                     <div id="successMessage" />
                   </form>
-                  <MUIDataTable
-                    title={"All Members"}
-                    data={membersArray}
-                    columns={columns}
-                    options={options}
-                  />
                 </CardContent>
               </Card>
             </div>
+          </Grid>
+          <Grid item className={classes.item} xs={12} sm={12} md={8} lg={8}>
+            <MUIDataTable
+              title={"Or Find You Name Below"}
+              data={membersArray}
+              columns={columns}
+              options={options}
+            />
           </Grid>
         </Grid>
       </div>
