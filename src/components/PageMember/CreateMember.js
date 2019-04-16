@@ -126,7 +126,6 @@ class CreateMember extends Component {
                 fullWidth
               />
             </Grid>
-
             <Grid item xs={12} sm={4} md={4} lg={4}>
               <TextField
                 classname={classes.textField}
@@ -165,7 +164,6 @@ class CreateMember extends Component {
                 fullWidth
               />
             </Grid>
-
             <Grid item xs={12} sm={6} md={6} lg={6}>
               <TextField
                 classname={classes.textField}
@@ -191,7 +189,6 @@ class CreateMember extends Component {
                 fullWidth
               />
             </Grid>
-
             <Grid item xs={12} sm={4} md={4} lg={4}>
               <TextField
                 classname={classes.textField}
@@ -235,22 +232,13 @@ class CreateMember extends Component {
           <h3>Meals</h3>
           <Grid container>
             <Grid item xs={12} sm={6} md={6} lg={6}>
-              {/* <TextField
-                classname={classes.textField}
-                margin="normal"
-                value={meals}
-                type="text"
-                onChange={this.onChange}
-                name="meals"
-                label="0,1, or 2"
-                required
-                fullWidth */}
               <FormControl component="fieldset" className={classes.formControl}>
                 <RadioGroup
                   name="meals"
                   className={classes.group}
-                  value={this.state.value}
+                  value={meals}
                   onChange={this.onChange}
+                  type="number"
                 >
                   <FormControlLabel value="0" control={<Radio />} label="In-Center Meals" />
                   <FormControlLabel value="1" control={<Radio />} label="Meals on Wheels" />

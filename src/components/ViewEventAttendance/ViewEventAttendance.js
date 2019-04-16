@@ -48,7 +48,7 @@ class ViewEventAttendance extends Component {
         //update state with newly made attendances list
         this.setState({
           attendances: attendances
-		});	    
+		});
       }
       catch {
         this.setState({
@@ -65,11 +65,11 @@ class ViewEventAttendance extends Component {
       const membersList = Object.keys(membersObject).map(key => ({
         ...membersObject[key],
         uid: key
-      }));      
+      }));
       const attendingMembers = [];
       //filter out members, who's uid matches a uid from the attendance table of the specific event
-      this.state.attendances.map(att => {
-        membersList.map(mem => {
+      this.state.attendances.forEach(att => {
+        membersList.forEach(mem => {
           if (att.user_id === mem.uid) attendingMembers.push(mem);
         });
       });

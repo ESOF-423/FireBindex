@@ -9,7 +9,6 @@ import Grid from "@material-ui/core/Grid";
 
 import event_available from "../../assets/icons/baseline_event_available_black_48dp.png";
 import event from "../../assets/icons/baseline_event_black_48dp.png";
-import person_add from "../../assets/icons/baseline_person_add_black_48dp.png";
 import person from "../../assets/icons/baseline_person_black_48dp.png";
 import room_service from "../../assets/icons/baseline_room_service_black_48dp.png";
 import account_box from "../../assets/icons/baseline_account_box_black_48dp.png"
@@ -40,7 +39,7 @@ function HomePage(props) {
     <Grid container>
       <Grid item xs={12} sm={6} md={4} lg={4}>
         <Paper className={classes.root} elevation={1}>
-          <img className={classes.media} src={event_available} />
+          <img alt="Check Into an Event" className={classes.media} src={event_available}/>
           <br />
           <Link className={classes.link} to={ROUTES.EVENT_CHECK_IN}>
             <Button className={classes.button} size="large" color="primary">
@@ -51,7 +50,7 @@ function HomePage(props) {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
         <Paper className={classes.root} elevation={1}>
-          <img className={classes.media} src={person} />
+          <img alt="Members" className={classes.media} src={person} />
           <br />
           <Link className={classes.link} to={ROUTES.MEMBER}>
             <Button className={classes.button} size="large" color="primary">
@@ -62,7 +61,7 @@ function HomePage(props) {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
         <Paper className={classes.root} elevation={1}>
-          <img className={classes.media} src={event} />
+          <img alt="Events" className={classes.media} src={event} />
           <br />
           <Link className={classes.link} to={ROUTES.EVENT}>
             <Button className={classes.button} size="large" color="primary">
@@ -73,7 +72,7 @@ function HomePage(props) {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
         <Paper className={classes.root} elevation={1}>
-          <img className={classes.media} src={room_service} />
+          <img alt="Services" className={classes.media} src={room_service} />
           <br />
           <Link className={classes.link} to={ROUTES.SERVICE}>
             <Button className={classes.button} size="large" color="primary">
@@ -84,7 +83,7 @@ function HomePage(props) {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
         <Paper className={classes.root} elevation={1}>
-          <img className={classes.media} src={account_box} />
+          <img alt="Manage my Admin Account" className={classes.media} src={account_box} />
           <br />
           <Link className={classes.link} to={ROUTES.ACCOUNT}>
             <Button className={classes.button} size="large" color="primary">
