@@ -38,59 +38,59 @@ function HomePage(props) {
   return (
     <Grid container>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <Paper className={classes.root} elevation={1}>
-          <img alt="Check Into an Event" className={classes.media} src={event_available}/>
-          <br />
-          <Link className={classes.link} to={ROUTES.EVENT_CHECK_IN}>
+        <Link className={classes.link} to={ROUTES.EVENT_CHECK_IN}>
+          <Paper className={classes.root} elevation={1}>
+            <img alt="Check Into an Event" className={classes.media} src={event_available} />
+            <br />
             <Button className={classes.button} size="large" color="primary">
               Check Into an Event
             </Button>
-          </Link>
-        </Paper>
+          </Paper>
+        </Link>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <Paper className={classes.root} elevation={1}>
-          <img alt="Members" className={classes.media} src={person} />
-          <br />
-          <Link className={classes.link} to={ROUTES.MEMBER}>
+        <Link className={classes.link} to={ROUTES.MEMBER}>
+          <Paper className={classes.root} elevation={1}>
+            <img alt="Members" className={classes.media} src={person} />
+            <br />
             <Button className={classes.button} size="large" color="primary">
               Members
             </Button>
-          </Link>
-        </Paper>
+          </Paper>
+        </Link>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <Paper className={classes.root} elevation={1}>
-          <img alt="Events" className={classes.media} src={event} />
-          <br />
-          <Link className={classes.link} to={ROUTES.EVENT}>
+        <Link className={classes.link} to={ROUTES.EVENT}>
+          <Paper className={classes.root} elevation={1}>
+            <img alt="Events" className={classes.media} src={event} />
+            <br />
             <Button className={classes.button} size="large" color="primary">
               Events
             </Button>
-          </Link>
-        </Paper>
+          </Paper>
+        </Link>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <Paper className={classes.root} elevation={1}>
-          <img alt="Services" className={classes.media} src={room_service} />
-          <br />
-          <Link className={classes.link} to={ROUTES.SERVICE}>
+        <Link className={classes.link} to={ROUTES.SERVICE}>
+          <Paper className={classes.root} elevation={1}>
+            <img alt="Services" className={classes.media} src={room_service} />
+            <br />
             <Button className={classes.button} size="large" color="primary">
               Services
             </Button>
-          </Link>
-        </Paper>
+          </Paper>
+        </Link>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <Paper className={classes.root} elevation={1}>
-          <img alt="Manage my Admin Account" className={classes.media} src={account_box} />
-          <br />
-          <Link className={classes.link} to={ROUTES.ACCOUNT}>
+        <Link className={classes.link} to={ROUTES.ACCOUNT}>
+          <Paper className={classes.root} elevation={1}>
+            <img alt="Manage my Admin Account" className={classes.media} src={account_box} />
+            <br />
             <Button className={classes.button} size="large" color="primary">
               Manage my Admin Account
             </Button>
-          </Link>
-        </Paper>
+          </Paper>
+        </Link>
       </Grid>
     </Grid>
   );
