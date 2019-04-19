@@ -35,6 +35,7 @@
   ],
   "devDependencies": {
     "coveralls": "^3.0.3",
+    "material-design-icons": "^3.0.1",
     "mui-datatables": "^2.0.0-beta.59"
   }
 }
