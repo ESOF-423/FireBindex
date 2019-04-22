@@ -84,9 +84,26 @@ class NavigationAuth extends Component {
               open={Boolean(anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}>Member</MenuItem>
-              <MenuItem onClick={this.handleClose}>Event</MenuItem>
-              <MenuItem onClick={this.handleClose}>Service</MenuItem>
+              <MenuItem onClick={this.handleClose}>
+                <i class="material-icons">group_add</i>
+                <div style={{ width: 16 }} />
+                Member
+              </MenuItem>
+              <MenuItem onClick={this.handleClose}>
+                <i class="material-icons">event_available</i>
+                <div style={{ width: 16 }} />
+                Event
+              </MenuItem>
+              <MenuItem onClick={this.handleClose}>
+                <i class="material-icons">room_service</i>
+                <div style={{ width: 16 }} />
+                Service
+              </MenuItem>
+              <MenuItem onClick={this.handleClose}>
+                <i class="material-icons">person_add</i>
+                <div style={{ width: 16 }} />
+                Admin
+              </MenuItem>
             </Menu>
 
             <div style={{ marginLeft: "auto" }}>
