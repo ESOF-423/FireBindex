@@ -85,23 +85,27 @@ class NavigationAuth extends Component {
               onClose={this.handleClose}
             >
               <MenuItem onClick={this.handleClose}>
-                <i class="material-icons">group_add</i>
-                <div style={{ width: 16 }} />
+                <i class="material-icons" style={{ paddingRight: 16 }}>
+                  group_add
+                </i>
                 Member
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
-                <i class="material-icons">event_available</i>
-                <div style={{ width: 16 }} />
+                <i class="material-icons" style={{ paddingRight: 16 }}>
+                  event_available
+                </i>
                 Event
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
-                <i class="material-icons">room_service</i>
-                <div style={{ width: 16 }} />
+                <i class="material-icons" style={{ paddingRight: 16 }}>
+                  room_service
+                </i>
                 Service
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
-                <i class="material-icons">person_add</i>
-                <div style={{ width: 16 }} />
+                <i class="material-icons" style={{ paddingRight: 16 }}>
+                  person_add
+                </i>
                 Admin
               </MenuItem>
             </Menu>
