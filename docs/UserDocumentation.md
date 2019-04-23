@@ -30,7 +30,11 @@ Bindex.tk is a web application meant to make the task of managing senior communi
     - [Add a New Member](#add-a-new-member)
     - [Add an Event](#add-an-event)
     - [Add a Service](#add-a-service)
+    - [Add a New Admin](#add-a-new-admin)
     - [Check Members in to Events](#check-members-in-to-events)
+    - [View All Members](#view-all-members)
+    - [View All Events](#view-all-events)
+    - [View All Services](#view-all-services)
     - [View Event Attendance](#view-event-attendance)
     - [Searching/Sorting/Filtering](#searchingsortingfiltering)
 
@@ -42,7 +46,7 @@ Bindex.tk is a web application meant to make the task of managing senior communi
 
 - Open a new web browser and navigate to [Bindex.tk](Bindex.tk)
 - You should see a list of events happening at the Belgrade Senior Center
-- Choose the event you would like to sign in to and click the **Sign in to Event** button on the right
+- Choose the event you would like to sign in to and click the **Sign in to Event** button
 - You should now see two fields where you can enter your first and last name
 - Enter your first and last name (this is not case sensitive) and click the **Check In** button
 
@@ -62,7 +66,7 @@ To change any information, please ask for an administrator. In order to best pre
 ### Add a New Member
 
 - Log into Bindex.tk as instructed above
-- Click on **Member** in navigation bar at the top of the screen
+- Click on **Create New** in navigation bar at the top of the screen and select **Member**
 - You should see a form on the screen to add a member
 - Enter the member's information. Make sure the information is correct and complete, otherwise the form cannot be submitted.
 - Click the **Submit** button
@@ -70,7 +74,7 @@ To change any information, please ask for an administrator. In order to best pre
 ### Add an Event
 
 - Log into Bindex.tk as instructed above
-- Click on **Event** in navigation bar at the top of the screen
+- Click on **Create New** in navigation bar at the top of the screen and select **Event**
 - You should see a form on the screen to add an event
 - Enter the event's information
 - Click the **Submit** button
@@ -78,26 +82,52 @@ To change any information, please ask for an administrator. In order to best pre
 ### Add a Service
 
 - Log into Bindex.tk as instructed above
-- Click on **Service** in navigation bar at the top of the screen
+- Click on **Create New** in navigation bar at the top of the screen and select **Service**
 - You should see a form on the screen to add a service
 - Enter the service's information
 - Click the **Submit** button
 
+### Add a New Admin
+
+- Log into Bindex.tk as instructed above
+- Click on **Create New** in navigation bar at the top of the screen and select **Admin**
+- You should see a form on the screen to add a admin
+- Enter the admin's information
+- Click the **Submit** button
+  
 ### Check Members in to Events
 
 - Log into Bindex.tk as instructed above
 - Click the **Member Check In** button in the navigation bar at the top of the screen
 - You should see a list of events happening at the Belgrade Senior Center
 - Choose the event you would like to sign into and click the **Sign in to Event** button on the right
-- You should now see two feilds where you can enter your first and last name followed by a table showing all members
+- You should now see two fields where you can enter your first and last name followed by a table showing all members
 - Enter your first and last name (this is not case sensitive) and click the **Check In** button
 OR
 - Find your name on the list of members and click **Check In**
 
+### View All Members
+
+- Log into Bindex.tk as instructed above
+- Click on **Members** in navigation bar at the top of the screen
+- You should see a table listing all the members at the senior center
+
+### View All Events
+
+- Log into Bindex.tk as instructed above
+- Click on **Events** in navigation bar at the top of the screen
+- You should see a table listing all the events at the senior center
+
+### View All Services
+
+- Log into Bindex.tk as instructed above
+- Click on **Services** in navigation bar at the top of the screen
+- You should see a table listing all the services at the senior center
+
 ### View Event Attendance
 
 - Log into Bindex.tk as instructed above
-- Click on **Event** in navigation bar at the top of the screen
+- Click on **Events** in navigation bar at the top of the screen
 - You should see a table listing all the events at the senior center
 - Click the **View Attendance** button next to the event you are interested in
 - You should be redirected to a page listing the people that signed in to that event
