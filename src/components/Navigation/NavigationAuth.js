@@ -43,16 +43,16 @@ class NavigationAuth extends Component {
               <Button>Home</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.ADMIN}>
-              <Button>Admin</Button>
+              <Button>Admins</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.MEMBER}>
               <Button>Members</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.EVENT}>
-              <Button>Event</Button>
+              <Button>Events</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.SERVICE}>
-              <Button>Service</Button>
+              <Button>Services</Button>
             </Link>
             <Link
               style={{ textDecoration: "none" }}
@@ -87,19 +87,22 @@ class NavigationAuth extends Component {
                   Member
                 </MenuItem>
               </Link>
-
+              <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_EVENT}>
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
                   today
                 </i>
                 Event
               </MenuItem>
-              <MenuItem onClick={this.handleClose}>
-                <i class="material-icons" style={{ paddingRight: 16 }}>
-                  room_service
+              </Link>
+              <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_SERVICE}>
+                <MenuItem onClick={this.handleClose}>
+                  <i class="material-icons" style={{ paddingRight: 16 }}>
+                    room_service
                 </i>
-                Service
+                  Service
               </MenuItem>
+              </Link>
               <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_UP}>
                 <MenuItem onClick={this.handleClose}>
                   <i class="material-icons" style={{ paddingRight: 16 }}>

@@ -8,6 +8,10 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+
 
 const styles = ({
   container: {
@@ -65,6 +69,9 @@ class CreateService extends Component {
 
     return (
       <div>
+        <Card>
+          <CardHeader align="center" title="Create a New Service" />
+          <CardContent>
         <form classname={classes.container} onSubmit={this.onSubmit}>
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -155,6 +162,8 @@ class CreateService extends Component {
             Submit
           </Button>
         </form>
+        </CardContent>
+        </Card>
       </div>
     );
   }

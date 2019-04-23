@@ -8,6 +8,10 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+
 
 // form style
 const styles = ({
@@ -59,98 +63,102 @@ class CreateEvent extends Component {
 
     // renders the form
     return (
-      <div>
-        <form classname={classes.container} onSubmit={this.onSubmit}>
-          <Grid container>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="eventName"
-                value={eventName}
-                type="text"
-                onChange={this.onChange}
-                label="Name"
-                required
-                fullWidth
-              />
+      <div>        <Card>
+        <CardHeader align="center" title="Create a New Event" />
+        <CardContent>
+          <form classname={classes.container} onSubmit={this.onSubmit}>
+            <Grid container>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextField
+                  classname={classes.textField}
+                  margin="normal"
+                  name="eventName"
+                  value={eventName}
+                  type="text"
+                  onChange={this.onChange}
+                  label="Name"
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={6} lg={6}>
+                <TextField
+                  classname={classes.textField}
+                  margin="normal"
+                  name="eventStartDate"
+                  value={eventStartDate}
+                  type="date"
+                  onChange={this.onChange}
+                  label="Start Date"
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={6} lg={6}>
+                <TextField
+                  classname={classes.textField}
+                  margin="normal"
+                  name="eventEndDate"
+                  value={eventEndDate}
+                  type="date"
+                  onChange={this.onChange}
+                  label="End Date"
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={6} lg={6}>
+                <TextField
+                  classname={classes.textField}
+                  margin="normal"
+                  name="eventStartTime"
+                  value={eventStartTime}
+                  type="time"
+                  onChange={this.onChange}
+                  label="Start Time"
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={6} lg={6}>
+                <TextField
+                  classname={classes.textField}
+                  margin="normal"
+                  name="eventEndTime"
+                  value={eventEndTime}
+                  type="time"
+                  onChange={this.onChange}
+                  label="End Time"
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextField
+                  classname={classes.textField}
+                  margin="normal"
+                  name="eventDescription"
+                  value={eventDescription}
+                  type="text"
+                  onChange={this.onChange}
+                  label="Description"
+                  fullWidth
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="eventStartDate"
-                value={eventStartDate}
-                type="date"
-                onChange={this.onChange}
-                label="Start Date"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="eventEndDate"
-                value={eventEndDate}
-                type="date"
-                onChange={this.onChange}
-                label="End Date"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="eventStartTime"
-                value={eventStartTime}
-                type="time"
-                onChange={this.onChange}
-                label="Start Time"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="eventEndTime"
-                value={eventEndTime}
-                type="time"
-                onChange={this.onChange}
-                label="End Time"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="eventDescription"
-                value={eventDescription}
-                type="text"
-                onChange={this.onChange}
-                label="Description"
-                fullWidth
-              />
-            </Grid>
-          </Grid>
 
-          <Button
-            // disabled={isInvalid}
-            type="submit"
-            size="large"
-            color="primary"
-            variant="contained"
-          >
-            Submit
+            <Button
+              // disabled={isInvalid}
+              type="submit"
+              size="large"
+              color="primary"
+              variant="contained"
+            >
+              Submit
           </Button>
-        </form>
+          </form>
+        </CardContent>
+      </Card>
       </div>
     );
   }

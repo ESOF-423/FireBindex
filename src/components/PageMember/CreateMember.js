@@ -89,7 +89,7 @@ class CreateMember extends Component {
     return (
       <div>
         <Card>
-              <CardHeader align="center" title="Create a new member" />
+              <CardHeader align="center" title="Create a New Member" />
               <CardContent>
         <form classname={classes.container} onSubmit={this.onSubmit}>
           <Grid container>
