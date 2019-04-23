@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import MUIDataTable from "mui-datatables";
 
 //event table column headers
-const columns = ["Name", "Date", "Time", "Description", ""];
+const columns = ["", "Name", "Date", "Time", "Description"];
 
 //MUI table options
 const options = {
@@ -57,10 +57,6 @@ class ViewEvent extends Component {
     //map events into array with specific data for our events table
     events.map(event =>
       eventsArray.push([
-        event.eventName,
-        event.eventStartDate,
-        event.eventStartTime,
-        event.eventDescription,
         <Link
           style={{ textDecoration: "none" }}
           to={{
@@ -75,7 +71,12 @@ class ViewEvent extends Component {
           <Button size="large" color="secondary" variant="contained">
             Sign In To Event
           </Button>
-        </Link>
+        </Link>,
+        event.eventName,
+        event.eventStartDate,
+        event.eventStartTime,
+        event.eventDescription,
+        
       ])
     );
 

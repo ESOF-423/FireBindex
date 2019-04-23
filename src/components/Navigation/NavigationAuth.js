@@ -65,9 +65,6 @@ class NavigationAuth extends Component {
               aria-haspopup="true"
               onClick={this.handleClick}
             >
-              <i class="material-icons" style={{ paddingRight: 8 }}>
-                add
-              </i>
               Create New
             </Button>
             <Menu
@@ -88,20 +85,23 @@ class NavigationAuth extends Component {
                 </MenuItem>
               </Link>
               <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_EVENT}>
-              <MenuItem onClick={this.handleClose}>
-                <i class="material-icons" style={{ paddingRight: 16 }}>
-                  today
-                </i>
-                Event
-              </MenuItem>
+                <MenuItem onClick={this.handleClose}>
+                  <i class="material-icons" style={{ paddingRight: 16 }}>
+                    today
+                  </i>
+                  Event
+                </MenuItem>
               </Link>
-              <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_SERVICE}>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={ROUTES.CREATE_SERVICE}
+              >
                 <MenuItem onClick={this.handleClose}>
                   <i class="material-icons" style={{ paddingRight: 16 }}>
                     room_service
-                </i>
+                  </i>
                   Service
-              </MenuItem>
+                </MenuItem>
               </Link>
               <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_UP}>
                 <MenuItem onClick={this.handleClose}>
