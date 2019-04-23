@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-import { SignUpLink } from "../PageSignUp/PageSignUp";
 //import firebase
 import { withFirebase } from "../Firebase";
 import { withStyles } from "@material-ui/core/styles";
@@ -48,8 +47,7 @@ const SignInPage = () => (
             />
             <CardContent>
               <SignInForm />
-              <PasswordForgetLink />
-              <SignUpLink />
+              <PasswordForgetLink />              
             </CardContent>
           </Card>
         </div>

@@ -11,7 +11,7 @@ import * as ROUTES from "../../constants/routes";
 //contain signUpForm in page
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1>Create a New Admin</h1>
     <SignUpForm />
   </div>
 );
