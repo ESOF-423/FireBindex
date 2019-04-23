@@ -12,7 +12,8 @@ import PasswordForgetPage from "../PagePasswordForget/PagePasswordForget";
 import HomePage from "../PageHome/PageHome";
 import AccountPage from "../PageAccount/PageAccount";
 import AdminPage from "../PageAdmin/PageAdmin";
-import MemberPage from "../PageMember/PageMember";
+import CreateMember from "../PageMember/CreateMember"
+import MemberPage from "../PageMember/ViewMember";
 import EventPage from "../PageEvent/PageEvent";
 import ServicePage from "../PageService/PageService";
 import CheckInMember from "../PageMemberCheckIn/CheckInMember";
@@ -43,6 +44,7 @@ const App = () => (
         <Route path={ROUTES.EVENT} component={EventPage} />
         <Route path={ROUTES.SERVICE} component={ServicePage} />
         <Route path={ROUTES.EVENT_VIEW_ATTENDANCE} component={AttendancePage} />
+        <Route path={ROUTES.CREATE_MEMBER} component={CreateMember} />
       </div>
     </div>
   </Router>

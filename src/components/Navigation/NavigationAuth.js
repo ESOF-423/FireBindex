@@ -65,7 +65,9 @@ class NavigationAuth extends Component {
               aria-haspopup="true"
               onClick={this.handleClick}
             >
-              <i class="material-icons" style={{ paddingRight: 8 }}>add</i>
+              <i class="material-icons" style={{ paddingRight: 8 }}>
+                add
+              </i>
               Create New
             </Button>
             <Menu
@@ -75,10 +77,12 @@ class NavigationAuth extends Component {
               onClose={this.handleClose}
             >
               <MenuItem onClick={this.handleClose}>
-                <i class="material-icons" style={{ paddingRight: 16 }}>
-                  person_add
-                </i>
-                Member
+                <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_MEMBER}>
+                  <i class="material-icons" style={{ paddingRight: 16 }}>
+                    person_add
+                  </i>
+                  Member
+                </Link>
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
@@ -94,7 +98,7 @@ class NavigationAuth extends Component {
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
-                supervisor_account
+                  supervisor_account
                 </i>
                 Admin
               </MenuItem>
@@ -113,4 +117,4 @@ class NavigationAuth extends Component {
   }
 }
 
-export default (NavigationAuth);
+export default NavigationAuth;

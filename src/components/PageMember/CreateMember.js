@@ -7,7 +7,9 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Radio from '@material-ui/core/Radio'
@@ -86,6 +88,9 @@ class CreateMember extends Component {
     // the form
     return (
       <div>
+        <Card>
+              <CardHeader align="center" title="Create a new member" />
+              <CardContent>
         <form classname={classes.container} onSubmit={this.onSubmit}>
           <Grid container>
             <Grid item xs={12} sm={4} md={4} lg={4}>
@@ -314,6 +319,8 @@ class CreateMember extends Component {
             Submit
           </Button>
         </form>
+        </CardContent>
+        </Card>
       </div>
     );
   }

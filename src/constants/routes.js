@@ -7,6 +7,7 @@ export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
+export const CREATE_MEMBER = '/create-member'
 export const MEMBER = '/member';
 export const EVENT = '/event';
 export const SERVICE = '/service';
