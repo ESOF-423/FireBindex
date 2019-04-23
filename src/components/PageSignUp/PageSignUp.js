@@ -1,19 +1,42 @@
 //import react, component
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 //import firebase
 import { withFirebase } from "../Firebase";
 import { compose } from "recompose";
 import Button from "@material-ui/core/Button";
 //import constants from ROUTES for page URLs
 import * as ROUTES from "../../constants/routes";
+// import @material-ui components
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+
+
+const styles = ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  }
+})
 
 //contain signUpForm in page
 const SignUpPage = () => (
-  <div>
-    <h1>Create a New Admin</h1>
-    <SignUpForm />
-  </div>
+  <Grid container justify="center">
+    <Card>
+      <CardHeader
+        title="Create Admin"
+        subheader="Create new admins with full system access"
+      />
+      <CardContent>    
+        <SignUpForm />
+      </CardContent>
+    </Card>
+  </Grid>
 );
 
 const INITIAL_STATE = {
@@ -70,63 +93,69 @@ class SignUpFormBase extends Component {
       email === "" ||
       username === "";
 
-    return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button diabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+    const { classes } = this.props;
 
+    return (
+      <form classname={classes.container} onSubmit={this.onSubmit}>        
+          <TextField
+            classname={classes.textfield}
+            margin="normal"
+            name="username"
+            value={username}
+            onChange={this.onChange}
+            type="text"
+            label="Full Name"
+          />        
+          <TextField
+            classname={classes.textfield}
+            margin="normal"
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            label="Email Address"
+          />
+          <TextField
+            classname={classes.textfield}
+            margin="normal"
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            label="Password"
+          />
+          <TextField
+            classname={classes.textfield}
+            margin="normal"
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            label="Confirm Password"
+          />
+          <Button 
+            diabled={isInvalid} 
+            type="submit"
+            size="large"
+            color="secondary"
+            variant="contained">
+            Sign Up
+          </Button>        
         {error && <p>{error.message}</p>}
       </form>
     );
   }
 }
 
-//link to sign up page
-const SignUpLink = () => (
-  <p>
-    Don't have an account?{" "}
-    <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_UP}>
-      <Button size="large" color="secondary" variant="contained">
-        Sign Up
-      </Button>
-    </Link>
-  </p>
-);
-
 const SignUpForm = compose(
   withRouter,
   withFirebase
-)(SignUpFormBase);
+)(withStyles(styles)(SignUpFormBase));
 
-export default SignUpPage;
+SignUpFormBase.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
-export { SignUpForm, SignUpLink };
+export default (SignUpPage);
+
+export { SignUpForm };
