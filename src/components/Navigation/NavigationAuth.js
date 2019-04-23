@@ -1,7 +1,6 @@
 // import react modules
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 // import custom components
 import SignOutButton from "../SignOut/SignOut";
@@ -14,14 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { withStyles } from "@material-ui/core/styles";
-
-const styles = {
-  icon: {
-    width: 16,
-    textAlign: "middle"
-  }
-};
 
 // the navbar for authorized users
 class NavigationAuth extends Component {
@@ -39,7 +30,6 @@ class NavigationAuth extends Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes } = this.props;
 
     return (
       <div>
@@ -123,8 +113,4 @@ class NavigationAuth extends Component {
   }
 }
 
-NavigationAuth.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(NavigationAuth);
+export default (NavigationAuth);
