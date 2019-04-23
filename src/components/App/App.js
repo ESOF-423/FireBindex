@@ -27,7 +27,7 @@ const App = () => (
   <Router>
     <div>
       <Navigation />
-      <div style={{ marginLeft: "24px", marginRight: "24px", marginTop: "24px" }}>
+      <div style={{ margin: "24px" }}>
         <Route
           exact
           path={ROUTES.MEMBER_CHECK_IN}
