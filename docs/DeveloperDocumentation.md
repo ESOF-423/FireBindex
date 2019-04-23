@@ -2,24 +2,24 @@
 
 Bindex is an open-source project written by students of ESOF423: Applications of Software Engineering at Montana State University Spring of 2019. The live version of our site can be found at <http://bindex.tk>.
 
-* [Developer Documentation](#developer-documentation)
-  * [Reporting Issues or Bugs](#reporting-issues-or-bugs)
-  * [Contacting Developers](#contacting-developers)
-  * [Obtaining and Building Source Code](#obtaining-and-building-source-code)
-  * [Contributing to Live Development](#contributing-to-live-development)
-  * [Class Diagram](#class-diagram)
-  * [Versions](#versions)
-    * [Latest Stable Versions](#latest-stable-versions)
-    * [Development Versions](#development-versions)
-    * [Continuing Development on End of Life (EOL) Versions](#continuing-development-on-end-of-life-eol-versions)
-  * [Directory Structure](#directory-structure)
-  * [How to Test the Software](#how-to-test-the-software)
-    * [In the cloud](#in-the-cloud)
-    * [On your machine](#on-your-machine)
-  * [How to Release the Software](#how-to-release-the-software)
-  * [Database](#database)
-  * [Design](#design)
-  * [Routing](#routing)
+- [Developer Documentation](#developer-documentation)
+  - [Reporting Issues or Bugs](#reporting-issues-or-bugs)
+  - [Contacting Developers](#contacting-developers)
+  - [Obtaining and Building Source Code](#obtaining-and-building-source-code)
+  - [Contributing to Live Development](#contributing-to-live-development)
+  - [Class Diagram](#class-diagram)
+  - [Versions](#versions)
+    - [Latest Stable Versions](#latest-stable-versions)
+    - [Development Versions](#development-versions)
+    - [Continuing Development on End of Life (EOL) Versions](#continuing-development-on-end-of-life-eol-versions)
+  - [Directory Structure](#directory-structure)
+  - [How to Test the Software](#how-to-test-the-software)
+    - [In the cloud](#in-the-cloud)
+    - [On your machine](#on-your-machine)
+  - [How to Release the Software](#how-to-release-the-software)
+  - [Database](#database)
+  - [Design](#design)
+  - [Routing](#routing)
 
 ## Reporting Issues or Bugs
 
@@ -93,7 +93,7 @@ We do not host live versions of development code. To test these features, please
 
 > For Developers seeking to continue Bindex after its original developers have stopped supporting new versions.
 
-All software comes to an end; whether code is developed into a final version or developers stop mid-release. Bindex is an open source project, and therefore available to anyone who wants to continue its development. [Email](bindexdevelopers@gmail.com) the bindex developers and ask us about spear-heading the future continuation of Bindex through your own releases.
+All software comes to an end; whether code is developed into a final version or developers stop mid-release. Bindex is an open source project, and therefore available to anyone who wants to continue its development. [Email](bindexdevelopers@gmail.com) the Bindex developers and ask us about spear-heading the future continuation of Bindex through your own releases.
 
 ## Directory Structure
 
@@ -180,7 +180,6 @@ We are using Firebase's Realtime Database with the following structure:
 
 Our site started as a template that was created using [create-react-app](https://facebook.github.io/create-react-app/). From there, some things have stayed the same but many have been moved around and refactored to make things easier for us. We are using [npm](https://www.npmjs.com/) to manage dependencies and install new packages. User authentication proved to be non-trivial and we borrowed heavily from this [tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) to get that aspect of our project working.
 
-When there is more than one pane (section) on a page, we found it useful to split them up into multiple files. This helps to keep things organized and cuts down on file length. For example, `PageEvent.js` is quite simple but when rendered is one of our most complex pages. This is because we have broken `CreateEvent.js` and `ViewEvent.js` out into their own files. This also allows us to easily re-use components such as `ViewMember.js`, making it trivial to include a list of all members anywhere on the site.
 
 ## Routing
 
