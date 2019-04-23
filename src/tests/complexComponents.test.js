@@ -1,15 +1,12 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import PageEvent from '../components/PageEvent/PageEvent.js'
 import CreateEvent from '../components/PageEvent/CreateEvent.js'
 import ViewEvent from '../components/PageEvent/ViewEvent.js'
 
-import PageMember from '../components/PageMember/PageMember.js'
 import CreateMember from '../components/PageMember/CreateMember.js'
 import ViewMember from '../components/PageMember/ViewMember.js'
 
-import PageService from '../components/PageService/PageService.js'
 import CreateService from '../components/PageService/CreateService.js'
 import ViewService from '../components/PageService/ViewService.js'
 
@@ -27,11 +24,6 @@ it('shallow renders ViewEventForCheckin without exploding', () => {
 	renderer.render(React.createElement(ViewEventForCheckin));
 });
 
-it('shallow renders PageEvent without exploding', () => {
-	const renderer = new ShallowRenderer();
-	renderer.render(React.createElement(PageEvent));
-});
-
 it('shallow renders CreateEvent without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(CreateEvent));
@@ -42,11 +34,6 @@ it('shallow renders ViewEvent without exploding', () => {
 	renderer.render(React.createElement(ViewEvent));
 });
 
-it('shallow renders PageMember without exploding', () => {
-	const renderer = new ShallowRenderer();
-	renderer.render(React.createElement(PageMember));
-});
-
 it('shallow renders CreateMember without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(CreateMember));
@@ -55,11 +42,6 @@ it('shallow renders CreateMember without exploding', () => {
 it('shallow renders ViewMember without exploding', () => {
 	const renderer = new ShallowRenderer();
 	renderer.render(React.createElement(ViewMember));
-});
-
-it('shallow renders PageService without exploding', () => {
-	const renderer = new ShallowRenderer();
-	renderer.render(React.createElement(PageService));
 });
 
 it('shallow renders CreateService without exploding', () => {
