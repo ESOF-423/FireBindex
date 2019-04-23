@@ -76,14 +76,18 @@ class NavigationAuth extends Component {
               open={Boolean(anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}>
-                <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_MEMBER}>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={ROUTES.CREATE_MEMBER}
+              >
+                <MenuItem onClick={this.handleClose}>
                   <i class="material-icons" style={{ paddingRight: 16 }}>
                     person_add
                   </i>
                   Member
-                </Link>
-              </MenuItem>
+                </MenuItem>
+              </Link>
+
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
                   today
@@ -96,25 +100,15 @@ class NavigationAuth extends Component {
                 </i>
                 Service
               </MenuItem>
-<<<<<<< HEAD
-              <MenuItem onClick={this.handleClose}>
-                <i class="material-icons" style={{ paddingRight: 16 }}>
-                  supervisor_account
-                </i>
-                Admin
-              </MenuItem>
-=======
               <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_UP}>
                 <MenuItem onClick={this.handleClose}>
                   <i class="material-icons" style={{ paddingRight: 16 }}>
-                  supervisor_account
+                    supervisor_account
                   </i>
                   Admin
                 </MenuItem>
               </Link>
->>>>>>> 7320ac8fcfb7c6a8147857da28bcd07ebe5eb7c6
             </Menu>
-
             <div style={{ marginLeft: "auto" }}>
               <Link style={{ textDecoration: "none" }} to={ROUTES.ACCOUNT}>
                 <Button>Account</Button>
