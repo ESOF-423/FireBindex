@@ -75,7 +75,7 @@ class NavigationAuth extends Component {
               aria-haspopup="true"
               onClick={this.handleClick}
             >
-              <i class="material-icons">add</i>
+              <i class="material-icons" style={{ paddingRight: 8 }}>add</i>
               Create New
             </Button>
             <Menu
@@ -86,13 +86,13 @@ class NavigationAuth extends Component {
             >
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
-                  group_add
+                  person_add
                 </i>
                 Member
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
-                  event_available
+                  today
                 </i>
                 Event
               </MenuItem>
@@ -104,7 +104,7 @@ class NavigationAuth extends Component {
               </MenuItem>
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
-                  person_add
+                supervisor_account
                 </i>
                 Admin
               </MenuItem>
