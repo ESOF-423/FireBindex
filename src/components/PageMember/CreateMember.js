@@ -7,19 +7,21 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-
-import FormControl from '@material-ui/core/FormControl'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
 
 // form styles
-const styles = ({
+const styles = {
   container: {
     display: "flex",
     flexWrap: "wrap"
   }
-});
+};
 
 // form initial state
 const INITIAL_STATE = {
@@ -86,6 +88,9 @@ class CreateMember extends Component {
     // the form
     return (
       <div>
+        <Card>
+              <CardHeader align="center" title="Create a New Member" />
+              <CardContent>
         <form classname={classes.container} onSubmit={this.onSubmit}>
           <Grid container>
             <Grid item xs={12} sm={4} md={4} lg={4}>
@@ -276,44 +281,46 @@ class CreateMember extends Component {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="emergencyPhoneNumber"
-                value={emergencyPhoneNumber}
-                type="text"
-                onChange={this.onChange}
-                label="Phone Number"
-                required
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
-              <TextField
-                classname={classes.textField}
-                margin="normal"
-                name="emergencyRelationship"
-                value={emergencyRelationship}
-                type="text"
-                onChange={this.onChange}
-                label="Relationship"
-                required
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={6}>
+                  <TextField
+                    classname={classes.textField}
+                    margin="normal"
+                    name="emergencyPhoneNumber"
+                    value={emergencyPhoneNumber}
+                    type="text"
+                    onChange={this.onChange}
+                    label="Phone Number"
+                    required
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={6}>
+                  <TextField
+                    classname={classes.textField}
+                    margin="normal"
+                    name="emergencyRelationship"
+                    value={emergencyRelationship}
+                    type="text"
+                    onChange={this.onChange}
+                    label="Relationship"
+                    required
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
 
-          <Button
-            // disabled={isInvalid}
-            type="submit"
-            size="large"
-            color="primary"
-            variant="contained"
-          >
-            Submit
-          </Button>
-        </form>
+              <Button
+                // disabled={isInvalid}
+                type="submit"
+                size="large"
+                color="primary"
+                variant="contained"
+              >
+                Submit
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     );
   }

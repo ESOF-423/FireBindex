@@ -1,4 +1,4 @@
-// import react 
+// import react
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withAuthentication } from "../Session";
@@ -12,9 +12,12 @@ import PasswordForgetPage from "../PagePasswordForget/PagePasswordForget";
 import HomePage from "../PageHome/PageHome";
 import AccountPage from "../PageAccount/PageAccount";
 import AdminPage from "../PageAdmin/PageAdmin";
-import MemberPage from "../PageMember/PageMember";
-import EventPage from "../PageEvent/PageEvent";
-import ServicePage from "../PageService/PageService";
+import CreateMember from "../PageMember/CreateMember"
+import MemberPage from "../PageMember/ViewMember";
+import ViewEvent from "../PageEvent/ViewEvent";
+import CreateEvent from "../PageEvent/CreateEvent";
+import ViewService from "../PageService/ViewService";
+import CreateService from "../PageService/CreateService";
 import CheckInMember from "../PageMemberCheckIn/CheckInMember";
 import AttendancePage from "../ViewEventAttendance/ViewEventAttendance"
 
@@ -26,7 +29,7 @@ const App = () => (
   <Router>
     <div>
       <Navigation />
-      <div style={{ marginLeft: "24px", marginRight: "24px", marginTop: "24px" }}>
+      <div style={{ margin: "24px" }}>
         <Route
           exact
           path={ROUTES.MEMBER_CHECK_IN}
@@ -40,9 +43,12 @@ const App = () => (
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.MEMBER} component={MemberPage} />
         <Route path={ROUTES.EVENT_CHECK_IN} component={CheckInMember} />
-        <Route path={ROUTES.EVENT} component={EventPage} />
-        <Route path={ROUTES.SERVICE} component={ServicePage} />
+        <Route path={ROUTES.EVENT} component={ViewEvent} />
+        <Route path={ROUTES.CREATE_EVENT} component={CreateEvent} />
+        <Route path={ROUTES.SERVICE} component={ViewService} />
+        <Route path={ROUTES.CREATE_SERVICE} component={CreateService} />
         <Route path={ROUTES.EVENT_VIEW_ATTENDANCE} component={AttendancePage} />
+        <Route path={ROUTES.CREATE_MEMBER} component={CreateMember} />
       </div>
     </div>
   </Router>

@@ -1,7 +1,6 @@
 // import react modules
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 // import custom components
 import SignOutButton from "../SignOut/SignOut";
@@ -14,14 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { withStyles } from "@material-ui/core/styles";
-
-const styles = {
-  icon: {
-    width: 16,
-    textAlign: "middle"
-  }
-};
 
 // the navbar for authorized users
 class NavigationAuth extends Component {
@@ -39,7 +30,6 @@ class NavigationAuth extends Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes } = this.props;
 
     return (
       <div>
@@ -53,16 +43,16 @@ class NavigationAuth extends Component {
               <Button>Home</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.ADMIN}>
-              <Button>Admin</Button>
+              <Button>Admins</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.MEMBER}>
               <Button>Members</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.EVENT}>
-              <Button>Event</Button>
+              <Button>Events</Button>
             </Link>
             <Link style={{ textDecoration: "none" }} to={ROUTES.SERVICE}>
-              <Button>Service</Button>
+              <Button>Services</Button>
             </Link>
             <Link
               style={{ textDecoration: "none" }}
@@ -75,7 +65,9 @@ class NavigationAuth extends Component {
               aria-haspopup="true"
               onClick={this.handleClick}
             >
-              <i class="material-icons" style={{ paddingRight: 8 }}>add</i>
+              <i class="material-icons" style={{ paddingRight: 8 }}>
+                add
+              </i>
               Create New
             </Button>
             <Menu
@@ -84,34 +76,42 @@ class NavigationAuth extends Component {
               open={Boolean(anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}>
-                <i class="material-icons" style={{ paddingRight: 16 }}>
-                  person_add
-                </i>
-                Member
-              </MenuItem>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={ROUTES.CREATE_MEMBER}
+              >
+                <MenuItem onClick={this.handleClose}>
+                  <i class="material-icons" style={{ paddingRight: 16 }}>
+                    person_add
+                  </i>
+                  Member
+                </MenuItem>
+              </Link>
+              <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_EVENT}>
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
                   today
                 </i>
                 Event
               </MenuItem>
-              <MenuItem onClick={this.handleClose}>
-                <i class="material-icons" style={{ paddingRight: 16 }}>
-                  room_service
+              </Link>
+              <Link style={{ textDecoration: "none" }} to={ROUTES.CREATE_SERVICE}>
+                <MenuItem onClick={this.handleClose}>
+                  <i class="material-icons" style={{ paddingRight: 16 }}>
+                    room_service
                 </i>
-                Service
+                  Service
               </MenuItem>
+              </Link>
               <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_UP}>
                 <MenuItem onClick={this.handleClose}>
                   <i class="material-icons" style={{ paddingRight: 16 }}>
-                  supervisor_account
+                    supervisor_account
                   </i>
                   Admin
                 </MenuItem>
               </Link>
             </Menu>
-
             <div style={{ marginLeft: "auto" }}>
               <Link style={{ textDecoration: "none" }} to={ROUTES.ACCOUNT}>
                 <Button>Account</Button>
@@ -125,8 +125,4 @@ class NavigationAuth extends Component {
   }
 }
 
-NavigationAuth.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(NavigationAuth);
+export default NavigationAuth;
