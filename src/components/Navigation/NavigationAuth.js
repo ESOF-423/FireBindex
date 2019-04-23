@@ -96,12 +96,23 @@ class NavigationAuth extends Component {
                 </i>
                 Service
               </MenuItem>
+<<<<<<< HEAD
               <MenuItem onClick={this.handleClose}>
                 <i class="material-icons" style={{ paddingRight: 16 }}>
                   supervisor_account
                 </i>
                 Admin
               </MenuItem>
+=======
+              <Link style={{ textDecoration: "none" }} to={ROUTES.SIGN_UP}>
+                <MenuItem onClick={this.handleClose}>
+                  <i class="material-icons" style={{ paddingRight: 16 }}>
+                  supervisor_account
+                  </i>
+                  Admin
+                </MenuItem>
+              </Link>
+>>>>>>> 7320ac8fcfb7c6a8147857da28bcd07ebe5eb7c6
             </Menu>
 
             <div style={{ marginLeft: "auto" }}>
