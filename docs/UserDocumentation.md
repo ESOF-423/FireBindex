@@ -45,11 +45,12 @@ Bindex.tk is a web application meant to make the task of managing senior communi
 ### How to Check-In to Events
 
 - Open a new web browser and navigate to [Bindex.tk](Bindex.tk)
-- You should see a list of events happening at the Belgrade Senior Center
+- You should see a list of events happening at the Belgrade Senior Center in the default tab "Member Check-in"
 - Choose the event you would like to sign in to and click the **Sign in to Event** button
-- You should now see two fields where you can enter your first and last name
-- Enter your first and last name (this is not case sensitive) and click the **Check In** button
-
+- You should now see two fields where you can enter your first and last name, and the entire list of members below
+- Either:
+  - Enter your first and last name (this is not case sensitive) and click the **Check In** button
+  - Find your name by scrolling down through the list and click the **button** next to your name
 ### How to Change Your Information
 
 To change any information, please ask for an administrator. In order to best preserve your existing data and ensure the quality of your new data, only those who have training with the tool can edit your information.
@@ -88,23 +89,23 @@ To change any information, please ask for an administrator. In order to best pre
 - Click the **Submit** button
 
 ### Add a New Admin
-
+### **Disclosure:**
+**ANY ADDED ADMIN WILL HAVE FULL SYSTEM ACCESS AND CONTROL OVER DATA**
 - Log into Bindex.tk as instructed above
 - Click on **Create New** in navigation bar at the top of the screen and select **Admin**
 - You should see a form on the screen to add a admin
 - Enter the admin's information
 - Click the **Submit** button
+- New Admins will be able to sign in with the credentials you created
   
 ### Check Members in to Events
 
-- Log into Bindex.tk as instructed above
+- It is recommended that you log out of Bindex.tk before signing a member in, in case you were to forget to log off of the computer accessible to other afterwards
 - Click the **Member Check In** button in the navigation bar at the top of the screen
 - You should see a list of events happening at the Belgrade Senior Center
 - Choose the event you would like to sign into and click the **Sign in to Event** button on the right
-- You should now see two fields where you can enter your first and last name followed by a table showing all members
-- Enter your first and last name (this is not case sensitive) and click the **Check In** button
-OR
-- Find your name on the list of members and click **Check In**
+- You should now see two fields where you can enter their first and last name followed by a table showing all members
+- Enter their first and last name (this is not case sensitive) and click the **Check In** button
 
 ### View All Members
 
@@ -135,7 +136,7 @@ OR
 ### Searching/Sorting/Filtering
 
 - Log into Bindex.tk as instructed above
-- When viewing an table of data (members, events, attendance, etc.), you can search and filter using the buttons on the top right of the table.
+- When viewing a table of data (members, events, attendance, etc.), you can search and filter using the buttons on the top right of the table.
   - The magnifying glass allows you to type in characters and the data in the table filters to only show rows that contain that data.
   - The cloud with the arrow allows you to download the table's data in csv (excel) format.
   - The printer allows you to print the table.
