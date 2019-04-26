@@ -18,6 +18,7 @@ import event from "../../assets/icons/baseline_event_black_48dp.png";
 import person from "../../assets/icons/baseline_person_black_48dp.png";
 import room_service from "../../assets/icons/baseline_room_service_black_48dp.png";
 import account_box from "../../assets/icons/baseline_account_box_black_48dp.png"
+import github from "../../assets/icons/25231.svg"
 
 // import routes
 import * as ROUTES from "../../constants/routes";
@@ -97,6 +98,17 @@ function HomePage(props) {
             </Button>
           </Paper>
         </Link>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={4}>
+        <a className={classes.link} href="https://github.com/ESOF-423/FireBindex">
+          <Paper className={classes.root} elevation={1}>
+            <img alt="github" className={classes.media} src={github} style={{maxWidth: '86px'}}/>
+            <br />
+            <Button className={classes.button} size="large" color="primary">
+              Github 
+            </Button>
+          </Paper>
+        </a>
       </Grid>
     </Grid>
   );
