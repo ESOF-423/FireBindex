@@ -100,7 +100,7 @@ function HomePage(props) {
         </Link>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <a className={classes.link} href="https://github.com/ESOF-423/FireBindex">
+        <a className={classes.link} target="blank" href="https://github.com/ESOF-423/FireBindex">
           <Paper className={classes.root} elevation={1}>
             <img alt="github" className={classes.media} src={github} style={{maxWidth: '86px'}}/>
             <br />
