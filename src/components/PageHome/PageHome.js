@@ -44,7 +44,7 @@ function HomePage(props) {
   return (
     <Grid container>
       <Grid item xs={12} sm={6} md={4} lg={4}>
-        <Link className={classes.link} to={ROUTES.EVENT_CHECK_IN}>
+        <Link className={classes.link} to={ROUTES.MEMBER_CHECK_IN}>
           <Paper className={classes.root} elevation={1}>
             <img alt="Check Into an Event" className={classes.media} src={event_available} />
             <br />
